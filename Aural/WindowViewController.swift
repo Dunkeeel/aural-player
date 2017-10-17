@@ -47,21 +47,30 @@ class WindowViewController: NSViewController, NSWindowDelegate {
     }()
     
     override func viewDidLoad() {
-        
         WindowState.window = self.mainWindow
-        
+        setMainWindow()
+        view.focusRingType = .none
+    }
+    
+    // This sets up the main window correctly
+    func setMainWindow(){
         let appState = ObjectGraph.getUIAppState()
         
         if (appState.hideEffects) {
             toggleEffects(false)
         }
-        
+        mainWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         mainWindow.setFrameOrigin(appState.windowLocation)
         mainWindow.isMovableByWindowBackground = true
         mainWindow.makeKeyAndOrderFront(self)
+        playlistWindow.isOpaque = false
+
         
+        playlistWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         playlistWindow.isMovableByWindowBackground = true
         playlistWindow.delegate = self
+        playlistWindow.isOpaque = false
+        playlistWindow.backgroundColor = .clear
         
         if (appState.hidePlaylist) {
             hidePlaylist(false)
@@ -74,6 +83,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             showPlaylist()
             dockPlaylistBottom()
         }
+        
     }
     
     @IBAction func hideAction(_ sender: AnyObject) {
@@ -201,7 +211,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         automatedPlaylistMoveOrResize = true
         
         // Add bottom edge to the main window, if necessary
-        resizeMainWindow(playlistShown: true, effectsShown: !fxBox.isHidden, true)
+        //resizeMainWindow(playlistShown: true, effectsShown: !fxBox.isHidden, true)
         
         // Calculate new position and size of playlist window, in relation to the main window
         
