@@ -16,93 +16,21 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <window title="Aural" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g" userLabel="Main Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="335" y="100" width="415" height="404"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <value key="minSize" type="size" width="415" height="208"/>
-            <value key="maxSize" type="size" width="415" height="393"/>
+            <value key="minSize" type="size" width="415" height="404"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="415" height="404"/>
+                <rect key="frame" x="0.0" y="0.0" width="415" height="400"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="jsQ-BX-zcR">
-                        <rect key="frame" x="0.0" y="0.0" width="415" height="404"/>
+                        <rect key="frame" x="0.0" y="0.0" width="415" height="400"/>
                         <subviews>
-                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7x7-QN-fEw">
-                                <rect key="frame" x="162" y="374" width="92" height="25"/>
-                                <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BNg-uu-doV" userLabel="AppIcon Image">
-                                        <rect key="frame" x="0.0" y="5" width="16" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="16" id="7mV-vZ-uK2"/>
-                                            <constraint firstAttribute="height" constant="16" id="H1b-uu-OTQ"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="odg-0G-Ip6"/>
-                                    </imageView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="saz-qI-SEO">
-                                        <rect key="frame" x="14" y="0.0" width="80" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="4Ou-in-CVn"/>
-                                            <constraint firstAttribute="width" constant="76" id="6wL-57-dgQ"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AURAL" id="q5q-o6-pMi">
-                                            <font key="font" size="20" name="Courier"/>
-                                            <color key="textColor" white="0.74808485243055545" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-DE-cM2">
-                                <rect key="frame" x="338" y="374" width="62" height="18"/>
-                                <subviews>
-                                    <button toolTip="Show/hide playlist" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="TTw-rh-Ama" userLabel="Toggle Playlist">
-                                        <rect key="frame" x="0.0" y="0.0" width="27" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="DDi-xP-wFn"/>
-                                            <constraint firstAttribute="width" constant="27" id="hYr-ed-2MO"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PlaylistView-On" imagePosition="only" alignment="center" state="on" borderStyle="border" focusRingType="none" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="GOt-DE-3fh">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="togglePlaylistAction:" target="Bfj-ih-EYB" id="wxc-N0-l3Z"/>
-                                        </connections>
-                                    </button>
-                                    <button toolTip="Show/hide effects panel" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="jtn-oJ-Dzg" userLabel="Toggle Effects">
-                                        <rect key="frame" x="35" y="0.0" width="27" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="27" id="0qZ-3v-Dqj"/>
-                                            <constraint firstAttribute="height" constant="18" id="M27-fc-s5W"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="EffectsView-On" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" focusRingType="none" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="vS0-Bp-ifo">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toggleEffectsAction:" target="Bfj-ih-EYB" id="yEi-xZ-fbe"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
+                                <rect key="frame" x="400" y="388" width="0.0" height="0.0"/>
                             </stackView>
                             <box autoresizesSubviews="NO" boxType="custom" borderType="none" borderWidth="0.0" cornerRadius="5" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="r0W-tQ-AZF" userLabel="Now Playing Box">
                                 <rect key="frame" x="15" y="274" width="385" height="88"/>
@@ -1940,8 +1868,7 @@ G1BhbiBTbGlkZXI
                             <constraint firstItem="X7y-oM-7MJ" firstAttribute="top" secondItem="r0W-tQ-AZF" secondAttribute="bottom" constant="12" id="4tv-o6-5K8"/>
                             <constraint firstAttribute="bottom" secondItem="DYI-NL-cxu" secondAttribute="bottom" constant="15" id="7Uf-67-yEy"/>
                             <constraint firstItem="X7y-oM-7MJ" firstAttribute="leading" secondItem="jsQ-BX-zcR" secondAttribute="leading" constant="15" id="8V9-pM-3uG"/>
-                            <constraint firstItem="r0W-tQ-AZF" firstAttribute="top" secondItem="jsQ-BX-zcR" secondAttribute="top" constant="42" id="9ga-fb-bWk"/>
-                            <constraint firstItem="7x7-QN-fEw" firstAttribute="centerX" secondItem="jsQ-BX-zcR" secondAttribute="centerX" id="FO6-XI-twm"/>
+                            <constraint firstItem="r0W-tQ-AZF" firstAttribute="top" secondItem="jsQ-BX-zcR" secondAttribute="top" constant="38" id="9ga-fb-bWk"/>
                             <constraint firstAttribute="trailing" secondItem="XEc-DE-cM2" secondAttribute="trailing" constant="15" id="IRb-wi-fgX"/>
                             <constraint firstItem="DYI-NL-cxu" firstAttribute="top" secondItem="X7y-oM-7MJ" secondAttribute="bottom" constant="12" id="RL4-s2-4ZN"/>
                             <constraint firstItem="XEc-DE-cM2" firstAttribute="top" secondItem="jsQ-BX-zcR" secondAttribute="top" constant="12" id="RUj-rh-KaQ"/>
@@ -1950,7 +1877,6 @@ G1BhbiBTbGlkZXI
                             <constraint firstAttribute="trailing" secondItem="DYI-NL-cxu" secondAttribute="trailing" constant="15" id="tY5-hF-Pzq"/>
                             <constraint firstAttribute="trailing" secondItem="X7y-oM-7MJ" secondAttribute="trailing" constant="15" id="uMe-er-x6z"/>
                             <constraint firstAttribute="trailing" secondItem="r0W-tQ-AZF" secondAttribute="trailing" constant="15" id="wsP-oe-9an"/>
-                            <constraint firstItem="7x7-QN-fEw" firstAttribute="top" secondItem="jsQ-BX-zcR" secondAttribute="top" constant="5" id="xeX-ab-8bw"/>
                         </constraints>
                     </visualEffectView>
                 </subviews>
@@ -1961,6 +1887,100 @@ G1BhbiBTbGlkZXI
                     <constraint firstAttribute="trailing" secondItem="jsQ-BX-zcR" secondAttribute="trailing" id="vjo-f4-FJV"/>
                 </constraints>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="5315EB94-615A-4317-8EF3-281133D06C88" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="labelOnly" sizeMode="regular" id="Ljc-RE-igd">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="671C9B8F-5FB9-4ACC-A980-5D65BC233678" label="Title Image" paletteLabel="Title Image" tag="-1" id="JMU-nb-429">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="92" height="25"/>
+                        <size key="maxSize" width="92" height="25"/>
+                        <stackView key="view" distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="7x7-QN-fEw">
+                            <rect key="frame" x="0.0" y="14" width="92" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BNg-uu-doV" userLabel="AppIcon Image">
+                                    <rect key="frame" x="0.0" y="5" width="16" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="16" id="7mV-vZ-uK2"/>
+                                        <constraint firstAttribute="height" constant="16" id="H1b-uu-OTQ"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="odg-0G-Ip6"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="saz-qI-SEO">
+                                    <rect key="frame" x="14" y="0.0" width="80" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="4Ou-in-CVn"/>
+                                        <constraint firstAttribute="width" constant="76" id="6wL-57-dgQ"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AURAL" id="q5q-o6-pMi">
+                                        <font key="font" size="20" name="Courier"/>
+                                        <color key="textColor" white="0.74808485243055545" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="977DD1F2-87FB-440B-B918-4AC09EFA657D" label="Toggle Playlist" paletteLabel="Toggle Playlist" image="PlaylistView-On" id="vPu-FP-C8h">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="27" height="18"/>
+                        <size key="maxSize" width="27" height="18"/>
+                        <button key="view" toolTip="Show/hide playlist" focusRingType="none" id="TTw-rh-Ama" userLabel="Toggle Playlist">
+                            <rect key="frame" x="28" y="14" width="27" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="DDi-xP-wFn"/>
+                                <constraint firstAttribute="width" constant="27" id="hYr-ed-2MO"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PlaylistView-On" imagePosition="only" alignment="center" state="on" borderStyle="border" focusRingType="none" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="GOt-DE-3fh">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="togglePlaylistAction:" target="Bfj-ih-EYB" id="wxc-N0-l3Z"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="404C3902-8CB1-45D2-8A3C-20153A0AE692" label="Toggle Effects" paletteLabel="Toggle Effects" image="EffectsView-On" id="fhl-jT-C5T">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="27" height="18"/>
+                        <size key="maxSize" width="27" height="18"/>
+                        <button key="view" toolTip="Show/hide effects panel" focusRingType="none" id="jtn-oJ-Dzg" userLabel="Toggle Effects">
+                            <rect key="frame" x="28" y="14" width="27" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="27" id="0qZ-3v-Dqj"/>
+                                <constraint firstAttribute="height" constant="18" id="M27-fc-s5W"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="EffectsView-On" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" focusRingType="none" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="vS0-Bp-ifo">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toggleEffectsAction:" target="Bfj-ih-EYB" id="yEi-xZ-fbe"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="hq0-ci-ddE"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="gg5-kA-7zw"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="gg5-kA-7zw"/>
+                    <toolbarItem reference="gg5-kA-7zw"/>
+                    <toolbarItem reference="hq0-ci-ddE"/>
+                    <toolbarItem reference="JMU-nb-429"/>
+                    <toolbarItem reference="hq0-ci-ddE"/>
+                    <toolbarItem reference="vPu-FP-C8h"/>
+                    <toolbarItem reference="fhl-jT-C5T"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="menu" destination="Cnt-hZ-QmI" id="YkB-Pl-SLT"/>
             </connections>
@@ -2096,19 +2116,19 @@ G1BhbiBTbGlkZXI
                                 </customSpacing>
                             </stackView>
                             <box boxType="custom" borderType="none" borderWidth="0.0" cornerRadius="5" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="G3X-tp-7Ag" userLabel="Playlist Box">
-                                <rect key="frame" x="15" y="15" width="385" height="200"/>
+                                <rect key="frame" x="15" y="15" width="385" height="204"/>
                                 <view key="contentView" id="H6e-EC-ZCQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="385" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="385" height="204"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQR-eW-Rr5" userLabel="Playlist">
-                                            <rect key="frame" x="0.0" y="25" width="385" height="175"/>
+                                            <rect key="frame" x="0.0" y="25" width="385" height="179"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Diy-3n-dhX">
-                                                <rect key="frame" x="0.0" y="0.0" width="385" height="175"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="385" height="179"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" viewBased="YES" id="rhk-oM-jMn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="385" height="175"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="385" height="179"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="4"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -2179,7 +2199,7 @@ G1BhbiBTbGlkZXI
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                 <prototypeCellViews>
                                                                     <tableCellView identifier="cv_trackName" id="HVN-RA-XGS" customClass="PlaylistCellView" customModule="Aural" customModuleProvider="target">
-                                                                        <rect key="frame" x="29.5" y="2" width="304" height="22"/>
+                                                                        <rect key="frame" x="30" y="2" width="304" height="22"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ATH-x0-bUP" userLabel="Track Name">
@@ -2460,10 +2480,10 @@ G1BhbiBTbGlkZXI
                                 <color key="fillColor" white="0.0" alpha="0.70347281679999996" colorSpace="calibratedWhite"/>
                             </box>
                             <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Cv-d1-SG5">
-                                <rect key="frame" x="402" y="15" width="10" height="200"/>
+                                <rect key="frame" x="402" y="15" width="10" height="204"/>
                                 <subviews>
                                     <button toolTip="Scroll to top of playlist" translatesAutoresizingMaskIntoConstraints="NO" id="8hp-s5-DjV" userLabel="Scroll To Top Button">
-                                        <rect key="frame" x="0.0" y="190" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="194" width="10" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="mq4-LT-THy"/>
                                             <constraint firstAttribute="width" constant="10" id="ol1-UY-scQ"/>
@@ -2509,7 +2529,7 @@ G1BhbiBTbGlkZXI
                             <constraint firstItem="Hrb-fe-1Gn" firstAttribute="top" secondItem="RFE-8Q-FBn" secondAttribute="top" constant="12" id="KRQ-9y-uID"/>
                             <constraint firstAttribute="trailing" secondItem="G3X-tp-7Ag" secondAttribute="trailing" constant="15" id="aRa-Rd-yFF"/>
                             <constraint firstItem="G3X-tp-7Ag" firstAttribute="leading" secondItem="RFE-8Q-FBn" secondAttribute="leading" constant="15" id="bYC-2L-apG"/>
-                            <constraint firstItem="G3X-tp-7Ag" firstAttribute="top" secondItem="RFE-8Q-FBn" secondAttribute="top" constant="42" id="pUy-N4-u0g"/>
+                            <constraint firstItem="G3X-tp-7Ag" firstAttribute="top" secondItem="RFE-8Q-FBn" secondAttribute="top" constant="38" id="pUy-N4-u0g"/>
                             <constraint firstAttribute="bottom" secondItem="G3X-tp-7Ag" secondAttribute="bottom" constant="15" id="rJG-fk-zE5"/>
                             <constraint firstItem="5dT-1T-oEC" firstAttribute="centerX" secondItem="RFE-8Q-FBn" secondAttribute="centerX" id="y90-zY-VxI"/>
                             <constraint firstItem="2Cv-d1-SG5" firstAttribute="height" secondItem="G3X-tp-7Ag" secondAttribute="height" id="yfl-7r-StX"/>
@@ -2523,6 +2543,10 @@ G1BhbiBTbGlkZXI
                     <constraint firstAttribute="trailing" secondItem="RFE-8Q-FBn" secondAttribute="trailing" id="hEc-rc-y0m"/>
                 </constraints>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="B96030E1-E91C-4BD6-8D35-12C50E79C1D7" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="labelOnly" sizeMode="regular" id="8As-8e-y6e">
+                <allowedToolbarItems/>
+                <defaultToolbarItems/>
+            </toolbar>
             <point key="canvasLocation" x="124.5" y="451.5"/>
         </window>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Aural" customModuleProvider="target"/>

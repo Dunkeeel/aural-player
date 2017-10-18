@@ -61,16 +61,12 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         }
         mainWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         mainWindow.setFrameOrigin(appState.windowLocation)
-        mainWindow.isMovableByWindowBackground = true
+        mainWindow.isMovableByWindowBackground = false
         mainWindow.makeKeyAndOrderFront(self)
-        playlistWindow.isOpaque = false
-
         
         playlistWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         playlistWindow.isMovableByWindowBackground = true
         playlistWindow.delegate = self
-        playlistWindow.isOpaque = false
-        playlistWindow.backgroundColor = .clear
         
         if (appState.hidePlaylist) {
             hidePlaylist(false)
@@ -109,7 +105,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         automatedPlaylistMoveOrResize = true
         
         // Add bottom edge to the main window, if necessary
-        resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, true)
+        //resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, true)
         
         // Calculate new position and size of playlist window, in relation to the main window
         
@@ -159,7 +155,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         automatedPlaylistMoveOrResize = true
         
         // Add bottom edge to the main window, if necessary
-        resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, true)
+        //resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, true)
         
         var playlistFrame = playlistWindow.frame
         
@@ -481,7 +477,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         }
         
         // Add bottom edge to the main window
-        resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, false)
+        //resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, false)
         
         // Hide playlist window and update UI controls
         
@@ -579,7 +575,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             if (playlistDockState == .none) {
                 
                 // Add the bottom edge to the main window, if it is not already present
-                resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, false)
+                //resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, false)
             }
         }
     }
