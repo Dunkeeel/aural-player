@@ -7,6 +7,8 @@ import AVFoundation
 */
 class AppConstants {
     
+    // MARK: - File
+    
     // Supported playlist file types
     static let m3u: String = "m3u"
     static let m3u8: String = "m3u8"
@@ -18,6 +20,8 @@ class AppConstants {
     
     // File types allowed in the Open file dialog (extensions and UTIs)
     static let supportedFileTypes_open: [String] = ["mp3", "m4a", "aac", "aif", "aiff", "aifc", "caf", "wav", m3u, m3u8, AVFileType.mp3.rawValue, AVFileType.m4a.rawValue, AVFileType.aiff.rawValue, AVFileType.aifc.rawValue, AVFileType.caf.rawValue, AVFileType.wav.rawValue]
+    
+    // MARK: - Audio
     
     // Audible range (frequencies)
     static let audibleRangeMin: Double = 20      // 20 Hz
@@ -33,6 +37,8 @@ class AppConstants {
     static let treble_min: Double = mid_max
     static let treble_max: Double = audibleRangeMax
     
+    // MARK: - Units
+    
     // Units for different effects parameters
     
     static let eqGainDBUnit: String = "dB"
@@ -45,6 +51,8 @@ class AppConstants {
     static let frequencyHzUnit: String = "Hz"
     static let frequencyKHzUnit: String = "KHz"
     
+    // MARK: - Conversion
+    
     // Value conversion constants used when passing values across layers of the app (e.g. the UI uses a range of 0-100 for volume, while the audio graph uses a volume range of 0-1)
     
     static let volumeConversion_UIToAudioGraph: Float = (1/100) // Divide by 100
@@ -55,6 +63,8 @@ class AppConstants {
     
     static let pitchConversion_UIToAudioGraph: Float = 1200     // Multiply by 1200
     static let pitchConversion_audioGraphToUI: Float = (1/1200) // Divide by 1200
+    
+    // MARK: - Other
     
     // App state/log files
     static let stateFileName = "auralPlayer-state.json"

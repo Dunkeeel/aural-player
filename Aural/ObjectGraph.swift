@@ -6,6 +6,8 @@ import Foundation
 
 class ObjectGraph {
     
+    //MARK: - Variables
+    
     private static var appState: AppState?
     private static var uiAppState: UIAppState?
     private static var preferences: Preferences?
@@ -24,6 +26,8 @@ class ObjectGraph {
     
     private static var recorder: Recorder?
     private static var recorderDelegate: RecorderDelegateProtocol?
+    
+    // MARK: - Functions
     
     // Don't let any code invoke this initializer to create instances of ObjectGraph
     private init() {}

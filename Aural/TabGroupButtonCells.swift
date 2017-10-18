@@ -13,10 +13,10 @@ class TabGroupButtonCell: NSButtonCell {
     
     var fillBeforeBorder: Bool {return true}
     var backgroundFillColor: NSColor {return Colors.tabViewButtonBackgroundColor}
-    var borderInsetX: CGFloat {return 1}
-    var borderInsetY: CGFloat {return 1}
-    var borderRadius: CGFloat {return 1}
-    var borderLineWidth: CGFloat {return 2}
+    var borderInsetX: CGFloat {return 0}
+    var borderInsetY: CGFloat {return 0}
+    var borderRadius: CGFloat {return 5}
+    var borderLineWidth: CGFloat {return 3}
     var borderStrokeColor: NSColor {return Colors.tabViewButtonOutlineColor}
     var selectionBoxColor: NSColor {return Colors.tabViewSelectionBoxColor}
     
@@ -55,8 +55,8 @@ class TabGroupButtonCell: NSButtonCell {
 // Cell for the Effects unit tab group
 class EffectsUnitButtonCell: TabGroupButtonCell {
     
-    override var borderRadius: CGFloat {return 1.5}
-    override var borderLineWidth: CGFloat {return 1.5}
+    override var borderRadius: CGFloat {return 5}
+    override var borderLineWidth: CGFloat {return 3}
 }
 
 // Cell for the Preferences tab group

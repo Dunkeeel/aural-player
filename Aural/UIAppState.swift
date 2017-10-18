@@ -6,8 +6,10 @@ import Foundation
 
 class UIAppState {
     
-    var hidePlaylist: Bool
-    var hideEffects: Bool
+    // MARK: - Variables
+    
+    var playlistHidden: Bool
+    var effectsHidden: Bool
     
     var windowLocation: NSPoint
     
@@ -66,18 +68,20 @@ class UIAppState {
     var formattedFilterMidRange: String
     var formattedFilterTrebleRange: String
     
+    //MARK: - Initializer
+    
     init(_ appState: AppState, _ preferences: Preferences) {
         
         if (preferences.viewOnStartup.option == .rememberFromLastAppLaunch) {
             
-            self.hidePlaylist = !appState.uiState.showPlaylist
-            self.hideEffects = !appState.uiState.showEffects
+            self.playlistHidden = !appState.uiState.showPlaylist
+            self.effectsHidden = !appState.uiState.showEffects
             
         } else {
             
             let viewType = preferences.viewOnStartup.viewType
-            self.hidePlaylist = viewType == .effectsOnly || viewType == .compact
-            self.hideEffects = viewType == .playlistOnly || viewType == .compact
+            self.playlistHidden = viewType == .effectsOnly || viewType == .compact
+            self.effectsHidden = viewType == .playlistOnly || viewType == .compact
         }
         
         if (preferences.windowLocationOnStartup.option == .rememberFromLastAppLaunch) {
@@ -89,8 +93,8 @@ class UIAppState {
             let windowWidth = UIConstants.windowWidth
             var windowHeight: CGFloat
             
-            let showPlaylist = !self.hidePlaylist
-            let showEffects = !self.hideEffects
+            let showPlaylist = !self.playlistHidden
+            let showEffects = !self.effectsHidden
             
             if (showPlaylist && showEffects) {
                 windowHeight = UIConstants.windowHeight_playlistAndEffects

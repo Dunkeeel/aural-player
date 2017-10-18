@@ -41,6 +41,8 @@ enum AsyncMessageType {
     case doneAddingTracks
 }
 
+// MARK: - Structs
+
 // AsyncMessage indicating that the currently playing track has changed and the UI needs to be refreshed with the new track information
 struct TrackChangedAsyncMessage: AsyncMessage {
     

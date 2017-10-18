@@ -7,6 +7,8 @@ import AVFoundation
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    // MARK: - Variables
+    
     var windowViewController: WindowViewController?
     
     // (Optional) launch parameters: files to open upon launch (can be audio or playlist files)
@@ -21,6 +23,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // A window of time within which multiple file open operations will be considered as chunks of one single operation
     private let fileOpenNotificationWindow_seconds: Double = 3
     
+    // MARK: - Parent Functions
+    
     override init() {
         
         super.init()
@@ -31,16 +35,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ObjectGraph.initialize()
     }
     
-    // Make sure all logging is done to the app's log file
-    private func configureLogging() {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        let allPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = allPaths.first!
-        let pathForLog = documentsDirectory + ("/" + AppConstants.logFileName)
+        // Update the appLaunched flag
+        appLaunched = true
         
-        freopen(pathForLog.cString(using: String.Encoding.ascii)!, "a+", stderr)
+        // Tell app components that the app has finished loading, and pass along any launch parameters (set of files to open)
+        SyncMessenger.publishNotification(AppLoadedNotification(filesToOpen))
     }
-
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if flag {
+            windowViewController?.mainWindow.orderFront(self)
+            windowViewController?.playlistWindow.orderFront(self)
+        } else {
+            windowViewController?.mainWindow.makeKeyAndOrderFront(self)
+        }
+        return true
+    }
+    
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        
+        // Broadcast a request to all app components that the app needs to exit. Check responses to see if it is safe to exit. Some components may need to do some work before the app is able to safely exit, or cancel the exit operation altogether.
+        let exitResponses = SyncMessenger.publishRequest(AppExitRequest.instance)
+        
+        for _response in exitResponses {
+            
+            let response = _response as! AppExitResponse
+            
+            // If any of the responses says it's not ok to exit, don't exit
+            if (!response.okToExit) {
+                return .terminateCancel
+            }
+        }
+        
+        // Ok to exit
+        return .terminateNow
+    }
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
+        ObjectGraph.tearDown()
+    }
+    
     // Opens the application with a single file (audio file or playlist)
     public func application(_ sender: NSApplication, openFile filename: String) -> Bool {
         self.application(sender, openFiles: [filename])
@@ -74,45 +110,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         lastFileOpenTime = now
     }
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
-        // Update the appLaunched flag
-        appLaunched = true
-        
-        // Tell app components that the app has finished loading, and pass along any launch parameters (set of files to open)
-        SyncMessenger.publishNotification(AppLoadedNotification(filesToOpen))
-    }
+    // MARK: - Helper Functions
     
-    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        if flag {
-            windowViewController?.mainWindow.orderFront(self)
-            windowViewController?.playlistWindow.orderFront(self)
-        } else {
-            windowViewController?.setMainWindow()
-        }
-        return true
-    }
-    
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+    // Make sure all logging is done to the app's log file
+    private func configureLogging() {
         
-        // Broadcast a request to all app components that the app needs to exit. Check responses to see if it is safe to exit. Some components may need to do some work before the app is able to safely exit, or cancel the exit operation altogether.
-        let exitResponses = SyncMessenger.publishRequest(AppExitRequest.instance)
+        let allPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = allPaths.first!
+        let pathForLog = documentsDirectory + ("/" + AppConstants.logFileName)
         
-        for _response in exitResponses {
-            
-            let response = _response as! AppExitResponse
-            
-            // If any of the responses says it's not ok to exit, don't exit
-            if (!response.okToExit) {
-                return .terminateCancel
-            }
-        }
-        
-        // Ok to exit
-        return .terminateNow
-    }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        ObjectGraph.tearDown()
+        freopen(pathForLog.cString(using: String.Encoding.ascii)!, "a+", stderr)
     }
 }

@@ -25,10 +25,10 @@ class Colors {
     static let modalDialogButtonOutlineColor: NSColor = NSColor(calibratedWhite: 0.575, alpha: 1)
     
     // Color used to fill tab view buttons
-    static let tabViewButtonBackgroundColor: NSColor = NSColor(calibratedWhite: 0, alpha: 1)
+    static let tabViewButtonBackgroundColor: NSColor = NSColor(calibratedWhite: 0.2, alpha: 1)
     
     // Color used to outline tab view buttons
-    static let tabViewButtonOutlineColor: NSColor = NSColor(calibratedWhite: 0.65, alpha: 1)
+    static let tabViewButtonOutlineColor: NSColor = NSColor(calibratedWhite: 0.4, alpha: 1)
     
     // Color used for text in tab view buttons
     static let tabViewButtonTextColor: NSColor = NSColor(calibratedWhite: 0.9, alpha: 1)
