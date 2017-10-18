@@ -7,6 +7,8 @@ import AVFoundation
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    var windowViewController: WindowViewController?
+    
     // (Optional) launch parameters: files to open upon launch (can be audio or playlist files)
     private var filesToOpen: [URL] = [URL]()
     
@@ -79,6 +81,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Tell app components that the app has finished loading, and pass along any launch parameters (set of files to open)
         SyncMessenger.publishNotification(AppLoadedNotification(filesToOpen))
+    }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if flag {
+            windowViewController?.mainWindow.orderFront(self)
+            windowViewController?.playlistWindow.orderFront(self)
+        } else {
+            windowViewController?.setMainWindow()
+        }
+        return true
     }
     
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {

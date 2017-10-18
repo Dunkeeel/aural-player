@@ -59,14 +59,17 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         if (appState.hideEffects) {
             toggleEffects(false)
         }
+        
         mainWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         mainWindow.setFrameOrigin(appState.windowLocation)
-        mainWindow.isMovableByWindowBackground = false
+        mainWindow.isMovableByWindowBackground = true
         mainWindow.makeKeyAndOrderFront(self)
+        mainWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
         
         playlistWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         playlistWindow.isMovableByWindowBackground = true
         playlistWindow.delegate = self
+        playlistWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
         
         if (appState.hidePlaylist) {
             hidePlaylist(false)
