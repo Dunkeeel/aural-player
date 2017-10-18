@@ -121,7 +121,7 @@ class Playlist: PlaylistCRUDProtocol {
     
     // Swaps two tracks in the array of tracks
     private func swapTracks(_ trackIndex1: Int, _ trackIndex2: Int) {
-        swap(&tracks[trackIndex1], &tracks[trackIndex2])
+        tracks.swapAt(trackIndex1, trackIndex2)
     }
     
     func search(_ searchQuery: SearchQuery) -> SearchResults {

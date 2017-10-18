@@ -83,7 +83,7 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
             
             cell.textField?.stringValue = text
             
-            cell.imageView?.isHidden = true
+            // cell.imageView?.isHidden = true
             cell.textField?.isHidden = false
             
             return cell
@@ -97,6 +97,7 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: UIConstants.trackIndexColumnID), owner: nil) as? PlaylistCellView {
             
             // Configure and show the image view
+            /*
             let imgView = cell.imageView!
             
             imgView.canDrawSubviewsIntoLayer = true
@@ -104,10 +105,10 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
             imgView.animates = animate
             imgView.image = UIConstants.imgPlayingTrack
             imgView.isHidden = false
-            
+            */
             // Hide the text view
             cell.textField?.isHidden = true
-            
+ 
             return cell
         }
         
@@ -133,7 +134,7 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // Whenever the playing track is paused/resumed, the animation needs to be paused/resumed.
     private func playbackStateChanged(_ state: PlaybackState) {
-        
+        /*
         switch (state) {
             
         case .playing:
@@ -149,7 +150,7 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
             // Release the animation cell because the track is no longer playing
             animationCell?.imageView?.animates = false
             animationCell = nil
-        }
+        }*/
     }
     
     func consumeNotification(_ notification: NotificationMessage) {
