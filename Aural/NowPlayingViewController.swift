@@ -110,7 +110,8 @@ class NowPlayingViewController: NSViewController, MessageSubscriber {
         if (track.displayInfo.art != nil) {
             artView.image = track.displayInfo.art!
         } else {
-            
+            artView.image = nil
+            // TODO: artView animated placeholder
             // Default artwork animation
             // artView.image = UIConstants.imgPlayingArt
             // artView.animates = true
@@ -229,7 +230,7 @@ class NowPlayingViewController: NSViewController, MessageSubscriber {
     private func playbackStateChanged(_ newState: PlaybackState) {
         
         setSeekTimerState(newState == .playing)
-        
+        // TODO: art view implementation
         // Pause/resume the art animation (if it is playing)
         switch (newState) {
             

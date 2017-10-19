@@ -122,7 +122,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         mainWindow.setFrameOrigin(appState.windowLocation)
         mainWindow.isMovableByWindowBackground = false
         mainWindow.makeKeyAndOrderFront(self)
-        mainWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
+        // mainWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
         
         playlistWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         playlistWindow.isMovableByWindowBackground = true
@@ -146,14 +146,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         }
  
     }
-    
-    func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
-        if (playlistDockState == .bottom) {
-            snapToBottom(window: playlistWindow, target: mainWindow, gap: UIConstants.windowGap)
-        }
-        return mainWindow.minSize
-    }
-    
+        
     func windowDidResize(_ notification: Notification) {
         
         if (automatedPlaylistMoveOrResize && playlistDockState == .bottom){
@@ -380,9 +373,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             viewEffectsMenuItem.state = NSControl.StateValue(rawValue: 1)
             WindowState.showingEffects = true
             
-            if (playlistWindow.isVisible && playlistDockState == .bottom) {
-                playlistWindow.setFrameOrigin(playlistWindow.frame.origin.applying(CGAffineTransform.init(translationX: 0, y: -fxBox.fittingSize.height - stackView.spacing)))
-            }
+            realignPlaylist(fxPanelHidden: false)
             
         } else {
             
@@ -393,16 +384,16 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             viewEffectsMenuItem.state = NSControl.StateValue(rawValue: 0)
             WindowState.showingEffects = false
             
-            if (playlistWindow.isVisible && playlistDockState == .bottom) {
-                playlistWindow.setFrameOrigin(playlistWindow.frame.origin.applying(CGAffineTransform.init(translationX: 0, y: fxBox.fittingSize.height + stackView.spacing)))
-            }
+            realignPlaylist(fxPanelHidden: true)
         }
+    }
+    
+    private func realignPlaylist(fxPanelHidden: Bool){
+        let alignY: CGFloat = fxBox.fittingSize.height + stackView.spacing
         
-        // move playlist window, when docked to bottom and playlist is visible
         if (playlistWindow.isVisible && playlistDockState == .bottom) {
-            //snapToBottom(window: playlistWindow, target: mainWindow, gap: UIConstants.windowGap)
+            playlistWindow.setFrameOrigin(playlistWindow.frame.origin.applying(CGAffineTransform.init(translationX: 0, y: fxPanelHidden ? alignY : -alignY)))
         }
-
     }
     
     // This method checks the position of the playlist window after the resize operation, and invalidates the playlist window's dock state if necessary.

@@ -84,26 +84,43 @@
                                                 <action selector="seekSliderAction:" target="I9L-9m-MZn" id="Lpe-ib-Dby"/>
                                             </connections>
                                         </slider>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDo-O3-0JI" userLabel="Track Artist">
-                                            <rect key="frame" x="85" y="56" width="279" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" id="f6r-Bu-Uox">
-                                                <font key="font" size="14" name="GillSans"/>
-                                                <color key="textColor" white="0.70415581597222221" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LM5-xW-O9f" userLabel="Track Title">
-                                            <rect key="frame" x="85" y="38" width="279" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" id="dFa-X7-jcN">
-                                                <font key="font" size="14" name="GillSans"/>
-                                                <color key="textColor" white="0.70415581597222221" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
+                                        <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yrt-UG-ZjW">
+                                            <rect key="frame" x="88" y="38" width="265" height="41"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LM5-xW-O9f" userLabel="Track Title">
+                                                    <rect key="frame" x="-2" y="21" width="269" height="20"/>
+                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" id="dFa-X7-jcN">
+                                                        <font key="font" size="14" name="GillSans"/>
+                                                        <color key="textColor" white="0.70415581597222221" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bDo-O3-0JI" userLabel="Track Artist">
+                                                    <rect key="frame" x="-2" y="0.0" width="269" height="20"/>
+                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" id="f6r-Bu-Uox">
+                                                        <font key="font" size="14" name="GillSans"/>
+                                                        <color key="textColor" white="0.70415581597222221" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bDo-O3-0JI" firstAttribute="leading" secondItem="Yrt-UG-ZjW" secondAttribute="leading" id="0cZ-fH-m4L"/>
+                                                <constraint firstItem="LM5-xW-O9f" firstAttribute="leading" secondItem="Yrt-UG-ZjW" secondAttribute="leading" id="DGI-hU-lU9"/>
+                                                <constraint firstAttribute="trailing" secondItem="LM5-xW-O9f" secondAttribute="trailing" id="gtZ-8w-eH6"/>
+                                                <constraint firstAttribute="trailing" secondItem="bDo-O3-0JI" secondAttribute="trailing" id="xCB-uM-seA"/>
+                                            </constraints>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="siU-Sg-IBb" userLabel="Track Name">
-                                            <rect key="frame" x="86" y="36" width="269" height="43"/>
+                                            <rect key="frame" x="86" y="38" width="269" height="41"/>
                                             <textFieldCell key="cell" truncatesLastVisibleLine="YES" sendsActionOnEndEditing="YES" alignment="left" id="Z1W-iy-lZi">
                                                 <font key="font" size="14" name="GillSans"/>
                                                 <color key="textColor" white="0.70415581597222221" alpha="1" colorSpace="calibratedWhite"/>
@@ -144,10 +161,14 @@
                                         <constraint firstItem="YrG-JU-zDl" firstAttribute="leading" secondItem="RSY-vY-bFZ" secondAttribute="leading" constant="9" id="2qy-96-t4H"/>
                                         <constraint firstItem="0Mb-en-nxS" firstAttribute="leading" secondItem="siU-Sg-IBb" secondAttribute="trailing" constant="9" id="5eQ-27-8qk"/>
                                         <constraint firstAttribute="trailing" secondItem="VvF-4h-2Sh" secondAttribute="trailing" constant="10" id="9P1-c3-gva"/>
+                                        <constraint firstItem="Yrt-UG-ZjW" firstAttribute="leading" secondItem="YrG-JU-zDl" secondAttribute="trailing" constant="9" id="BFf-9M-Xap"/>
+                                        <constraint firstAttribute="bottom" secondItem="siU-Sg-IBb" secondAttribute="bottom" constant="38" id="EDV-dj-YBN"/>
                                         <constraint firstAttribute="trailing" secondItem="G6u-jj-tnv" secondAttribute="trailing" constant="9" id="EXh-Q7-BoU"/>
                                         <constraint firstItem="siU-Sg-IBb" firstAttribute="leading" secondItem="YrG-JU-zDl" secondAttribute="trailing" constant="9" id="GtT-Iv-mzH"/>
                                         <constraint firstItem="0Mb-en-nxS" firstAttribute="top" secondItem="RSY-vY-bFZ" secondAttribute="top" constant="9" id="If9-Sm-aF9"/>
+                                        <constraint firstAttribute="bottom" secondItem="Yrt-UG-ZjW" secondAttribute="bottom" constant="38" id="IoD-Ac-3om"/>
                                         <constraint firstAttribute="bottom" secondItem="4f4-mL-8YB" secondAttribute="bottom" constant="1" id="KVe-56-fxn"/>
+                                        <constraint firstItem="0Mb-en-nxS" firstAttribute="leading" secondItem="Yrt-UG-ZjW" secondAttribute="trailing" constant="9" id="Nrt-OD-64G"/>
                                         <constraint firstAttribute="trailing" secondItem="0m5-4l-3Wg" secondAttribute="trailing" constant="9" id="TId-am-d0O"/>
                                         <constraint firstItem="4f4-mL-8YB" firstAttribute="top" secondItem="0m5-4l-3Wg" secondAttribute="bottom" id="Xxf-cU-RUp"/>
                                         <constraint firstItem="VvF-4h-2Sh" firstAttribute="top" secondItem="0Mb-en-nxS" secondAttribute="bottom" constant="9" id="Y7u-kZ-IMe"/>
@@ -156,7 +177,7 @@
                                         <constraint firstItem="0m5-4l-3Wg" firstAttribute="leading" secondItem="YrG-JU-zDl" secondAttribute="trailing" constant="9" id="l4n-bw-nzL"/>
                                         <constraint firstAttribute="bottom" secondItem="G6u-jj-tnv" secondAttribute="bottom" constant="1" id="oAe-eL-JDf"/>
                                         <constraint firstItem="siU-Sg-IBb" firstAttribute="top" secondItem="RSY-vY-bFZ" secondAttribute="top" constant="9" id="poM-w3-G0h"/>
-                                        <constraint firstItem="0m5-4l-3Wg" firstAttribute="top" secondItem="siU-Sg-IBb" secondAttribute="bottom" id="wtn-Sf-YwN"/>
+                                        <constraint firstItem="Yrt-UG-ZjW" firstAttribute="top" secondItem="RSY-vY-bFZ" secondAttribute="top" constant="9" id="sxk-ZJ-3oh"/>
                                     </constraints>
                                 </view>
                                 <constraints>
@@ -2352,6 +2373,7 @@ G1BhbiBTbGlkZXI
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="y87-CQ-g44" userLabel="Playlist Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" fullSizeContentView="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="109" y="132" width="415" height="257"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>

@@ -54,10 +54,15 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
             // If this row contains the playing track, display an animation, instead of the track index
             if (playingTrackIndex != nil && playingTrackIndex == row) {
                 
-                let playbackState = playbackInfo.getPlaybackState()
-                let cell = createPlayingTrackAnimationCell(tableView, playbackState == .playing)
-                animationCell = cell
-                return cell
+                return createTextCell(tableView, UIConstants.trackIndexColumnID, "▶︎")
+                
+                // TODO: animation implementation
+
+//                let playbackState = playbackInfo.getPlaybackState()
+//                let cell = createPlayingTrackAnimationCell(tableView, playbackState == .playing)
+//                animationCell = cell
+//                return cell
+
                 
             } else {
                 
@@ -92,29 +97,30 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
         return nil
     }
     
-    private func createPlayingTrackAnimationCell(_ tableView: NSTableView, _ animate: Bool) -> PlaylistCellView? {
-        
-        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: UIConstants.trackIndexColumnID), owner: nil) as? PlaylistCellView {
-            
-            // Configure and show the image view
-            /*
-            let imgView = cell.imageView!
-            
-            imgView.canDrawSubviewsIntoLayer = true
-            imgView.imageScaling = .scaleProportionallyDown
-            imgView.animates = animate
-            imgView.image = UIConstants.imgPlayingTrack
-            imgView.isHidden = false
-            */
-            // Hide the text view
-            cell.textField?.isHidden = true
- 
-            return cell
-        }
-        
-        return nil
-    }
+    // TODO: animation implementation
     
+//    private func createPlayingTrackAnimationCell(_ tableView: NSTableView, _ animate: Bool) -> PlaylistCellView? {
+//
+//        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: UIConstants.trackIndexColumnID), owner: nil) as? PlaylistCellView {
+//
+//             Configure and show the image view
+//            let imgView = cell.imageView!
+//
+//            imgView.canDrawSubviewsIntoLayer = true
+//            imgView.imageScaling = .scaleProportionallyDown
+//            imgView.animates = animate
+//            imgView.image = UIConstants.imgPlayingTrack
+//            imgView.isHidden = false
+//
+//             Hide the text view
+//            cell.textField?.isHidden = true
+//
+//            return cell
+//        }
+//
+//        return nil
+//    }
+ 
     // Drag n drop
     func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
         
@@ -132,35 +138,40 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
         return true
     }
     
+    // TODO: animation implementation
+    
     // Whenever the playing track is paused/resumed, the animation needs to be paused/resumed.
-    private func playbackStateChanged(_ state: PlaybackState) {
-        /*
-        switch (state) {
-            
-        case .playing:
-            
-            animationCell?.imageView?.animates = true
-            
-        case .paused:
-            
-            animationCell?.imageView?.animates = false
-            
-        default:
-            
-            // Release the animation cell because the track is no longer playing
-            animationCell?.imageView?.animates = false
-            animationCell = nil
-        }*/
-    }
+//    private func playbackStateChanged(_ state: PlaybackState) {
+//
+//        switch (state) {
+//
+//        case .playing:
+//
+//            animationCell?.imageView?.animates = true
+//
+//        case .paused:
+//
+//            animationCell?.imageView?.animates = false
+//
+//        default:
+//
+//            // Release the animation cell because the track is no longer playing
+//            animationCell?.imageView?.animates = false
+//            animationCell = nil
+//        }
+//    }
     
     func consumeNotification(_ notification: NotificationMessage) {
     
-        if (notification is PlaybackStateChangedNotification) {
-            
-            let msg = notification as! PlaybackStateChangedNotification
-            playbackStateChanged(msg.newPlaybackState)
-            return
-        }
+        // TODO: animation implemenation
+        
+//        if (notification is PlaybackStateChangedNotification) {
+//
+//            let msg = notification as! PlaybackStateChangedNotification
+//
+//            playbackStateChanged(msg.newPlaybackState)
+//            return
+//        }
     }
     
     func processRequest(_ request: RequestMessage) -> ResponseMessage {
