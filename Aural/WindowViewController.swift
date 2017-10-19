@@ -237,7 +237,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         case .bottom:
             
             playlistWidth = screenWidth
-            playlistHeight = mainWindowY
+            playlistHeight = mainWindowY - UIConstants.windowGap
             
             playlistX = 0
             playlistY = 0
@@ -275,39 +275,39 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             if ((playlistX + playlistWidth) < mainWindowX) {
                 
                 // Entire playlist window is to the left of the main window. Maximize to the left of the main window.
-                maxX = mainWindowX - 1
+                maxX = mainWindowX - UIConstants.windowGap
                 
             } else if (playlistX > mainWindowX + mainWindow.width) {
                 
                 // Entire playlist window is to the right of the main window. Maximize to the right of the main window.
-                minX = mainWindowX + mainWindow.width
+                minX = mainWindowX + mainWindow.width + UIConstants.windowGap
                 
             } else if ((playlistY + playlistHeight) < mainWindowY) {
                 
                 // Entire playlist window is below the main window. Maximize below the main window.
-                maxY = mainWindowY - 1
+                maxY = mainWindowY - UIConstants.windowGap
                 
             } else if (playlistY > (mainWindowY + mainWindow.height)) {
                 
                 // Entire playlist window is above the main window. Maximize above the main window.
-                minY = mainWindowY + mainWindow.height
+                minY = mainWindowY + mainWindow.height + UIConstants.windowGap
                 
             } else if (playlistX < mainWindowX) {
                 
                 // Left edge of playlist window is to the left of the left edge of the main window, and the 2 windows overlap. Maximize to the left of the main window.
-                maxX = mainWindowX - 1
+                maxX = mainWindowX - UIConstants.windowGap
                 
             } else if (playlistX > mainWindowX) {
                 
                 // Left edge of playlist window is to the right of the left edge of the main window, and the 2 windows overlap. Maximize to the right of the main window.
-                minX = mainWindowX + mainWindow.width
+                minX = mainWindowX + mainWindow.width + UIConstants.windowGap
             }
             
             playlistX = minX
             playlistY = minY
             
-            playlistWidth = maxX - minX + 1
-            playlistHeight = maxY - minY + 1
+            playlistWidth = maxX - minX
+            playlistHeight = maxY - minY
         }
         
         if (horizontal && vertical) {
