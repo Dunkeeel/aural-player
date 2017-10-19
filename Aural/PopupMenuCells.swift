@@ -12,8 +12,8 @@ class PopupMenuCell: NSPopUpButtonCell {
     var rectRadius: CGFloat {return 1}
     var menuGradient: NSGradient {return Colors.sliderBarGradient}
     
-    var titleFont: NSFont {return UIConstants.popupMenuFont}
-    var titleColor: NSColor {return Colors.popupMenuTextColor}
+//    var titleFont: NSFont {return UIConstants.popupMenuFont}
+//    var titleColor: NSColor {return Colors.popupMenuTextColor}
     
     var arrowXMargin: CGFloat {return 5}
     var arrowYMargin: CGFloat {return 5}
@@ -39,13 +39,13 @@ class PopupMenuCell: NSPopUpButtonCell {
         let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.center
         
-        let textFontAttributes = [
-            NSAttributedStringKey.font: titleFont,
-            NSAttributedStringKey.foregroundColor: titleColor,
-            NSAttributedStringKey.paragraphStyle: textStyle
-        ]
+//        let textFontAttributes = [
+//            NSAttributedStringKey.font: titleFont,
+//            NSAttributedStringKey.foregroundColor: titleColor,
+//            NSAttributedStringKey.paragraphStyle: textStyle
+//        ]
         
-        title.string.draw(in: withFrame, withAttributes: textFontAttributes)
+//        title.string.draw(in: withFrame, withAttributes: textFontAttributes)
         
         return withFrame
     }
@@ -66,15 +66,15 @@ class RecorderFormatPopupMenuCell: ReverbPopupMenuCell {
 }
 
 // Cell for all preferences popup menus
-class PreferencesPopupMenuCell: PopupMenuCell {
-    
-    override var cellInsetY: CGFloat {return 5}
-    override var rectRadius: CGFloat {return 2}
-    override var arrowXMargin: CGFloat {return 10}
-    override var arrowYMargin: CGFloat {return 6}
-    override var arrowHeight: CGFloat {return 4}
-    override var arrowColor: NSColor {return Colors.lightPopupMenuArrowColor}
-}
+//class PreferencesPopupMenuCell: PopupMenuCell {
+//    
+//    override var cellInsetY: CGFloat {return 5}
+//    override var rectRadius: CGFloat {return 2}
+//    override var arrowXMargin: CGFloat {return 10}
+//    override var arrowYMargin: CGFloat {return 6}
+//    override var arrowHeight: CGFloat {return 4}
+//    override var arrowColor: NSColor {return Colors.lightPopupMenuArrowColor}
+//}
 
 // Cell for EQ presets popup menu
 class EQPresetsPopupMenuCell: PopupMenuCell {

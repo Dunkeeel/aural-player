@@ -61,9 +61,13 @@ class EffectsUnitButtonCell: TabGroupButtonCell {
 
 // Cell for the Preferences tab group
 class PrefsTabButtonCell: TabGroupButtonCell {
-    
+
     override var fillBeforeBorder: Bool {return false}
     override var borderRadius: CGFloat {return 4}
     override var borderLineWidth: CGFloat {return 1.5}
-    override var selectionBoxColor: NSColor {return NSColor.black}
+    override var borderStrokeColor: NSColor {return NSColor.black}
+    override var selectionBoxColor: NSColor {return NSColor.lightGray}
+    override var unselectedTextColor: NSColor {return NSColor.black}
+    override var selectedTextColor: NSColor {return NSColor.black}
 }
+

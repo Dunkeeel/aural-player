@@ -7,6 +7,7 @@
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -3482,8 +3483,8 @@ CA
             </items>
             <point key="canvasLocation" x="66" y="-356"/>
         </menu>
-        <window title="Search for tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jhP-AH-EDd" userLabel="Search Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+        <window title="Search for tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="jhP-AH-EDd" userLabel="Search Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="383" height="248"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -3503,8 +3504,8 @@ CA
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="" drawsBackground="YES" id="NYd-b4-ycn">
                                         <font key="font" size="13" name="GillSans"/>
-                                        <color key="textColor" white="0.70157877599999996" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ok1-oS-1yn" userLabel="Search Image">
@@ -3514,7 +3515,6 @@ CA
                                 </imageView>
                             </subviews>
                         </view>
-                        <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </box>
                     <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Options:" translatesAutoresizingMaskIntoConstraints="NO" id="8n2-uW-nFp" userLabel="Search Options Box">
                         <rect key="frame" x="20" y="100" width="352" height="103"/>
@@ -3526,9 +3526,9 @@ CA
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MSF-LB-dHT" userLabel="Case Sensitive">
                                     <rect key="frame" x="251" y="59" width="99" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Case sensitive" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="s6a-XW-Rhp" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="check" title="Case sensitive" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="s6a-XW-Rhp" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchOptionsChangedAction:" target="Ur0-NJ-0ro" id="6b3-GE-b7d"/>
@@ -3537,27 +3537,27 @@ CA
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-eA-PhP" userLabel="Options:">
                                     <rect key="frame" x="251" y="78" width="62" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Options:" id="4te-Xh-ZQC">
-                                        <font key="font" size="11" name="GillSans-SemiBold"/>
-                                        <color key="textColor" white="0.70339626736111116" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Options:" id="4te-Xh-ZQC">
+                                        <font key="font" metaFont="systemBold" size="11"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKx-s1-phS" userLabel="Comparison type:">
-                                    <rect key="frame" x="139" y="76" width="94" height="25"/>
+                                    <rect key="frame" x="139" y="76" width="104" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Comparison type:" id="XDs-Ru-cz5">
-                                        <font key="font" size="11" name="GillSans-SemiBold"/>
-                                        <color key="textColor" white="0.70339626736111116" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Comparison type:" id="XDs-Ru-cz5">
+                                        <font key="font" metaFont="systemBold" size="11"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPX-c1-L0X" userLabel="Equals">
                                     <rect key="frame" x="137" y="42" width="79" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="radio" title="Equals" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" inset="2" id="GZG-Wp-9ff" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="radio" title="Equals" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="GZG-Wp-9ff" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchTypeChangedAction:" target="Ur0-NJ-0ro" id="KAT-8j-WHj"/>
@@ -3566,9 +3566,9 @@ CA
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x2f-22-qf5" userLabel="Contains">
                                     <rect key="frame" x="137" y="59" width="79" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="radio" title="Contains" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="fYW-7d-ZxI" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="radio" title="Contains" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" state="on" inset="2" id="fYW-7d-ZxI" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchTypeChangedAction:" target="Ur0-NJ-0ro" id="eWO-k6-sGI"/>
@@ -3577,9 +3577,9 @@ CA
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-kM-TMG" userLabel="Begins with">
                                     <rect key="frame" x="137" y="25" width="91" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="radio" title="Begins with" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" inset="2" id="BBM-vs-52Q" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="radio" title="Begins with" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="BBM-vs-52Q" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchTypeChangedAction:" target="Ur0-NJ-0ro" id="6K0-3M-HQG"/>
@@ -3588,9 +3588,9 @@ CA
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R1T-ao-6zp" userLabel="Ends with">
                                     <rect key="frame" x="137" y="8" width="91" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="radio" title="Ends with" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" inset="2" id="MPk-Cr-ptK" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="radio" title="Ends with" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="MPk-Cr-ptK" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchTypeChangedAction:" target="Ur0-NJ-0ro" id="f3V-fc-eWH"/>
@@ -3599,9 +3599,9 @@ CA
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DT8-PC-txX" userLabel="Name field">
                                     <rect key="frame" x="5" y="59" width="121" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Name / filename" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="4sx-V6-gbi" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="check" title="Name / filename" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="4sx-V6-gbi" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchFieldsChangedAction:" target="Ur0-NJ-0ro" id="jUn-br-rwS"/>
@@ -3610,9 +3610,9 @@ CA
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alT-kE-ZJN" userLabel="Artist field">
                                     <rect key="frame" x="5" y="42" width="121" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Artist (if available)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="4CY-yB-KWc" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="check" title="Artist (if available)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="4CY-yB-KWc" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchFieldsChangedAction:" target="Ur0-NJ-0ro" id="Oek-5e-q7i"/>
@@ -3621,20 +3621,20 @@ CA
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wf-Pu-L95" userLabel="Title field">
                                     <rect key="frame" x="5" y="25" width="121" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Title (if available)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="evv-ZG-V2Z" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="check" title="Title (if available)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="evv-ZG-V2Z" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchFieldsChangedAction:" target="Ur0-NJ-0ro" id="J73-VY-0Yb"/>
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJB-tQ-9gW" userLabel="Album field">
-                                    <rect key="frame" x="5" y="8" width="121" height="25"/>
+                                    <rect key="frame" x="5" y="8" width="130" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Album (if available)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="tVi-CJ-eVr" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                    <buttonCell key="cell" type="check" title="Album (if available)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="tVi-CJ-eVr" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="11" name="GillSans"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="searchFieldsChangedAction:" target="Ur0-NJ-0ro" id="kEa-Lq-Sr3"/>
@@ -3643,16 +3643,15 @@ CA
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFi-Oz-wqi">
                                     <rect key="frame" x="7" y="81" width="86" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Search by:" id="F7D-cM-DCD">
-                                        <font key="font" size="11" name="GillSans-SemiBold"/>
-                                        <color key="textColor" white="0.70339626736111116" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Search by:" id="F7D-cM-DCD">
+                                        <font key="font" metaFont="systemBold" size="11"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                             </subviews>
                         </view>
                         <color key="borderColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
-                        <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </box>
                     <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Results:" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AjL-DZ-9aJ" userLabel="Search Results Box">
                         <rect key="frame" x="20" y="40" width="352" height="53"/>
@@ -3665,18 +3664,18 @@ CA
                                     <rect key="frame" x="63" y="21" width="214" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No results" id="toe-bQ-5sY">
-                                        <font key="font" size="12" name="GillSans-SemiBold"/>
-                                        <color key="textColor" white="0.69999999999999996" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <font key="font" metaFont="systemBold" size="11"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tV8-Yi-o5k" userLabel="Match info label">
                                     <rect key="frame" x="5" y="-1" width="341" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" id="Cja-e1-EN1">
-                                        <font key="font" size="12" name="GillSans-SemiBold"/>
-                                        <color key="textColor" white="0.69999999999999996" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYr-nA-dwT">
@@ -3684,7 +3683,7 @@ CA
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="&lt;" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="25z-qD-j6x" customClass="ColoredNavigationButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="cellTitle"/>
+                                        <font key="font" metaFont="systemBold" size="12"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="previousSearchAction:" target="Ur0-NJ-0ro" id="zpc-RF-ny8"/>
@@ -3695,7 +3694,7 @@ CA
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="&gt;" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="toa-m1-bvU" customClass="ColoredNavigationButtonCell" customModule="Aural" customModuleProvider="target">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="cellTitle"/>
+                                        <font key="font" metaFont="systemBold" size="12"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="nextSearchAction:" target="Ur0-NJ-0ro" id="Bgp-hT-Z5r"/>
@@ -3704,14 +3703,13 @@ CA
                             </subviews>
                         </view>
                         <color key="borderColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
-                        <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67C-2f-Zxj" userLabel="Done button">
-                        <rect key="frame" x="151" y="8" width="80" height="19"/>
+                        <rect key="frame" x="151" y="8" width="80" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Done" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HTC-NF-De3" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundTextured" title="Done" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HTC-NF-De3" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="GillSans"/>
+                            <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -3722,10 +3720,10 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-357" y="107"/>
+            <point key="canvasLocation" x="-458.5" y="34"/>
         </window>
-        <window title="Sort tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Lw0-WI-3wy" userLabel="Sort Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+        <window title="Sort tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Lw0-WI-3wy" userLabel="Sort Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="269" height="120"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -3750,10 +3748,10 @@ Gw
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-y9-CYH">
                                                 <rect key="frame" x="5" y="46" width="74" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sort by:" id="cgY-kf-NdI">
-                                                    <font key="font" size="11" name="GillSans-SemiBold"/>
-                                                    <color key="textColor" white="0.70290798611111116" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Sort by:" id="cgY-kf-NdI">
+                                                    <font key="font" metaFont="systemBold" size="11"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Oe-zI-vsS" userLabel="Name field">
@@ -3761,7 +3759,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="radio" title="Name" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="box-uc-jkO" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" size="11" name="GillSans"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="sortOptionsChangedAction:" target="8pJ-I5-ie6" id="gTX-00-hMf"/>
@@ -3772,7 +3770,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="radio" title="Duration" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="JfO-7C-ilX" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" size="11" name="GillSans"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="sortOptionsChangedAction:" target="8pJ-I5-ie6" id="tGe-MO-cSP"/>
@@ -3792,9 +3790,9 @@ Gw
                                                 <rect key="frame" x="5" y="46" width="94" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Order:" id="q4z-4T-PCb">
-                                                    <font key="font" size="11" name="GillSans-SemiBold"/>
-                                                    <color key="textColor" white="0.70290798611111116" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="font" metaFont="systemBold" size="11"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="trl-at-P9S">
@@ -3802,7 +3800,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="radio" title="Ascending" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="pqL-MI-YAl" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" size="11" name="GillSans"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="sortOptionsChangedAction:" target="8pJ-I5-ie6" id="Vyo-XY-80E"/>
@@ -3813,7 +3811,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="radio" title="Descending" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="dmu-mZ-Pfz" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" size="11" name="GillSans"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="sortOptionsChangedAction:" target="8pJ-I5-ie6" id="itU-gD-B6t"/>
@@ -3824,14 +3822,13 @@ Gw
                                 </box>
                             </subviews>
                         </view>
-                        <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeJ-wY-9Pl" userLabel="Sort button">
-                        <rect key="frame" x="68" y="6" width="63" height="19"/>
+                        <rect key="frame" x="68" y="6" width="63" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Sort" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rn8-Wp-TAT" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundTextured" title="Sort" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rn8-Wp-TAT" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="GillSans"/>
+                            <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
@@ -3841,11 +3838,11 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ffh-vZ-RWY" userLabel="Cancel button">
-                        <rect key="frame" x="138" y="6" width="63" height="19"/>
+                        <rect key="frame" x="138" y="6" width="63" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pfm-48-zsq" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pfm-48-zsq" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="GillSans"/>
+                            <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -3856,10 +3853,10 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-301" y="399"/>
+            <point key="canvasLocation" x="-301.5" y="399"/>
         </window>
-        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="miy-XV-uzY" userLabel="Preferences Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="miy-XV-uzY" userLabel="Preferences Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="65" width="418" height="330"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -3874,14 +3871,13 @@ Gw
                             <rect key="frame" x="1" y="1" width="389" height="240"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
-                        <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oRt-Kg-Osn" userLabel="Save button">
-                        <rect key="frame" x="253" y="11" width="73" height="19"/>
+                        <rect key="frame" x="253" y="11" width="73" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jeZ-Un-FFA" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundTextured" title="Save" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jeZ-Un-FFA" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="GillSans"/>
+                            <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
@@ -3891,11 +3887,11 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BiP-3r-keA" userLabel="Cancel button">
-                        <rect key="frame" x="331" y="11" width="73" height="19"/>
+                        <rect key="frame" x="331" y="11" width="73" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4q5-11-emD" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4q5-11-emD" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="GillSans"/>
+                            <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -3910,7 +3906,7 @@ Gw
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Player" identifier="1" id="qeG-g8-ZQR" userLabel="Player Prefs">
-                                <view key="view" ambiguous="YES" id="IS8-3h-7Hr">
+                                <view key="view" id="IS8-3h-7Hr">
                                     <rect key="frame" x="0.0" y="0.0" width="391" height="237"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -3919,7 +3915,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Seek length" id="WCm-za-Inb">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -3931,8 +3927,8 @@ Gw
                                                     <real key="minimum" value="3"/>
                                                     <real key="maximum" value="300"/>
                                                 </numberFormatter>
-                                                <font key="font" size="11" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="font" metaFont="systemMedium" size="10"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -3971,7 +3967,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume increment" id="X6O-m8-VA1">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -3983,8 +3979,8 @@ Gw
                                                     <real key="minimum" value="1"/>
                                                     <real key="maximum" value="25"/>
                                                 </numberFormatter>
-                                                <font key="font" size="11" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="font" metaFont="systemMedium" size="10"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4001,7 +3997,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume on startup" id="Z5Z-1X-jSH">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4010,25 +4006,25 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Remember volume from last app launch" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="5SJ-hR-n8a" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="startupVolumeButtonAction:" target="qZU-Ni-Dah" id="oQw-ax-Yyc"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iIR-GC-hMW">
-                                            <rect key="frame" x="29" y="71" width="90" height="20"/>
+                                            <rect key="frame" x="29" y="71" width="98" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Specify value" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Wt6-sm-P6C" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="startupVolumeButtonAction:" target="qZU-Ni-Dah" id="ZDS-z8-pXF"/>
                                             </connections>
                                         </button>
                                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fUW-L3-FhW" userLabel="Startup Volume Slider">
-                                            <rect key="frame" x="121" y="72" width="177" height="15"/>
+                                            <rect key="frame" x="134" y="72" width="164" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <sliderCell key="cell" controlSize="small" continuous="YES" enabled="NO" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="below" sliderType="linear" id="leV-bZ-fp7" customClass="PreferencesSliderCell" customModule="Aural" customModuleProvider="target"/>
                                             <connections>
@@ -4043,8 +4039,8 @@ Gw
                                                     <real key="minimum" value="3"/>
                                                     <real key="maximum" value="30"/>
                                                 </numberFormatter>
-                                                <font key="font" size="11" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="font" metaFont="systemMedium" size="10"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4053,7 +4049,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Balance increment" id="kRA-YO-iBg">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4065,8 +4061,8 @@ Gw
                                                     <real key="minimum" value="3"/>
                                                     <real key="maximum" value="30"/>
                                                 </numberFormatter>
-                                                <font key="font" size="11" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="font" metaFont="systemMedium" size="10"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4091,7 +4087,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="On app startup" id="TDd-25-ElD">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.69986979166666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4100,7 +4096,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Remember playlist from last app launch" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="08k-Ic-8WP" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="startupPlaylistPrefAction:" target="qZU-Ni-Dah" id="dxP-yi-ycG"/>
@@ -4111,7 +4107,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Start with empty playlist" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="3H8-eT-vTj" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="startupPlaylistPrefAction:" target="qZU-Ni-Dah" id="n8F-Gc-rs3"/>
@@ -4122,8 +4118,8 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autoplay" id="wVd-g9-8ny">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.70467122395833337" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gn8-VH-Na5">
@@ -4131,7 +4127,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="On startup (if at least 1 track available)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="9zP-V3-sOS" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auF-TB-XB2">
@@ -4139,7 +4135,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="After adding tracks, play first added track" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="usf-1O-8HP" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="autoplayAfterAddingAction:" target="qZU-Ni-Dah" id="nbm-Uq-IGD"/>
@@ -4150,7 +4146,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="If no track is currently playing" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="rjw-OJ-t0C" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="autoplayAfterAddingRadioButtonAction:" target="qZU-Ni-Dah" id="AII-Hi-ANo"/>
@@ -4161,7 +4157,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Always" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="KeI-6A-58t" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" size="11" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="autoplayAfterAddingRadioButtonAction:" target="qZU-Ni-Dah" id="5NT-06-Jyi"/>
@@ -4171,7 +4167,7 @@ Gw
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Playlist" identifier="2" id="nFE-7c-2Vt" userLabel="View Prefs">
-                                <view key="view" id="zje-kc-CUI">
+                                <view key="view" ambiguous="YES" id="zje-kc-CUI">
                                     <rect key="frame" x="0.0" y="0.0" width="391" height="237"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -4202,7 +4198,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="View on startup" id="ekB-Wg-VMk">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.69986979169999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4211,7 +4207,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Window location on startup" id="AIJ-yj-FNf">
                                                 <font key="font" size="13" name="GillSans"/>
-                                                <color key="textColor" white="0.69986979169999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -4220,7 +4216,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Default (playlist and effects)" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="F7B-EB-JLk" id="oeR-ef-X1J" userLabel="Menu" customClass="PreferencesPopupMenuCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="10" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <menu key="menu" id="jrP-M4-FL1">
                                                     <items>
                                                         <menuItem title="Default (playlist and effects)" state="on" id="F7B-EB-JLk"/>
@@ -4258,7 +4254,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Center" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Qr8-km-sr6" id="HW4-YC-UPa" userLabel="Menu" customClass="PreferencesPopupMenuCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="10" name="GillSans"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <menu key="menu" id="UzQ-5Q-YPv">
                                                     <items>
                                                         <menuItem title="Center" state="on" id="Qr8-km-sr6"/>
@@ -4279,34 +4275,34 @@ Gw
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPQ-R5-z2I" userLabel="Player tab button">
-                        <rect key="frame" x="48" y="295" width="103" height="22"/>
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPQ-R5-z2I" userLabel="Player tab button">
+                        <rect key="frame" x="48" y="295" width="103" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Player" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="ysd-b4-M64" customClass="PrefsTabButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundRect" title="Player" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="ysd-b4-M64" customClass="PrefsTabButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="GillSans"/>
+                            <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
                         <connections>
                             <action selector="playerPrefsTabViewAction:" target="qZU-Ni-Dah" id="H5F-Eo-kM8"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M8M-eC-agz" userLabel="Playlist tab button">
-                        <rect key="frame" x="157" y="295" width="103" height="22"/>
+                        <rect key="frame" x="157" y="295" width="103" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Playlist" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="NOz-zz-42Z" customClass="PrefsTabButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundRect" title="Playlist" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NOz-zz-42Z" customClass="PrefsTabButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="GillSans"/>
+                            <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
                         <connections>
                             <action selector="playlistPrefsTabViewAction:" target="qZU-Ni-Dah" id="hV1-lc-mde"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A1g-Lb-y1B" userLabel="View tab button">
-                        <rect key="frame" x="266" y="295" width="103" height="22"/>
+                        <rect key="frame" x="266" y="295" width="103" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="View" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="wI4-Lk-wKS" customClass="PrefsTabButtonCell" customModule="Aural" customModuleProvider="target">
+                        <buttonCell key="cell" type="roundRect" title="View" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wI4-Lk-wKS" customClass="PrefsTabButtonCell" customModule="Aural" customModuleProvider="target">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="GillSans"/>
+                            <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
                         <connections>
                             <action selector="viewPrefsTabViewAction:" target="qZU-Ni-Dah" id="Jru-CU-ViK"/>

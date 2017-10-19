@@ -93,7 +93,7 @@ class UIConstants {
     static let popoverValueFont: NSFont = gillSans13LightFont
     
     // Font used by the popup menus
-    static let popupMenuFont: NSFont = NSFont(name: "Gill Sans", size: 10)!
+//    static let popupMenuFont: NSFont = NSFont(name: "Gill Sans", size: 10)!
     
     // Default value for the label that shows a track's seek position
     static let zeroDurationString: String = "0:00"
