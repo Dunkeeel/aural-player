@@ -139,35 +139,20 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         }
     }
     
-    // When the playlist window is resized manually by the user, it may be resized such that it is no longer docked (i.e. positioned adjacent) to the main window.
     func windowDidResize(_ notification: Notification) {
         
-        // If playlist was not docked prior to resize, or this is an app-initiated resize operation (i.e. either dock or maximize), do nothing
-        if (playlistDockState == .none || automatedPlaylistMoveOrResize) {
-            return
+        // Only update docking state if playlist is docked and moved by hand
+        if (!(playlistDockState == .none) && !automatedPlaylistMoveOrResize) {
+            updatePlaylistWindowDockState()
         }
         
-        updatePlaylistWindowDockState()
     }
     
-    // When the playlist window is moved manually by the user, it may be moved such that it is no longer docked (i.e. positioned adjacent) to the main window. This method checks the position of the playlist window after the resize operation, invalidates the playlist window's dock state if necessary, and adds a thin bottom edge to the main window (for aesthetics) if the playlist is no longer docked.
     func windowDidMove(_ notification: Notification) {
         
-        // If this is an app-initiated move operation, do nothing
-        if (automatedPlaylistMoveOrResize) {
-            return
-        }
-        
-        // If the mouse cursor is within the playlist window, it means that only the playlist window is being moved. If the main window is being moved, that does not affect the playlist dock state.
-        if (playlistWindow.frame.contains(NSEvent.mouseLocation)) {
-            
+        // Only update docking state if playlist window is moved by hand
+        if (playlistWindow.frame.contains(NSEvent.mouseLocation) && !automatedPlaylistMoveOrResize) {
             updatePlaylistWindowDockState()
-            
-            if (playlistDockState == .none) {
-                
-                // Add the bottom edge to the main window, if it is not already present
-                //resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, false)
-            }
         }
     }
     
@@ -182,16 +167,19 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             playlistWindow.setFrame(playlistFrame, display: true, animate: false)
             playlistWindow.setFrameTopLeftPoint(mainWindow.frame.origin
                 .applying(CGAffineTransform.init(translationX: 0, y: -UIConstants.windowGap)))
+            playlistDockState = .bottom
         case .right :
             playlistFrame.size = NSMakeSize(min(playlistWindow.width, UIConstants.maxDockWidth), mainWindow.height)
             playlistWindow.setFrame(playlistFrame, display: true, animate: false)
             playlistWindow.setFrameOrigin(mainWindow.frame.origin
                 .applying(CGAffineTransform.init(translationX: (mainWindow.width + UIConstants.windowGap), y: 0)))
+            playlistDockState = .right
         case .left :
             playlistFrame.size = NSMakeSize(min(playlistWindow.width, UIConstants.maxDockHeight), mainWindow.height)
             playlistWindow.setFrame(playlistFrame, display: true, animate: false)
             playlistWindow.setFrameOrigin(mainWindow.frame.origin
                 .applying(CGAffineTransform.init(translationX: -(playlistWindow.width + UIConstants.windowGap), y: 0)))
+            playlistDockState = .left
         }
         automatedPlaylistMoveOrResize = false
     }
@@ -494,21 +482,21 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         if (playlistDockState == .bottom) {
             
             // Check if playlist window's top edge is adjacent to main window's bottom edge
-            if ((playlistWindow.y + playlistWindow.height) != mainWindow.y) {
+            if ((playlistWindow.y + playlistWindow.height) != (mainWindow.y - UIConstants.windowGap)) {
                 playlistDockState = .none
             }
             
         } else if (playlistDockState == .right) {
             
             // Check if playlist window's left edge is adjacent to main window's right edge
-            if ((mainWindow.x + mainWindow.width) != playlistWindow.x) {
+            if ((mainWindow.x + mainWindow.width + UIConstants.windowGap) != playlistWindow.x) {
                 playlistDockState = .none
             }
             
         } else if (playlistDockState == .left) {
             
             // Check if playlist window's right edge is adjacent to main window's left edge
-            if ((playlistWindow.x + playlistWindow.width) != mainWindow.x) {
+            if ((playlistWindow.x + playlistWindow.width) != (mainWindow.x - UIConstants.windowGap)) {
                 playlistDockState = .none
             }
         }
