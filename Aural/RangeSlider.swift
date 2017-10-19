@@ -45,7 +45,7 @@ class RangeSlider: NSView {
     
     //MARK: - Public API -
     
-    private let verticalShadowPadding: CGFloat = 4.0
+    //private let verticalShadowPadding: CGFloat = 4.0
     private let barTrailingMargin: CGFloat = 1.0
     private let disabledControlDimmingRatio: CGFloat = 0.65
     
@@ -159,8 +159,9 @@ class RangeSlider: NSView {
     private lazy var barBackgroundGradient: NSGradient = Colors.sliderBarGradient
     
     private lazy var sliderGradient: NSGradient = {
-        let backgroundStart = NSColor(white: 0.92, alpha: 1.0)
-        let backgroundEnd =  NSColor(white: 0.80, alpha: 1.0)
+        let backgroundStart = NSColor(white: 1, alpha: 1.0)
+        let backgroundEnd =  NSColor(white: 0.9, alpha: 1.0)
+        
         let barBackgroundGradient = NSGradient(starting: backgroundStart, ending: backgroundEnd)
         assert(barBackgroundGradient != nil, "Couldn't generate gradient.")
         
@@ -168,13 +169,13 @@ class RangeSlider: NSView {
     }()
 
     private var barFillGradient: NSGradient {
-        
-        let fillStart: NSColor = NSColor.red
-        let fillEnd: NSColor = NSColor(deviceRed: CGFloat(0.5), green: CGFloat(0), blue: CGFloat(0), alpha: CGFloat(1))
+
+        let fillStart = NSColor(white: 0.75, alpha: 1.0)
+        let fillEnd =  NSColor(white: 0.65, alpha: 1.0)
         
         let barFillGradient = NSGradient(starting: fillStart, ending: fillEnd)
         assert(barFillGradient != nil, "Couldn't generate gradient.")
-        
+
         return barFillGradient!
     }
     
@@ -190,23 +191,23 @@ class RangeSlider: NSView {
     
     private var barFillStrokeColor: NSColor = NSColor(deviceRed: CGFloat(0.7), green: CGFloat(0.7), blue: CGFloat(0.7), alpha: CGFloat(1))
     
-    private var _sliderShadow: NSShadow? = nil
-    private func sliderShadow() -> NSShadow? {
-        if (_sliderShadow == nil) {
-            let shadowOffset = NSMakeSize(2.0, -2.0)
-            let shadowBlurRadius: CGFloat = 2.0
-            let shadowColor = NSColor(white: 0.0, alpha: 0.12)
-            
-            let shadow = NSShadow()
-            shadow.shadowOffset = shadowOffset
-            shadow.shadowBlurRadius = shadowBlurRadius
-            shadow.shadowColor = shadowColor
-            
-            _sliderShadow = shadow
-        }
-        
-        return _sliderShadow
-    }
+//    private var _sliderShadow: NSShadow? = nil
+//    private func sliderShadow() -> NSShadow? {
+//        if (_sliderShadow == nil) {
+//            let shadowOffset = NSMakeSize(2.0, -2.0)
+//            let shadowBlurRadius: CGFloat = 2.0
+//            let shadowColor = NSColor(white: 0.0, alpha: 0.12)
+//
+//            let shadow = NSShadow()
+//            shadow.shadowOffset = shadowOffset
+//            shadow.shadowBlurRadius = shadowBlurRadius
+//            shadow.shadowColor = shadowColor
+//
+//            _sliderShadow = shadow
+//        }
+//
+//        return _sliderShadow
+//    }
     
     //MARK: - UI Sizing -
     
@@ -344,15 +345,15 @@ class RangeSlider: NSView {
         framePath.stroke()
         
         /*  Draw slider shadows */
-        if let shadow = sliderShadow() {
-            NSGraphicsContext.saveGraphicsState()
-            shadow.set()
-            
-            NSColor.white.set()
-            startSliderPath.fill()
-            endSliderPath.fill()
-            NSGraphicsContext.restoreGraphicsState()
-        }
+//        if let shadow = sliderShadow() {
+//            NSGraphicsContext.saveGraphicsState()
+//            shadow.set()
+//            
+//            NSColor.white.set()
+//            startSliderPath.fill()
+//            endSliderPath.fill()
+//            NSGraphicsContext.restoreGraphicsState()
+//        }
         
         /*  Draw slider knobs */
         sliderGradient.draw(in: endSliderPath, angle: UIConstants.verticalGradientDegrees)
