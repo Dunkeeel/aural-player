@@ -22,7 +22,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="335" y="100" width="415" height="409"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <value key="minSize" type="size" width="415" height="404"/>
+            <value key="minSize" type="size" width="415" height="0.0"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="415" height="409"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3134,6 +3134,7 @@ G1BhbiBTbGlkZXI
                 <outlet property="fxBox" destination="DYI-NL-cxu" id="heq-Dq-w1Q"/>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="P0P-5G-KoX"/>
                 <outlet property="playlistWindow" destination="y87-CQ-g44" id="ZRm-qu-dIJ"/>
+                <outlet property="stackView" destination="RoY-Dd-G6Q" id="RmX-Yf-eSK"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="wr6-aA-rz3"/>
                 <outlet property="viewEffectsMenuItem" destination="fK8-7g-oqx" id="05B-Uw-Hcu"/>
                 <outlet property="viewPlaylistMenuItem" destination="af4-4E-1QV" id="E2Z-qY-PQl"/>
