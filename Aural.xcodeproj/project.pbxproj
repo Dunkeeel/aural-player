@@ -378,7 +378,10 @@
 				3E85F2591EFA78D6007BE830 /* AppDelegate.swift */,
 				3ED526501F3003A800001A97 /* ObjectGraph.swift */,
 				3E3C20A71F0A697800AF5A62 /* AppConstants.swift */,
+				3E4BBA5B1F030E5B0025F371 /* UIConstants.swift */,
 				3E76D9BB1F0F4228007FF3F8 /* AppDefaults.swift */,
+				3EB20B4A1EFF25EC008138A4 /* AppState.swift */,
+				3E911CEE1F441BE1009C1572 /* UIAppState.swift */,
 				D223491A1F96B3C5002A406F /* Views */,
 				3EA262671F0EFD9600D9BCD9 /* UI */,
 				3E9847871F5CFD52001A2D28 /* Delegates */,
@@ -388,7 +391,6 @@
 				3E2D9E411F662B8D0020B99E /* Player */,
 				3E2D9E421F662BB90020B99E /* Recorder */,
 				3EA29AD61F0B473600DA239E /* Messaging */,
-				3ED2AF201F00E8B7000F702C /* AppState */,
 				3E2D9E431F664B860020B99E /* Preferences */,
 				3EFFE6BC1F0373B7003728BD /* IO */,
 				3EB20B4F1EFF2C5F008138A4 /* Utils */,
@@ -458,7 +460,6 @@
 				3E9847801F5CF22C001A2D28 /* Controllers */,
 				3E5FA43F1EFFF039001669C5 /* Views */,
 				3E58CC261F025B0D00C36DC1 /* Colors.swift */,
-				3E4BBA5B1F030E5B0025F371 /* UIConstants.swift */,
 				3E3C20A51F0A687400AF5A62 /* UIElements.swift */,
 			);
 			name = UI;
@@ -501,15 +502,6 @@
 				3ECD17461F6BBF3600492F56 /* ITunesSpec.swift */,
 			);
 			name = MetadataSpecs;
-			sourceTree = "<group>";
-		};
-		3ED2AF201F00E8B7000F702C /* AppState */ = {
-			isa = PBXGroup;
-			children = (
-				3EB20B4A1EFF25EC008138A4 /* AppState.swift */,
-				3E911CEE1F441BE1009C1572 /* UIAppState.swift */,
-			);
-			name = AppState;
 			sourceTree = "<group>";
 		};
 		3EDBF76E1F0339B60088574B /* Testing */ = {

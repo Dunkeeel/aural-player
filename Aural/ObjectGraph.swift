@@ -51,7 +51,6 @@ class ObjectGraph {
         uiAppState = UIAppState(appState!, preferences!)
         
         // Audio Graph
-        
         audioGraph = AudioGraph(appState!.audioGraphState)
         if (preferences!.volumeOnStartup == .specific) {
             audioGraph?.setVolume(preferences!.startupVolumeValue)
@@ -131,7 +130,6 @@ class ObjectGraph {
         audioGraph?.tearDown()
         
         // Gather all pieces of app state into the appState object
-        
         appState?.audioGraphState = audioGraph!.getPersistentState()
         appState?.playlistState = playlist!.persistentState()
         appState?.playbackSequenceState = playbackSequence!.getPersistentState()

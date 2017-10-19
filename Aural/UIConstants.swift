@@ -121,6 +121,11 @@ class UIConstants {
     static let windowHeight_playlistOnly: CGFloat = 196
     static let windowHeight_effectsOnly: CGFloat = 393
     
+    // Docking values
+    static let windowGap: CGFloat = 9
+    static let maxDockWidth: CGFloat = 600
+    static let maxDockHeight: CGFloat = 450
+    
     // Angle used to fill vertical gradients
     static let verticalGradientDegrees: CGFloat = -90.0
     

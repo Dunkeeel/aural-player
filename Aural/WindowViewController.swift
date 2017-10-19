@@ -174,164 +174,27 @@ class WindowViewController: NSViewController, NSWindowDelegate {
     // MARK: - Private Functions
     
     private func dockPlaylist(_ type: DockType) {
-        automatedPlaylistMoveOrResize = true
         var playlistFrame = playlistWindow.frame
+        automatedPlaylistMoveOrResize = true
         switch type {
         case .bottom :
-            playlistFrame.size = NSMakeSize(mainWindow.width, playlistWindow.height)
+            playlistFrame.size = NSMakeSize(mainWindow.width, min(playlistWindow.height, (mainWindow.remainingHeight - UIConstants.windowGap)))
             playlistWindow.setFrame(playlistFrame, display: true, animate: false)
-            playlistWindow.setFrameTopLeftPoint(mainWindow.frame.origin)
+            playlistWindow.setFrameTopLeftPoint(mainWindow.frame.origin
+                .applying(CGAffineTransform.init(translationX: 0, y: -UIConstants.windowGap)))
         case .right :
-            playlistFrame.size = NSMakeSize(playlistWindow.width, mainWindow.height)
+            playlistFrame.size = NSMakeSize(min(playlistWindow.width, UIConstants.maxDockWidth), mainWindow.height)
             playlistWindow.setFrame(playlistFrame, display: true, animate: false)
-            playlistWindow.setFrameOrigin(NSPoint(x: (mainWindow.x + playlistWindow.width), y: mainWindow.y))
+            playlistWindow.setFrameOrigin(mainWindow.frame.origin
+                .applying(CGAffineTransform.init(translationX: (mainWindow.width + UIConstants.windowGap), y: 0)))
         case .left :
-            playlistFrame.size = NSMakeSize(playlistWindow.width, mainWindow.height)
+            playlistFrame.size = NSMakeSize(min(playlistWindow.width, UIConstants.maxDockHeight), mainWindow.height)
             playlistWindow.setFrame(playlistFrame, display: true, animate: false)
-            playlistWindow.setFrameOrigin(NSPoint(x: (mainWindow.x - mainWindow.width), y: mainWindow.y))
+            playlistWindow.setFrameOrigin(mainWindow.frame.origin
+                .applying(CGAffineTransform.init(translationX: -(playlistWindow.width + UIConstants.windowGap), y: 0)))
         }
         automatedPlaylistMoveOrResize = false
     }
-    
-    /*
-    // The "resize" argument indicates whether or not the playlist needs to be resized. This is not necessary when simply toggling the playlist view, which only needs to restore its position on-screen, without changing its size.
-    private func dockPlaylistRight(_ resize: Bool = true) {
-        
-        // Mark the flag to indicate that an automated move/resize operation is now taking place
-        automatedPlaylistMoveOrResize = true
-        
-        // Add bottom edge to the main window, if necessary
-        //resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, true)
-        
-        // Calculate new position and size of playlist window, in relation to the main window
-        
-        var playlistFrame = playlistWindow.frame
-        
-        // By default, the playlist window will be positioned relative to the right and bottom edges of the main window
-        let playlistX = mainWindow.x + mainWindow.width
-        var playlistY = mainWindow.y
-        playlistFrame.origin = NSPoint(x: playlistX, y: playlistY)
-        
-        if (resize) {
-            
-            // When resizing, need to calculate new size
-            
-            let maxWidth = max(screenWidth - playlistX, UIConstants.minPlaylistWidth)
-            let playlistWidth = min(playlistWindow.width, maxWidth)
-            let playlistHeight = mainWindow.height
-            playlistFrame.size = NSMakeSize(playlistWidth, playlistHeight)
-            
-        } else if (playlistWindowOffset != nil) {
-            
-            // When not resizing, need to remember the last offset of the playlist window in relation to the main window, and use it to calculate the new position
-            
-            playlistY = (mainWindow.y + mainWindow.height) - playlistWindowOffset!.y - playlistWindow.height
-            playlistFrame.origin = NSPoint(x: playlistX, y: playlistY)
-            
-            // Invalidate the offset once used
-            playlistWindowOffset = nil
-        }
-        
-        // Dock the playlist window, and set the dock state variable
-        playlistWindow.setFrame(playlistFrame, display: true, animate: false)
-        playlistDockState = .right
-        
-        // Update the flag to indicate that an automated move/resize operation is no longer taking place
-        automatedPlaylistMoveOrResize = false
-    }
-    
-    // The "resize" argument indicates whether or not the playlist needs to be resized. This is not necessary when simply toggling the playlist view, which only needs to restore its position on-screen, without changing its size.
-    private func dockPlaylistLeft(_ resize: Bool = true) {
-        
-        // Mark the flag to indicate that an automated move/resize operation is now taking place
-        automatedPlaylistMoveOrResize = true
-        
-        // Add bottom edge to the main window, if necessary
-        //resizeMainWindow(playlistShown: false, effectsShown: !fxBox.isHidden, true)
-        
-        var playlistFrame = playlistWindow.frame
-        
-        // Calculate new position and size of playlist window, in relation to the main window
-        
-        // By default, the playlist window will be positioned relative to the left and bottom edges of the main window
-        var playlistWidth: CGFloat = playlistWindow.width
-        var playlistX = mainWindow.x - playlistWidth
-        var playlistY = mainWindow.y
-        
-        if (resize) {
-            
-            // When resizing, need to calculate new size
-            
-            let playlistHeight = mainWindow.height
-            let maxWidth = max(mainWindow.x, UIConstants.minPlaylistWidth)
-            playlistWidth = min(playlistWindow.width, maxWidth)
-            playlistFrame.size = NSMakeSize(playlistWidth, playlistHeight)
-            
-            playlistX = mainWindow.x - playlistWidth
-            
-        } else if (playlistWindowOffset != nil) {
-            
-            // When not resizing, need to remember the last offset of the playlist window in relation to the main window, and use it to calculate the new position
-            
-            playlistY = (mainWindow.y + mainWindow.height) - playlistWindowOffset!.y - playlistWindow.height
-            
-            // Invalidate the offset once used
-            playlistWindowOffset = nil
-        }
-        
-        playlistFrame.origin = NSPoint(x: playlistX, y: playlistY)
-        
-        // Dock the playlist window, and set the dock state variable
-        playlistWindow.setFrame(playlistFrame, display: true, animate: false)
-        playlistDockState = .left
-        
-        // Update the flag to indicate that an automated move/resize operation is no longer taking place
-        automatedPlaylistMoveOrResize = false
-    }
-    
-    private func dockPlaylistBottom(_ resize: Bool = true) {
-        
-        // Mark the flag to indicate that an automated move/resize operation is now taking place
-        automatedPlaylistMoveOrResize = true
-        
-        // Calculate new position and size of playlist window, in relation to the main window
-        
-        var playlistFrame = playlistWindow.frame
-        var playlistHeight: CGFloat = playlistWindow.height
-        
-        if (resize) {
-            
-            // When resizing, need to calculate new size
-            
-            let playlistWidth = mainWindow.width
-            let maxHeight = max(mainWindow.y, UIConstants.minPlaylistHeight)
-            playlistHeight = min(playlistWindow.height, maxHeight)
-            playlistFrame.size = NSMakeSize(playlistWidth, playlistHeight)
-        }
-        
-        // Calculate the new position, which is a function of the new size
-        var playlistX = mainWindow.x
-        let playlistY = mainWindow.y - playlistHeight
-        playlistFrame.origin = NSPoint(x: playlistX, y: playlistY)
-        
-        if (!resize && playlistWindowOffset != nil) {
-            
-            // When not resizing, need to remember the last offset of the playlist window in relation to the main window, and use it to calculate the new position
-            
-            playlistX = (mainWindow.x + mainWindow.width) - playlistWindowOffset!.x - playlistWindow.width
-            playlistFrame.origin = NSPoint(x: playlistX, y: playlistY)
-            
-            // Invalidate the offset once used
-            playlistWindowOffset = nil
-        }
-        
-        // Dock the playlist window, and set the dock state variable
-        playlistWindow.setFrame(playlistFrame, display: true, animate: false)
-        playlistDockState = .bottom
-        
-        // Update the flag to indicate that an automated move/resize operation is no longer taking place
-        automatedPlaylistMoveOrResize = false
-    }*/
     
     // Simply repositions the playlist at the bottom of the main window (without docking it). This is useful when the playlist is already docked at the bottom, but the main window has been resized (e.g. when the effects view is toggled).
     private func repositionPlaylistBottom() {
@@ -710,5 +573,13 @@ extension NSWindow {
     // Y co-ordinate of location
     var y: CGFloat {
         return self.frame.origin.y
+    }
+    
+    var remainingHeight: CGFloat {
+        return ((screen?.visibleFrame.height)! - self.height)
+    }
+    
+    var remainingWidth: CGFloat {
+        return ((screen?.visibleFrame.width)! - self.width)
     }
 }
