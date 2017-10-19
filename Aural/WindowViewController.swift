@@ -83,6 +83,15 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         toggleEffects(true)
     }
     
+    @IBAction func quitAuralAction(_ sender: AnyObject) {
+        NSApplication.shared.terminate(self)
+    }
+    
+    @IBAction func hideAuralAction(_ sender: AnyObject) {
+        NSApplication.shared.hide(Any?.self)
+    }
+    
+    
     // MARK: - Variables
     
     // Remembers if/where the playlist window has been docked with the main window

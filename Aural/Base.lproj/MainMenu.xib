@@ -17,7 +17,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <window title="Aural" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g" userLabel="Main Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" fullSizeContentView="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="335" y="100" width="415" height="409"/>
@@ -3154,12 +3154,12 @@ G1BhbiBTbGlkZXI
                             <menuItem isSeparatorItem="YES" id="KCy-Jo-pWQ"/>
                             <menuItem title="Hide Aural" keyEquivalent="h" id="Q8U-5t-wnF" userLabel="Hide Aural">
                                 <connections>
-                                    <action selector="hideAction:" target="Bfj-ih-EYB" id="yPZ-JU-Rsj"/>
+                                    <action selector="hideAuralAction:" target="Bfj-ih-EYB" id="xsM-xq-zsI"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quit Aural" keyEquivalent="q" id="uhC-xR-Dzb">
                                 <connections>
-                                    <action selector="closeAction:" target="Bfj-ih-EYB" id="aYM-Lc-eFm"/>
+                                    <action selector="quitAuralAction:" target="Bfj-ih-EYB" id="cKP-IW-O35"/>
                                 </connections>
                             </menuItem>
                         </items>
