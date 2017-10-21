@@ -9,6 +9,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - Variables
     
+    lazy var windowController = NSWindowController(windowNibName: NSNib.Name(rawValue: "MainMenu"))
+    
     var windowViewController: WindowViewController?
     
     // (Optional) launch parameters: files to open upon launch (can be audio or playlist files)
@@ -45,11 +47,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        if flag {
+        print("\(#function) -> hasVisibleWindows: \(flag)")
+        let mainWindowVisible = (windowViewController?.mainWindow.isVisible) != nil ? true : false
+        print("\(#function) -> mainWindowVisible: \(mainWindowVisible)")
+        if flag, mainWindowVisible{
             windowViewController?.mainWindow.orderFront(self)
             windowViewController?.playlistWindow.orderFront(self)
         } else {
-            windowViewController?.mainWindow.makeKeyAndOrderFront(self)
+            for window in sender.windows{
+                    if window.title == "Aural" {
+                        window.makeKeyAndOrderFront(self)
+                    }
+            }
         }
         return true
     }
@@ -74,6 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
+        print("will terminate")
         ObjectGraph.tearDown()
     }
     

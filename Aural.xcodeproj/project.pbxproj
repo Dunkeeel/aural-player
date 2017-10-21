@@ -236,6 +236,8 @@
 		3EFFE6BA1F0372B3003728BD /* TrackIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackIO.swift; sourceTree = "<group>"; };
 		3EFFE6BD1F0381FA003728BD /* EQPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EQPresets.swift; sourceTree = "<group>"; };
 		D2921EB61F98A96300AB0148 /* Developer-TODOs-Swift4.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Developer-TODOs-Swift4.rtf"; sourceTree = "<group>"; };
+		D2E4717E1F9A731B0033CB43 /* NewPlaylingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlaylingViewController.xib; sourceTree = "<group>"; };
+		D2E471811F9A74F90033CB43 /* CustomSliderCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderCells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +385,7 @@
 				3EB20B4A1EFF25EC008138A4 /* AppState.swift */,
 				3E911CEE1F441BE1009C1572 /* UIAppState.swift */,
 				D223491A1F96B3C5002A406F /* Views */,
+				D2E4717D1F9A72310033CB43 /* Views_new */,
 				3E9847801F5CF22C001A2D28 /* ViewControllers */,
 				3E9847871F5CFD52001A2D28 /* Delegates */,
 				D2921EB41F98A7E000AB0148 /* Model */,
@@ -577,6 +580,23 @@
 				3ECD17451F6BBF0F00492F56 /* MetadataSpecs */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		D2E4717D1F9A72310033CB43 /* Views_new */ = {
+			isa = PBXGroup;
+			children = (
+				D2E471801F9A74C40033CB43 /* Accessoires */,
+				D2E4717E1F9A731B0033CB43 /* NewPlaylingViewController.xib */,
+			);
+			name = Views_new;
+			sourceTree = "<group>";
+		};
+		D2E471801F9A74C40033CB43 /* Accessoires */ = {
+			isa = PBXGroup;
+			children = (
+				D2E471811F9A74F90033CB43 /* CustomSliderCells.swift */,
+			);
+			name = Accessoires;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -876,6 +896,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -894,6 +915,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = "";

@@ -86,7 +86,6 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         NSApplication.shared.hide(Any?.self)
     }
     
-    
     // MARK: - Variables
     
     // Remembers if/where the playlist window has been docked with the main window
@@ -114,39 +113,59 @@ class WindowViewController: NSViewController, NSWindowDelegate {
     // MARK: - Functions
     
     override func viewDidLoad() {
-        
         WindowState.window = self.mainWindow
+        setUpWindows()
+    }
+    
+    func setUpWindows() {
+        // restore the windows state
+        
         let appState = ObjectGraph.getUIAppState()
+        
+        // set up main window
         
         mainWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         mainWindow.setFrameOrigin(appState.windowLocation)
         mainWindow.isMovableByWindowBackground = false
         mainWindow.makeKeyAndOrderFront(self)
-        // mainWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
         
+        mainWindow.styleMask.insert(.fullSizeContentView)
+        mainWindow.titlebarAppearsTransparent = true
+        
+        mainWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = false
+        mainWindow.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)?.isHidden = false
+        mainWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isHidden = true
+        
+        // set up playlist window
+        
+        playlistWindow.delegate = self
         playlistWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         playlistWindow.isMovableByWindowBackground = true
-        playlistWindow.delegate = self
-        playlistWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
         
+        playlistWindow.styleMask.insert(.fullSizeContentView)
+        playlistWindow.titlebarAppearsTransparent = true
+        playlistWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = false
+        playlistWindow.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)?.isHidden = true
+        playlistWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isHidden = true
         
-        if (appState.effectsHidden) {
-            toggleEffects()
-        } else {
-        }
-        
+        print("\(#function) -> check playlistHidden")
         if (appState.playlistHidden) {
-            hidePlaylist(false)
+            hidePlaylist()
+            dockPlaylist(.bottom)
             // TODO: Make this configurable in preferences
             // Whenever the playlist is shown in the future, dock it at the bottom
-            playlistDockState = .bottom
         } else {
             showPlaylist()
             dockPlaylist(.bottom)
         }
- 
-    }
         
+        print("\(#function) -> check effectsHidden")
+        if (appState.effectsHidden) {
+            toggleEffects()
+        }
+
+    }
+    
     func windowDidResize(_ notification: Notification) {
         
         if (automatedPlaylistMoveOrResize && playlistDockState == .bottom){
@@ -166,6 +185,10 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         if (playlistWindow.frame.contains(NSEvent.mouseLocation) && !automatedPlaylistMoveOrResize) {
             updatePlaylistWindowDockState()
         }
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        hidePlaylist()
     }
     
     // MARK: - Private Functions
@@ -386,6 +409,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             
             realignPlaylist(fxPanelHidden: true)
         }
+        print("called toggleEffects -> shown: \(String(WindowState.showingEffects)))")
     }
     
     private func realignPlaylist(fxPanelHidden: Bool){
@@ -394,6 +418,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         if (playlistWindow.isVisible && playlistDockState == .bottom) {
             playlistWindow.setFrameOrigin(playlistWindow.frame.origin.applying(CGAffineTransform.init(translationX: 0, y: fxPanelHidden ? alignY : -alignY)))
         }
+        print("called realign playlist")
     }
     
     // This method checks the position of the playlist window after the resize operation, and invalidates the playlist window's dock state if necessary.
