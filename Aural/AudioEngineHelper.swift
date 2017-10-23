@@ -2,7 +2,7 @@
 import Cocoa
 import AVFoundation
 
-/*
+/**
     Provides convenient helper methods to work with AVAudioEngine
 */
 class AudioEngineHelper {
@@ -15,13 +15,13 @@ class AudioEngineHelper {
         nodes = [AVAudioNode]()
     }
     
-    // Attach a single node to the engine
+    /** Attach a single node to the engine */
     func addNode(_ node: AVAudioNode) {
         nodes.append(node)
         audioEngine.attach(node)
     }
     
-    // Attach multiple nodes to the engine
+    /** Attach multiple nodes to the engine */
     func addNodes(_ nodes: [AVAudioNode]) {
         self.nodes.append(contentsOf: nodes)
         for node in nodes {
@@ -29,7 +29,7 @@ class AudioEngineHelper {
         }
     }
     
-    // Connects all nodes in sequence
+    /** Connects all nodes in sequence */
     func connectNodes() {
         
         var input: AVAudioNode, output: AVAudioNode
@@ -48,7 +48,7 @@ class AudioEngineHelper {
         audioEngine.connect(nodes[nodes.count - 1], to: audioEngine.mainMixerNode, format: nil)
     }
     
-    // Reconnects two nodes with the given audio format (required when a track change occurs)
+    /** Reconnects two nodes with the given audio format (required when a track change occurs) */
     func reconnectNodes(_ inputNode: AVAudioNode, outputNode: AVAudioNode, format: AVAudioFormat) {
         
         audioEngine.disconnectNodeOutput(inputNode)

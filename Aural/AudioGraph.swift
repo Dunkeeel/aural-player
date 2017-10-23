@@ -6,6 +6,8 @@ import AVFoundation
  */
 class AudioGraph: AudioGraphProtocol, PlayerGraphProtocol, RecorderGraphProtocol {
     
+    // MARK: - Variables
+    
     private let audioEngine: AVAudioEngine
     private let mainMixer: AVAudioMixerNode
     
@@ -28,6 +30,8 @@ class AudioGraph: AudioGraphProtocol, PlayerGraphProtocol, RecorderGraphProtocol
     private var playerVolume: Float
     private var muted: Bool
     private var reverbPreset: AVAudioUnitReverbPreset
+    
+    // MARK: - Functions
     
     // Sets up the audio engine
     init(_ state: AudioGraphState) {

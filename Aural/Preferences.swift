@@ -26,7 +26,7 @@ class Preferences {
     var autoplayAfterAddingOption: AutoplayAfterAddingOptions
     
     var viewOnStartup: ViewOnStartup
-    var windowLocationOnStartup: WindowLocationOnStartup
+    //var windowLocationOnStartup: WindowLocationOnStartup
     
     private init() {
         
@@ -78,15 +78,15 @@ class Preferences {
             viewOnStartup.viewType = ViewTypes(rawValue: viewTypeStr)!
         }
         
-        windowLocationOnStartup = PreferencesDefaults.windowLocationOnStartup
-        
-        if let windowLocationOnStartupOptionStr = prefs["windowLocationOnStartup.option"] as? String {
-            windowLocationOnStartup.option = WindowLocationOptions(rawValue: windowLocationOnStartupOptionStr)!
-        }
-        
-        if let windowLocationStr = prefs["windowLocationOnStartup.location"] as? String {
-            windowLocationOnStartup.windowLocation = WindowLocations(rawValue: windowLocationStr)!
-        }
+//        windowLocationOnStartup = PreferencesDefaults.windowLocationOnStartup
+//
+//        if let windowLocationOnStartupOptionStr = prefs["windowLocationOnStartup.option"] as? String {
+//            windowLocationOnStartup.option = WindowLocationOptions(rawValue: windowLocationOnStartupOptionStr)!
+//        }
+//
+//        if let windowLocationStr = prefs["windowLocationOnStartup.location"] as? String {
+//            windowLocationOnStartup.windowLocation = WindowLocations(rawValue: windowLocationStr)!
+//        }
     }
     
     static func instance() -> Preferences {
@@ -111,8 +111,8 @@ class Preferences {
         defaults.set(prefs.viewOnStartup.option.rawValue, forKey: "viewOnStartup.option")
         defaults.set(prefs.viewOnStartup.viewType.rawValue, forKey: "viewOnStartup.viewType")
         
-        defaults.set(prefs.windowLocationOnStartup.option.rawValue, forKey: "windowLocationOnStartup.option")
-        defaults.set(prefs.windowLocationOnStartup.windowLocation.rawValue, forKey: "windowLocationOnStartup.location")
+//        defaults.set(prefs.windowLocationOnStartup.option.rawValue, forKey: "windowLocationOnStartup.option")
+//        defaults.set(prefs.windowLocationOnStartup.windowLocation.rawValue, forKey: "windowLocationOnStartup.location")
     }
 }
 
@@ -136,5 +136,5 @@ class PreferencesDefaults {
     
     // View prefs
     static let viewOnStartup: ViewOnStartup = ViewOnStartup.defaultInstance
-    static let windowLocationOnStartup: WindowLocationOnStartup = WindowLocationOnStartup.defaultInstance
+//    static let windowLocationOnStartup: WindowLocationOnStartup = WindowLocationOnStartup.defaultInstance
 }

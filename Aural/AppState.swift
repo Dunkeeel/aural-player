@@ -1,18 +1,15 @@
 import Cocoa
 
-/*
-    Encapsulates UI state
+/* MARK: -
+	Encapsulates UI state
  */
 class UIState {
-    
-    var windowLocationX: Float = AppDefaults.windowLocationX
-    var windowLocationY: Float = AppDefaults.windowLocationY
-    
     var showPlaylist: Bool = AppDefaults.showPlaylist
     var showEffects: Bool = AppDefaults.showEffects
+    var playlistDockState: PlaylistDockState = AppDefaults.playlistDockState
 }
 
-/*
+/* MARK: -
     Encapsulates audio graph state
  */
 class AudioGraphState {
@@ -59,7 +56,7 @@ class AudioGraphState {
     }
 }
 
-/*
+/* MARK: -
     Encapsulates playlist state
  */
 class PlaylistState {
@@ -68,7 +65,7 @@ class PlaylistState {
     var tracks: [URL] = [URL]()
 }
 
-/*
+/* MARK: -
     Encapsulates playback sequence state
  */
 class PlaybackSequenceState {
@@ -77,12 +74,12 @@ class PlaybackSequenceState {
     var shuffleMode: ShuffleMode = AppDefaults.shuffleMode
 }
 
-/*
+/* MARK: -
     Encapsulates all application state. It is persisted to disk upon exit and loaded into the application upon startup.
- 
-    TODO: Make this class conform to different protocols for access/mutation
  */
 class AppState {
+    
+    // TODO: Make this class conform to different protocols for access/mutation
     
     var uiState: UIState
     var audioGraphState: AudioGraphState
@@ -114,9 +111,7 @@ class AppState {
         
         uiDict["showPlaylist"] = uiState.showPlaylist as AnyObject
         uiDict["showEffects"] = uiState.showEffects as AnyObject
-        
-        uiDict["windowLocationX"] = uiState.windowLocationX as NSNumber
-        uiDict["windowLocationY"] = uiState.windowLocationY as NSNumber
+        uiDict["playlistDockState"] = uiState.playlistDockState.rawValue as AnyObject
         
         dict["ui"] = uiDict as AnyObject
         
@@ -218,13 +213,17 @@ class AppState {
                 state.uiState.showEffects = showEffects
             }
             
-            if let locX = uiDict["windowLocationX"] as? NSNumber {
-                state.uiState.windowLocationX = locX.floatValue
+            if let playlistDockState = uiDict["playlistDockState"] as? String {
+                if let dockState = PlaylistDockState(rawValue: playlistDockState) {
+                    state.uiState.playlistDockState = dockState
+                }
             }
             
-            if let locY = uiDict["windowLocationY"] as? NSNumber {
-                state.uiState.windowLocationY = locY.floatValue
-            }
+//            if let playlistDockState = uiDict["playlistDockState"] as? PlaylistDockState {
+//                state.uiState.playlistDockState = playlistDockState
+//            }
+            
+
         }
         
         // Audio graph state

@@ -131,12 +131,12 @@ class PreferencesViewController: NSViewController {
         startWithViewMenu.selectItem(withTitle: preferences.viewOnStartup.viewType.description)
         startWithViewMenu.isEnabled = Bool((btnStartWithView.state).rawValue)
         
-        btnRememberWindowLocation.state = NSControl.StateValue(rawValue: preferences.windowLocationOnStartup.option == .rememberFromLastAppLaunch ? 1 : 0)
-        
-        btnStartAtWindowLocation.state = NSControl.StateValue(rawValue: preferences.windowLocationOnStartup.option == .specific ? 1 : 0)
-        
-        startWindowLocationMenu.isEnabled = Bool((btnStartAtWindowLocation.state).rawValue)
-        startWindowLocationMenu.selectItem(withTitle: preferences.windowLocationOnStartup.windowLocation.description)
+//        btnRememberWindowLocation.state = NSControl.StateValue(rawValue: preferences.windowLocationOnStartup.option == .rememberFromLastAppLaunch ? 1 : 0)
+//        
+//        btnStartAtWindowLocation.state = NSControl.StateValue(rawValue: preferences.windowLocationOnStartup.option == .specific ? 1 : 0)
+//        
+//        startWindowLocationMenu.isEnabled = Bool((btnStartAtWindowLocation.state).rawValue)
+//        startWindowLocationMenu.selectItem(withTitle: preferences.windowLocationOnStartup.windowLocation.description)
     }
     
     // Presents the modal dialog
@@ -192,9 +192,9 @@ class PreferencesViewController: NSViewController {
             }
         }
         
-        preferences.windowLocationOnStartup.option = btnRememberWindowLocation.state.rawValue == 1 ? .rememberFromLastAppLaunch : .specific
-        
-        preferences.windowLocationOnStartup.windowLocation = WindowLocations.fromDescription(startWindowLocationMenu.selectedItem!.title)
+//        preferences.windowLocationOnStartup.option = btnRememberWindowLocation.state.rawValue == 1 ? .rememberFromLastAppLaunch : .specific
+//
+//        preferences.windowLocationOnStartup.windowLocation = WindowLocations.fromDescription(startWindowLocationMenu.selectedItem!.title)
         
         UIUtils.dismissModalDialog()
         preferencesDelegate.savePreferences(preferences)

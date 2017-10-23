@@ -10,8 +10,9 @@ class UIAppState {
     
     var playlistHidden: Bool
     var effectsHidden: Bool
+    var playlistDockState: PlaylistDockState
     
-    var windowLocation: NSPoint
+//    var windowLocation: NSPoint
     
     var repeatMode: RepeatMode
     var shuffleMode: ShuffleMode
@@ -76,37 +77,14 @@ class UIAppState {
             
             self.playlistHidden = !appState.uiState.showPlaylist
             self.effectsHidden = !appState.uiState.showEffects
+            self.playlistDockState = appState.uiState.playlistDockState
             
         } else {
             
             let viewType = preferences.viewOnStartup.viewType
             self.playlistHidden = viewType == .effectsOnly || viewType == .compact
             self.effectsHidden = viewType == .playlistOnly || viewType == .compact
-        }
-        
-        if (preferences.windowLocationOnStartup.option == .rememberFromLastAppLaunch) {
-            
-            self.windowLocation = NSPoint(x: CGFloat(appState.uiState.windowLocationX), y: CGFloat(appState.uiState.windowLocationY))
-            
-        } else {
-            
-            let windowWidth = UIConstants.windowWidth
-            var windowHeight: CGFloat
-            
-            let showPlaylist = !self.playlistHidden
-            let showEffects = !self.effectsHidden
-            
-            if (showPlaylist && showEffects) {
-                windowHeight = UIConstants.windowHeight_playlistAndEffects
-            } else if (showPlaylist) {
-                windowHeight = UIConstants.windowHeight_playlistOnly
-            } else if (showEffects) {
-                windowHeight = UIConstants.windowHeight_effectsOnly
-            } else {
-                windowHeight = UIConstants.windowHeight_compact
-            }
-        
-            self.windowLocation = UIUtils.windowPositionRelativeToScreen(windowWidth, windowHeight, preferences.windowLocationOnStartup.windowLocation)
+            self.playlistDockState = .bottom
         }
         
         self.repeatMode = appState.playbackSequenceState.repeatMode

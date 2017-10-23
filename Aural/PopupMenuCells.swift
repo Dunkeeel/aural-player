@@ -12,8 +12,8 @@ class PopupMenuCell: NSPopUpButtonCell {
     var rectRadius: CGFloat {return 1}
     var menuGradient: NSGradient {return Colors.sliderBarGradient}
     
-//    var titleFont: NSFont {return UIConstants.popupMenuFont}
-//    var titleColor: NSColor {return Colors.popupMenuTextColor}
+    var titleFont: NSFont {return UIConstants.popupMenuFont}
+    var titleColor: NSColor {return Colors.popupMenuTextColor}
     
     var arrowXMargin: CGFloat {return 5}
     var arrowYMargin: CGFloat {return 5}
@@ -39,13 +39,13 @@ class PopupMenuCell: NSPopUpButtonCell {
         let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.center
         
-//        let textFontAttributes = [
-//            NSAttributedStringKey.font: titleFont,
-//            NSAttributedStringKey.foregroundColor: titleColor,
-//            NSAttributedStringKey.paragraphStyle: textStyle
-//        ]
+        let textFontAttributes = [
+            NSAttributedStringKey.font: titleFont,
+            NSAttributedStringKey.foregroundColor: titleColor,
+            NSAttributedStringKey.paragraphStyle: textStyle
+        ]
         
-//        title.string.draw(in: withFrame, withAttributes: textFontAttributes)
+        title.string.draw(in: withFrame, withAttributes: textFontAttributes)
         
         return withFrame
     }

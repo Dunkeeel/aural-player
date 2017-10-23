@@ -8,6 +8,7 @@ class AppDefaults {
     
     static let showPlaylist: Bool = true
     static let showEffects: Bool = true
+    static let playlistDockState: PlaylistDockState = .bottom
     
     static let windowLocationX: Float = 0
     static let windowLocationY: Float = 0
