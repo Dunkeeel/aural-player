@@ -4,15 +4,19 @@
 
 import Cocoa
 
-class PreferencesViewController: NSViewController {
+class PreferenceWindowController: NSWindowController {
     
-    @IBOutlet weak var prefsPanel: NSPanel!
+    override var windowNibName: NSNib.Name {
+        return NSNib.Name("PreferenceWindowController")
+    }
+    
+    //@IBOutlet weak var prefsPanel: NSPanel!
     @IBOutlet weak var prefsTabView: NSTabView!
     
-    private var prefsTabViewButtons: [NSButton]?
+    // private var prefsTabViewButtons: [NSButton]?
     
     // Player prefs
-    @IBOutlet weak var btnPlayerPrefs: NSButton!
+    // @IBOutlet weak var btnPlayerPrefs: NSButton!
     
     @IBOutlet weak var seekLengthField: NSTextField!
     @IBOutlet weak var seekLengthSlider: NSSlider!
@@ -30,7 +34,7 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var panDeltaStepper: NSStepper!
     
     // Playlist prefs
-    @IBOutlet weak var btnPlaylistPrefs: NSButton!
+    // @IBOutlet weak var btnPlaylistPrefs: NSButton!
     
     @IBOutlet weak var btnEmptyPlaylist: NSButton!
     @IBOutlet weak var btnRememberPlaylist: NSButton!
@@ -42,7 +46,7 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var btnAutoplayAlways: NSButton!
     
     // View prefs
-    @IBOutlet weak var btnViewPrefs: NSButton!
+    // @IBOutlet weak var btnViewPrefs: NSButton!
     
     @IBOutlet weak var btnStartWithView: NSButton!
     @IBOutlet weak var startWithViewMenu: NSPopUpButton!
@@ -58,12 +62,16 @@ class PreferencesViewController: NSViewController {
     // Cached preferences instance
     private let preferences: Preferences = ObjectGraph.getPreferencesDelegate().getPreferences()
     
-    override func viewDidLoad() {
+    override func windowDidLoad() {
+        super.windowDidLoad()
         
-        prefsPanel.titlebarAppearsTransparent = true
-        prefsTabViewButtons = [btnPlayerPrefs, btnPlaylistPrefs, btnViewPrefs]
+        window?.titlebarAppearsTransparent = true
+        window?.title = "Preferences"
         
-        resetPreferencesFields()
+        // prefsTabViewButtons = [btnPlayerPrefs, btnPlaylistPrefs, btnViewPrefs]
+        
+        //resetPreferencesFields()
+        
     }
     
     private func resetPreferencesFields() {
@@ -73,7 +81,7 @@ class PreferencesViewController: NSViewController {
         resetViewPrefs()
         
         // Select the player prefs tab
-        playerPrefsTabViewAction(self)
+        // playerPrefsTabViewAction(self)
     }
     
     private func resetPlayerPrefs() {
@@ -140,11 +148,17 @@ class PreferencesViewController: NSViewController {
     }
     
     // Presents the modal dialog
-    @IBAction func preferencesAction(_ sender: Any) {
-        
-        resetPreferencesFields()
-        UIUtils.showModalDialog(prefsPanel)
+    
+    func showPreferences() {
+        print("showing Preferences")
+//        resetPreferencesFields()
+//        UIUtils.showModalDialog(prefsPanel)
     }
+    
+//    @IBAction func preferencesAction(_ sender: Any) {
+//        resetPreferencesFields()
+//        UIUtils.showModalDialog(prefsPanel)
+//    }
     
     @IBAction func volumeDeltaAction(_ sender: Any) {
         
@@ -226,29 +240,29 @@ class PreferencesViewController: NSViewController {
         }
     }
     
-    @IBAction func playerPrefsTabViewAction(_ sender: Any) {
-        
-        prefsTabViewButtons!.forEach({$0.state = NSControl.StateValue(rawValue: 0)})
-        
-        btnPlayerPrefs.state = NSControl.StateValue(rawValue: 1)
-        prefsTabView.selectTabViewItem(at: 0)
-    }
-    
-    @IBAction func playlistPrefsTabViewAction(_ sender: Any) {
-        
-        prefsTabViewButtons!.forEach({$0.state = NSControl.StateValue(rawValue: 0)})
-        
-        btnPlaylistPrefs.state = NSControl.StateValue(rawValue: 1)
-        prefsTabView.selectTabViewItem(at: 1)
-    }
-    
-    @IBAction func viewPrefsTabViewAction(_ sender: Any) {
-        
-        prefsTabViewButtons!.forEach({$0.state = NSControl.StateValue(rawValue: 0)})
-        
-        btnViewPrefs.state = NSControl.StateValue(rawValue: 1)
-        prefsTabView.selectTabViewItem(at: 2)
-    }
+//    @IBAction func playerPrefsTabViewAction(_ sender: Any) {
+//
+//        prefsTabViewButtons!.forEach({$0.state = NSControl.StateValue(rawValue: 0)})
+//
+//        btnPlayerPrefs.state = NSControl.StateValue(rawValue: 1)
+//        prefsTabView.selectTabViewItem(at: 0)
+//    }
+//
+//    @IBAction func playlistPrefsTabViewAction(_ sender: Any) {
+//
+//        prefsTabViewButtons!.forEach({$0.state = NSControl.StateValue(rawValue: 0)})
+//
+//        btnPlaylistPrefs.state = NSControl.StateValue(rawValue: 1)
+//        prefsTabView.selectTabViewItem(at: 1)
+//    }
+//
+//    @IBAction func viewPrefsTabViewAction(_ sender: Any) {
+//
+//        prefsTabViewButtons!.forEach({$0.state = NSControl.StateValue(rawValue: 0)})
+//
+//        btnViewPrefs.state = NSControl.StateValue(rawValue: 1)
+//        prefsTabView.selectTabViewItem(at: 2)
+//    }
     
     @IBAction func startupPlaylistPrefAction(_ sender: Any) {
         // Needed for radio button group

@@ -1,10 +1,6 @@
-/*
-    View controller for all app windows - main window and playlist window. Performs any and all display (or hiding), positioning, alignment, resizing, etc. of the windows and their constituent views.
- */
-
 import Cocoa
 
-// Enumerates all possible dock states of the playlist window, in relation to the main window
+/** All possible dock states of the playlist window, in relation to the main window */
 enum PlaylistDockState: String {
     case bottom
     case right
@@ -12,14 +8,17 @@ enum PlaylistDockState: String {
     case none
 }
 
+/** All possible dock types */
 enum DockType: String {
     case bottom
     case right
     case left
 }
 
-// TODO: What to do if the playlist window moves off-screen ??? Should it always be resized so it is completely on-screen ???
-class WindowViewController: NSViewController, NSWindowDelegate {
+/**
+ View controller for all app windows - main window and playlist window. Performs any and all display (or hiding), positioning, alignment, resizing, etc. of the windows and their constituent views.
+ */
+class MainWindowController: NSWindowController, NSWindowDelegate {
     
     // MARK: - IBOutlets
     
@@ -28,6 +27,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
     
     // Detachable/movable/resizable window that contains the playlist view. Child of the main window.
     @IBOutlet weak var playlistWindow: NSWindow!
+    //var playlistWindow = AppDelegat
     
     // Buttons to toggle the playlist/effects views
     @IBOutlet weak var btnToggleEffects: NSButton!
@@ -77,7 +77,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
     @IBAction func toggleEffectsAction(_ sender: AnyObject) {
         toggleEffects(true)
     }
-    
+
     @IBAction func quitAuralAction(_ sender: AnyObject) {
         NSApplication.shared.terminate(self)
     }
@@ -111,10 +111,12 @@ class WindowViewController: NSViewController, NSWindowDelegate {
     }()
     
     // MARK: - Functions
-    
-    override func viewDidLoad() {
+    override func windowDidLoad() {
+        super.windowDidLoad()
         WindowState.window = self.mainWindow
-        setUpWindows()
+        print(playlistWindow.debugDescription)
+        //mainWindow.addChildWindow(playlistWindow, ordered: NSWindow.OrderingMode.below)
+        //setUpWindows()
     }
     
     func setUpWindows() {
@@ -135,6 +137,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         
         mainWindow.windowController?.windowFrameAutosaveName = NSWindow.FrameAutosaveName(rawValue: "mainWindow")
         mainWindow.windowController?.shouldCascadeWindows = false
+        //mainWindow.setFrameUsingName(NSWindow.FrameAutosaveName(rawValue: "mainWindow"))
         
         mainWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         mainWindow.isMovableByWindowBackground = false
@@ -150,15 +153,19 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         playlistWindow.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)?.isHidden = true
         playlistWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isHidden = true
         
+        //playlistWindow.delegate = self
+        
         playlistWindow.windowController?.windowFrameAutosaveName = NSWindow.FrameAutosaveName(rawValue: "playlistWindow")
         playlistWindow.windowController?.shouldCascadeWindows = false
-        playlistWindow.delegate = self
+        //playlistWindow.setFrameUsingName(NSWindow.FrameAutosaveName(rawValue: "playlistWindow"))
+        
+        //
+        //playlistWindow.makeKeyAndOrderFront(self)
         
         playlistWindow.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         playlistWindow.isMovableByWindowBackground = true
         
         print("\(#function) -> check playlistHidden")
-        //playlistDockState = appState.playlistDockState
         if (appState.playlistHidden) {
             hidePlaylist()
             //dockPlaylist(.bottom)
@@ -184,20 +191,25 @@ class WindowViewController: NSViewController, NSWindowDelegate {
         switch playlistDockState {
             
         case .bottom:
-                if mainWindow.frame.origin.y < self.screen.visibleFrame.origin.y + 38{
-                    mainWindow.setFrameOrigin(CGPoint(x: mainWindow.frame.origin.x,y: self.screen.visibleFrame.origin.y + 38))
+                if mainWindow.frame.origin.y < self.screen.visibleFrame.origin.y + min(playlistWindow.height, mainWindow.remainingHeight) + UIConstants.windowGap{
+                    
+                    mainWindow.setFrameOrigin(CGPoint(x: mainWindow.frame.origin.x,y: self.screen.visibleFrame.origin.y + min(playlistWindow.height, mainWindow.remainingHeight) + UIConstants.windowGap))
                 }
             
         case .left:
-                if mainWindow.frame.origin.x < self.screen.visibleFrame.origin.x + 38{
-                    mainWindow.setFrame(NSRect(origin: mainWindow.frame.origin, size: NSSize(width: min(mainWindow.width, self.screen.frame.width - 38), height: mainWindow.height)), display: true)
-                    mainWindow.setFrameOrigin(CGPoint(x: self.screen.visibleFrame.origin.x + 38,y: mainWindow.frame.origin.y))
+                if mainWindow.frame.origin.x < self.screen.visibleFrame.origin.x + min(playlistWindow.width, mainWindow.remainingWidth) + UIConstants.windowGap{
+                    
+                    mainWindow.setFrame(NSRect(origin: mainWindow.frame.origin, size: NSSize(width: min(mainWindow.width, self.screen.visibleFrame.width - 38), height: mainWindow.height)), display: true)
+                    
+                    mainWindow.setFrameOrigin(CGPoint(x: self.screen.visibleFrame.origin.x + min(playlistWindow.width, mainWindow.remainingWidth) + UIConstants.windowGap,y: mainWindow.frame.origin.y))
                 }
             
         case .right:
-                if mainWindow.frame.origin.x + mainWindow.width > self.screen.visibleFrame.origin.x + self.screen.frame.width - 38{
-                    mainWindow.setFrame(NSRect(origin: mainWindow.frame.origin, size: NSSize(width: min(mainWindow.width, self.screen.frame.width - 38), height: mainWindow.height)), display: true)
-                    mainWindow.setFrameOrigin(CGPoint(x: self.screen.visibleFrame.origin.x + self.screen.frame.width - 38 - mainWindow.width,y: mainWindow.frame.origin.y))
+                if mainWindow.frame.origin.x + mainWindow.width > self.screen.visibleFrame.origin.x + self.screen.visibleFrame.width - min(playlistWindow.width, mainWindow.remainingWidth) - UIConstants.windowGap{
+                    
+                    mainWindow.setFrame(NSRect(origin: mainWindow.frame.origin, size: NSSize(width: min(mainWindow.width, self.screen.visibleFrame.width - 38), height: mainWindow.height)), display: true)
+                    
+                    mainWindow.setFrameOrigin(CGPoint(x: self.screen.frame.width - mainWindow.width - min(playlistWindow.width + UIConstants.windowGap, mainWindow.remainingWidth),y: mainWindow.frame.origin.y))
                 }
             
         default:
@@ -259,6 +271,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
                 playlistFrame.size = NSMakeSize(min(playlistWindow.width, mainWindow.remainingWidth - UIConstants.windowGap), mainWindow.height)
                 playlistWindow.setFrame(playlistFrame, display: true, animate: false)
             }
+            
             playlistWindow.setFrameOrigin(mainWindow.frame.origin
                 .applying(CGAffineTransform.init(translationX: (mainWindow.width + UIConstants.windowGap), y: 0)))
             
@@ -272,6 +285,7 @@ class WindowViewController: NSViewController, NSWindowDelegate {
                 playlistFrame.size = NSMakeSize(min(playlistWindow.width, mainWindow.remainingWidth - UIConstants.windowGap), mainWindow.height)
                 playlistWindow.setFrame(playlistFrame, display: true, animate: false)
             }
+            
             playlistWindow.setFrameOrigin(mainWindow.frame.origin
                 .applying(CGAffineTransform.init(translationX: -(playlistWindow.width + UIConstants.windowGap), y: 0)))
             
@@ -497,67 +511,4 @@ class WindowViewController: NSViewController, NSWindowDelegate {
             }
         }
     }
-}
-
-// MARK: -
-
-// Provides convenient access to the state of the main window, across the app
-class WindowState {
-    
-    // MARK: WindowState Variables
-    
-    static var window: NSWindow?
-    static var showingPlaylist: Bool = true
-    static var showingEffects: Bool = true
-    static var playlistDockState: PlaylistDockState = .none
-    
-    // MARK: WindowState Functions
-    
-    static func location() -> NSPoint {
-        return window!.frame.origin
-    }
-    
-    static func getPersistentState() -> UIState {
-        
-        let uiState = UIState()
-        
-        uiState.showEffects = WindowState.showingEffects
-        uiState.showPlaylist = WindowState.showingPlaylist
-        uiState.playlistDockState = WindowState.playlistDockState
-        
-        return uiState
-    }
-}
-
-// MARK: - Extensions
-
-// Accessors for convenience/conciseness
-extension NSWindow {
-    
-    var width: CGFloat {
-        return self.frame.width
-    }
-    
-    var height: CGFloat {
-        return self.frame.height
-    }
-    
-    // X co-ordinate of location
-    var x: CGFloat {
-        return self.frame.origin.x
-    }
-    
-    // Y co-ordinate of location
-    var y: CGFloat {
-        return self.frame.origin.y
-    }
-    
-    var remainingHeight: CGFloat {
-        return ((screen?.visibleFrame.height)! - self.height)
-    }
-    
-    var remainingWidth: CGFloat {
-        return ((screen?.visibleFrame.width)! - self.width)
-    }
-    
 }

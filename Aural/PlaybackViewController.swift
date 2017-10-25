@@ -37,8 +37,8 @@ class PlaybackViewController: NSViewController, MessageSubscriber, AsyncMessageS
     override func viewDidLoad() {
         
         // Set up a mouse listener (for double clicks -> play selected track)
-        playlistView.doubleAction = #selector(self.playSelectedTrackAction(_:))
-        playlistView.target = self
+        //playlistView.doubleAction = #selector(self.playSelectedTrackAction(_:))
+        //playlistView.target = self
         
         let appState = ObjectGraph.getUIAppState()
         updateRepeatAndShuffleControls(appState.repeatMode, appState.shuffleMode)

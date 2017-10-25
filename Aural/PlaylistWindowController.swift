@@ -4,7 +4,11 @@
 
 import Cocoa
 
-class PlaylistViewController: NSViewController, AsyncMessageSubscriber, MessageSubscriber {
+class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, MessageSubscriber {
+    
+    override var windowNibName: NSNib.Name {
+        return NSNib.Name("PlaylistWindowController")
+    }
     
     // Displays the playlist and summary
     @IBOutlet weak var playlistView: NSTableView!
@@ -26,7 +30,8 @@ class PlaylistViewController: NSViewController, AsyncMessageSubscriber, MessageS
     // Needed for playlist scrolling with arrow keys
     private var playlistKeyPressHandler: PlaylistKeyPressHandler?
     
-    override func viewDidLoad() {
+    override func windowDidLoad() {
+        super.windowDidLoad()
         
         // Enable drag n drop into the playlist view
         playlistView.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: String(kUTTypeFileURL))])

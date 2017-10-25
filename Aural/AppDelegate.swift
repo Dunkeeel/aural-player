@@ -1,15 +1,22 @@
-/*
-    Entry point for the Aural Player application. Performs high-level (application-level) operations.
- */
+
 import Cocoa
 import AVFoundation
 
+/**
+ Entry point for the Aural Player application. Performs high-level (application-level) operations.
+ */
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate{
+    
+    @IBAction func showPreferencesAction(_ sender: AnyObject) {
+        UIUtils.showModalDialog(preferenceWindowController.window!)
+    }
     
     // MARK: - Variables
     
-    var windowViewController: WindowViewController?
+    lazy var mainWindowController: MainWindowController = MainWindowController()
+    lazy var playlistWindowController: PlaylistWindowController = PlaylistWindowController()
+    lazy var preferenceWindowController : PreferenceWindowController = PreferenceWindowController()
     
     // (Optional) launch parameters: files to open upon launch (can be audio or playlist files)
     private var filesToOpen: [URL] = [URL]()
@@ -26,16 +33,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Parent Functions
     
     override init() {
-        
         super.init()
         
         // Configuration and initialization
-        
         configureLogging()
         ObjectGraph.initialize()
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        
         
         // Update the appLaunched flag
         appLaunched = true
@@ -46,11 +53,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         print("\(#function) -> hasVisibleWindows: \(flag)")
-        let mainWindowVisible = (windowViewController?.mainWindow.isVisible) != nil ? true : false
+        let mainWindowVisible = mainWindowController.mainWindow.isVisible
         print("\(#function) -> mainWindowVisible: \(mainWindowVisible)")
         if flag, mainWindowVisible{
-            windowViewController?.mainWindow.orderFront(self)
-            windowViewController?.playlistWindow.orderFront(self)
+            mainWindowController.mainWindow.orderFront(self)
+            mainWindowController.playlistWindow.orderFront(self)
         } else {
             for window in sender.windows{
                     if window.title == "Aural" {

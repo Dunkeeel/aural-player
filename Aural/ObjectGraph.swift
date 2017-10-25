@@ -1,17 +1,16 @@
-/*
-    Takes care of loading all persistent app state from disk, and constructing the critical objects in the app's object tree - player, playlist, audio graph (i.e., "the back end"), and all delegates (middlemen/facades) for interaction between the UI and the "back end".
- */
-
 import Foundation
 
+/**
+ Takes care of loading all persistent app state from disk, and constructing the critical objects in the app's object tree - player, playlist, audio graph (i.e., "the back end"), and all delegates (middlemen/facades) for interaction between the UI and the "back end".
+ */
 class ObjectGraph {
     
     //MARK: - Variables
     
     private static var appState: AppState?
     private static var uiAppState: UIAppState?
-    private static var preferences: Preferences?
     
+    private static var preferences: Preferences?
     private static var preferencesDelegate: PreferencesDelegateProtocol?
     
     private static var playlist: Playlist?

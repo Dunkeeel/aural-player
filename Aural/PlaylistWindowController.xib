@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="TTK-lM-ACK" id="g4h-Bo-2SU"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <viewController id="RV6-P2-fHh" userLabel="Playlist TableView Controller" customClass="PlaylistTableViewController" customModule="Aural" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="ljF-rO-8HJ" id="1Al-Gr-Bye"/>
+            </connections>
+        </viewController>
+        <customObject id="TTK-lM-ACK" customClass="MainWindowController" customModule="Aural" customModuleProvider="target"/>
+        <viewController id="4Un-PS-Qu8" customClass="MainWindowController" customModule="Aural" customModuleProvider="target">
+            <connections>
+                <outlet property="playlistWindow" destination="mVc-K1-bmp" id="Eyr-ji-tlH"/>
+            </connections>
+        </viewController>
+        <viewController id="THv-Lf-9lR" customClass="PlaylistWindowController" customModule="Aural" customModuleProvider="target">
+            <connections>
+                <outlet property="controlsBox" destination="JJO-jV-n5u" id="iGd-DQ-sbc"/>
+                <outlet property="lblPlaylistSummary" destination="JBu-XX-FuT" id="1a3-lX-Ct7"/>
+                <outlet property="playlistView" destination="ljF-rO-8HJ" id="W3W-Sf-wLG"/>
+                <outlet property="playlistWorkSpinner" destination="PGQ-ji-fXy" id="PN9-SC-KZV"/>
+                <outlet property="view" destination="rel-Fg-GwA" id="QLE-pO-KZt"/>
+            </connections>
+        </viewController>
+        <viewController id="Of8-ub-4yb" customClass="PlaylistSearchViewController" customModule="Aural" customModuleProvider="target">
+            <connections>
+                <outlet property="btnNextSearch" destination="AHy-Jz-UKh" id="ZB9-k0-22x"/>
+                <outlet property="btnPreviousSearch" destination="N1w-Kt-NmI" id="d0X-tV-UR9"/>
+                <outlet property="comparisonTypeBeginsWith" destination="kQi-x6-mHK" id="iFo-sq-JiX"/>
+                <outlet property="comparisonTypeContains" destination="Dby-tY-SC6" id="L0h-R2-2jc"/>
+                <outlet property="comparisonTypeEndsWith" destination="SEC-2S-Ux8" id="Hrd-9x-R5W"/>
+                <outlet property="comparisonTypeEquals" destination="duY-LY-KwU" id="HGE-8e-KcB"/>
+                <outlet property="playlistView" destination="ljF-rO-8HJ" id="Mm7-a9-VVq"/>
+                <outlet property="searchByAlbum" destination="FQY-7Z-wmC" id="8XK-LG-FDG"/>
+                <outlet property="searchByArtist" destination="qGI-k1-9g8" id="NKP-T4-uUK"/>
+                <outlet property="searchByName" destination="rZq-tp-r0F" id="KGK-Fr-l5W"/>
+                <outlet property="searchByTitle" destination="O43-QK-XUl" id="qPC-H9-o6v"/>
+                <outlet property="searchCaseSensitive" destination="DjV-iC-dQ5" id="Hgy-hU-3qc"/>
+                <outlet property="searchField" destination="6cq-ZY-FuB" id="edC-me-754"/>
+                <outlet property="searchPanel" destination="Fmx-UC-cfh" id="Itx-mk-d0u"/>
+                <outlet property="searchResultMatchInfo" destination="wta-Mk-E6m" id="wt0-Qa-yyC"/>
+                <outlet property="searchResultsSummaryLabel" destination="m1W-KS-fH3" id="Ypy-nc-86B"/>
+                <outlet property="view" destination="YWk-vQ-DhF" id="OgT-ay-vPn"/>
+            </connections>
+        </viewController>
+        <viewController id="KSS-DC-AwC" customClass="PlaylistSortViewController" customModule="Aural" customModuleProvider="target">
+            <connections>
+                <outlet property="playlistView" destination="ljF-rO-8HJ" id="r0I-Bj-hTC"/>
+                <outlet property="sortAscending" destination="ATq-Xc-Hm5" id="Jn2-sf-bQR"/>
+                <outlet property="sortByDuration" destination="9LR-8u-pnm" id="KSY-CY-wwD"/>
+                <outlet property="sortByName" destination="bpa-Mr-B6b" id="XKh-v7-2CO"/>
+                <outlet property="sortDescending" destination="3P5-6i-rJd" id="pJL-HG-2vW"/>
+                <outlet property="sortPanel" destination="BYa-R4-heg" id="we9-eT-WTy"/>
+                <outlet property="view" destination="GBa-iy-Ml7" id="SV5-QW-m30"/>
+            </connections>
+        </viewController>
+        <window title="Playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="playlistWindow" animationBehavior="default" titleVisibility="hidden" id="mVc-K1-bmp" userLabel="Playlist Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="109" y="132" width="415" height="257"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <value key="minSize" type="size" width="0.0" height="100"/>
+            <view key="contentView" wantsLayer="YES" id="Wwv-eZ-e15">
+                <rect key="frame" x="0.0" y="0.0" width="415" height="257"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="kLY-ny-nKC">
+                        <rect key="frame" x="0.0" y="0.0" width="415" height="257"/>
+                    </visualEffectView>
+                    <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="G5a-CB-j2Y" userLabel="Docking Controls">
+                        <rect key="frame" x="175" y="230" width="64" height="15"/>
+                        <subviews>
+                            <button toolTip="Dock playlist on the left" translatesAutoresizingMaskIntoConstraints="NO" id="3fq-JV-IeF" userLabel="Dock Left Button">
+                                <rect key="frame" x="0.0" y="0.0" width="18" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="7go-yS-L2V"/>
+                                    <constraint firstAttribute="width" constant="18" id="Zkw-Yx-qXa"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="DockLeft" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="1WJ-et-wYo">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button toolTip="Dock playlist on the bottom" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FkB-6Q-cxD" userLabel="Dock Bottom Button">
+                                <rect key="frame" x="23" y="0.0" width="18" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="Kts-Vo-CB1"/>
+                                    <constraint firstAttribute="height" constant="15" id="h84-qj-gyQ"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="DockBottom" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="lMx-ST-pL8">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button toolTip="Dock playlist on the right" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xNb-yy-7sn" userLabel="Dock Right Button">
+                                <rect key="frame" x="46" y="0.0" width="18" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="3zx-Nf-rp6"/>
+                                    <constraint firstAttribute="height" constant="15" id="kgI-id-HZF"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="DockRight" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="qhg-Cy-h7i">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="N6S-V7-RkO"/>
+                            <constraint firstAttribute="height" constant="15" id="w9M-Xc-ael"/>
+                        </constraints>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="vOn-BM-oCJ" userLabel="Resizing Controls">
+                        <rect key="frame" x="344" y="231" width="59" height="14"/>
+                        <subviews>
+                            <button toolTip="Maximize playlist" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="vFa-xi-qbN" userLabel="Maximize Button">
+                                <rect key="frame" x="0.0" y="2" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="12" id="WwR-PY-PbO"/>
+                                    <constraint firstAttribute="height" constant="12" id="gqm-xN-9Ut"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Maximize" imagePosition="only" alignment="center" refusesFirstResponder="YES" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="HcW-bO-NPo">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button toolTip="Maximize playlist vertically" translatesAutoresizingMaskIntoConstraints="NO" id="YMu-6k-imZ" userLabel="Maximize Vertical Button">
+                                <rect key="frame" x="23" y="2" width="13" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="XhL-I1-vhH"/>
+                                    <constraint firstAttribute="width" constant="13" id="lts-PG-Xzs"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="MaximizeVertical" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="nrn-mB-8mj">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button toolTip="Maximize playlist horizontally" translatesAutoresizingMaskIntoConstraints="NO" id="JLt-5S-bmL" userLabel="Maximize Horizontal Button">
+                                <rect key="frame" x="47" y="0.0" width="12" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="12" id="CcD-Lq-XDy"/>
+                                    <constraint firstAttribute="height" constant="14" id="EPG-z9-UHs"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="MaximizeHorizontal" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="VHZ-rF-DeK">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="IeY-80-7wf"/>
+                            <constraint firstAttribute="width" constant="59" id="gZl-Vd-IlI"/>
+                        </constraints>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                    <box alphaValue="0.90000000000000002" boxType="custom" borderType="none" borderWidth="0.0" cornerRadius="5" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rel-Fg-GwA" userLabel="Playlist Box">
+                        <rect key="frame" x="12" y="12" width="391" height="207"/>
+                        <view key="contentView" id="Xtu-fg-bJn">
+                            <rect key="frame" x="0.0" y="0.0" width="391" height="207"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="Mqi-SJ-cKc">
+                                    <rect key="frame" x="0.0" y="0.0" width="391" height="207"/>
+                                    <subviews>
+                                        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmL-6g-mQl" userLabel="Table View">
+                                            <rect key="frame" x="0.0" y="27" width="391" height="180"/>
+                                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ebb-gM-b9M">
+                                                <rect key="frame" x="0.0" y="0.0" width="391" height="180"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" viewBased="YES" id="ljF-rO-8HJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="391" height="180"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <size key="intercellSpacing" width="3" height="4"/>
+                                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                        <tableColumns>
+                                                            <tableColumn identifier="cv_trackIndex" editable="NO" width="25" minWidth="25" maxWidth="40" id="NDa-PN-2eX" userLabel="Index">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="Duration">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="Fiu-0d-qVP">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <prototypeCellViews>
+                                                                    <tableCellView identifier="cv_trackIndex" id="jbp-Su-Z7c" customClass="PlaylistCellView" customModule="Aural" customModuleProvider="target">
+                                                                        <rect key="frame" x="1" y="2" width="25" height="20"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XG-jp-wnb">
+                                                                                <rect key="frame" x="4" y="0.0" width="16" height="20"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="20" id="KOv-89-orO"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="justified" title="▶︎" id="4PH-59-Vdm">
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                            <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mvq-hW-MQl">
+                                                                                <rect key="frame" x="2" y="0.0" width="20" height="20"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="20" id="3Au-B7-B03"/>
+                                                                                    <constraint firstAttribute="width" constant="20" id="d2E-Hh-RWU"/>
+                                                                                </constraints>
+                                                                                <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="tDX-Rn-8Fc"/>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="6XG-jp-wnb" firstAttribute="top" secondItem="jbp-Su-Z7c" secondAttribute="top" id="6pt-bh-Rfv"/>
+                                                                            <constraint firstItem="Mvq-hW-MQl" firstAttribute="centerX" secondItem="6XG-jp-wnb" secondAttribute="centerX" id="OHI-HW-ZeK"/>
+                                                                            <constraint firstItem="6XG-jp-wnb" firstAttribute="leading" secondItem="jbp-Su-Z7c" secondAttribute="leading" constant="6" id="jzZ-5o-cDh"/>
+                                                                            <constraint firstItem="Mvq-hW-MQl" firstAttribute="top" secondItem="jbp-Su-Z7c" secondAttribute="top" id="ldf-VY-Rmq"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="imageView" destination="Mvq-hW-MQl" id="Mo4-LR-L0j"/>
+                                                                            <outlet property="textField" destination="6XG-jp-wnb" id="UZ6-D1-gXP"/>
+                                                                        </connections>
+                                                                    </tableCellView>
+                                                                </prototypeCellViews>
+                                                            </tableColumn>
+                                                            <tableColumn identifier="cv_trackName" width="312" minWidth="200" maxWidth="10000" id="XWk-YL-TYa" userLabel="Track Name">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Track">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="PfW-6M-DCp">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
+                                                                <prototypeCellViews>
+                                                                    <tableCellView identifier="cv_trackName" id="UfF-m3-oan" customClass="PlaylistCellView" customModule="Aural" customModuleProvider="target">
+                                                                        <rect key="frame" x="29" y="2" width="312" height="22"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Vh-ed-s6h" userLabel="Track Name">
+                                                                                <rect key="frame" x="-2" y="-8" width="314" height="30"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="30" id="kEn-X3-BEj"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Track Name" id="iLj-2z-oop">
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="8Vh-ed-s6h" firstAttribute="top" secondItem="UfF-m3-oan" secondAttribute="top" id="5VM-NZ-k2V"/>
+                                                                            <constraint firstItem="8Vh-ed-s6h" firstAttribute="leading" secondItem="UfF-m3-oan" secondAttribute="leading" id="Tuk-gC-Fhw"/>
+                                                                            <constraint firstItem="8Vh-ed-s6h" firstAttribute="trailing" secondItem="UfF-m3-oan" secondAttribute="trailing" constant="-2" id="fpG-HJ-EKt"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="textField" destination="8Vh-ed-s6h" id="07v-M5-35o"/>
+                                                                        </connections>
+                                                                    </tableCellView>
+                                                                </prototypeCellViews>
+                                                            </tableColumn>
+                                                            <tableColumn identifier="cv_duration" width="45" minWidth="45" maxWidth="65" id="yKK-mx-QJS">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="Duration">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="l5J-dy-vI6">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <prototypeCellViews>
+                                                                    <tableCellView identifier="cv_duration" id="gxx-Ue-nDq" customClass="PlaylistCellView" customModule="Aural" customModuleProvider="target">
+                                                                        <rect key="frame" x="344" y="2" width="45" height="22"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jki-zr-KQH">
+                                                                                <rect key="frame" x="-3" y="-8" width="41" height="30"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="30" id="SBA-lt-qum"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="justified" title="00:00" id="T0I-GE-0fC">
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="jki-zr-KQH" secondAttribute="trailing" constant="9" id="Zbl-2d-eqP"/>
+                                                                            <constraint firstItem="jki-zr-KQH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gxx-Ue-nDq" secondAttribute="leading" constant="-1" id="gyg-na-qKE"/>
+                                                                            <constraint firstItem="jki-zr-KQH" firstAttribute="top" secondItem="gxx-Ue-nDq" secondAttribute="top" id="uHk-ng-CRK"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="textField" destination="jki-zr-KQH" id="Xo2-Yu-p3Q"/>
+                                                                        </connections>
+                                                                    </tableCellView>
+                                                                </prototypeCellViews>
+                                                            </tableColumn>
+                                                        </tableColumns>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="RV6-P2-fHh" id="Q2x-5z-bfK"/>
+                                                            <outlet property="delegate" destination="RV6-P2-fHh" id="tJJ-mH-zeU"/>
+                                                        </connections>
+                                                    </tableView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.79901801220000002" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </clipView>
+                                            <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="m6S-6O-9IW">
+                                                <rect key="frame" x="-100" y="-100" width="383" height="16"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="RL7-ih-ddf">
+                                                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fD1-JH-nLn">
+                                            <rect key="frame" x="0.0" y="24" width="391" height="5"/>
+                                        </box>
+                                        <box borderType="none" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJO-jV-n5u" userLabel="Info Bar">
+                                            <rect key="frame" x="-3" y="-4" width="397" height="32"/>
+                                            <view key="contentView" id="Jex-e7-V9m">
+                                                <rect key="frame" x="0.0" y="0.0" width="397" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vzd-WI-p0u" userLabel="Playlist Controls">
+                                                        <rect key="frame" x="9" y="8" width="153" height="16"/>
+                                                        <subviews>
+                                                            <button toolTip="Add files to playlist" translatesAutoresizingMaskIntoConstraints="NO" id="OCk-SG-VFH" userLabel="Add">
+                                                                <rect key="frame" x="0.0" y="2" width="12" height="12"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="12" id="UkF-xO-2lW"/>
+                                                                    <constraint firstAttribute="height" constant="12" id="VIT-X9-j1c"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Add" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="hGZ-cE-X7u">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="addTracksAction:" target="THv-Lf-9lR" id="a1G-Pt-zXQ"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Remove selected tracks from playlist" translatesAutoresizingMaskIntoConstraints="NO" id="qxs-MB-qeT" userLabel="Remove">
+                                                                <rect key="frame" x="20" y="2" width="12" height="12"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="12" id="4Gy-Ka-4pf"/>
+                                                                    <constraint firstAttribute="width" constant="12" id="gnR-RL-C0H"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Remove" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2yc-r2-GUO">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="removeTracksAction:" target="THv-Lf-9lR" id="Lp9-ii-Qzh"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Save current playlist" translatesAutoresizingMaskIntoConstraints="NO" id="RL6-zX-pWo" userLabel="Save">
+                                                                <rect key="frame" x="40" y="2" width="12" height="12"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="12" id="PEB-2b-w8G"/>
+                                                                    <constraint firstAttribute="width" constant="12" id="Ubu-Z5-iUv"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Save" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ibx-T5-BlU">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="savePlaylistAction:" target="THv-Lf-9lR" id="JB0-lZ-4Bc"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Clear the playlist" translatesAutoresizingMaskIntoConstraints="NO" id="klz-vQ-aM1" userLabel="Clear">
+                                                                <rect key="frame" x="60" y="1" width="13" height="14"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="13" id="ICj-p5-V3T"/>
+                                                                    <constraint firstAttribute="height" constant="14" id="hN0-rU-aSx"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Clear" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="eyX-0j-Cts">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="clearPlaylistAction:" target="THv-Lf-9lR" id="fXH-kX-Jvj"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Move selected track up" translatesAutoresizingMaskIntoConstraints="NO" id="qbg-20-2iX" userLabel="Up">
+                                                                <rect key="frame" x="81" y="1" width="10" height="14"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="10" id="Ruw-Oh-F6x"/>
+                                                                    <constraint firstAttribute="height" constant="14" id="mNg-gb-rvP"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Up" imagePosition="only" alignment="center" continuous="YES" imageScaling="proportionallyUpOrDown" inset="2" id="ggH-cc-k47">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="moveTrackUpAction:" target="THv-Lf-9lR" id="rzG-0U-GnL"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Move selected track down" translatesAutoresizingMaskIntoConstraints="NO" id="l4J-E9-Gdy" userLabel="Down">
+                                                                <rect key="frame" x="99" y="1" width="10" height="14"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="14" id="E94-c9-mbg"/>
+                                                                    <constraint firstAttribute="width" constant="10" id="kmz-ob-zH9"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Down" imagePosition="only" alignment="center" continuous="YES" imageScaling="proportionallyUpOrDown" inset="2" id="iUS-BV-v03">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="moveTrackDownAction:" target="THv-Lf-9lR" id="dOJ-ro-d6l"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Search playlist" translatesAutoresizingMaskIntoConstraints="NO" id="YZa-yN-JyF" userLabel="Search">
+                                                                <rect key="frame" x="117" y="2" width="12" height="12"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="12" id="HOA-9U-hDA"/>
+                                                                    <constraint firstAttribute="width" constant="12" id="lOP-IB-dTs"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xlb-M0-Qaf">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="searchPlaylistAction:" target="Of8-ub-4yb" id="C48-QV-9wR"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Sort playlist" translatesAutoresizingMaskIntoConstraints="NO" id="v25-Su-Y8j" userLabel="Sort">
+                                                                <rect key="frame" x="137" y="0.0" width="16" height="16"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="16" id="bNq-AQ-lCG"/>
+                                                                    <constraint firstAttribute="height" constant="16" id="q3Y-1q-fgr"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Sort" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="x0W-m6-cGd">
+                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="sortPlaylistAction:" target="KSS-DC-AwC" id="sKR-70-7gW"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JBu-XX-FuT" userLabel="Playlist Summary">
+                                                        <rect key="frame" x="214" y="7" width="176" height="19"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="0 tracks  0:00" usesSingleLineMode="YES" id="GPG-FO-gZX">
+                                                            <font key="font" size="13" name="GillSans-SemiBold"/>
+                                                            <color key="textColor" white="0.70157877599999996" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" white="0.78719075520000004" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="PGQ-ji-fXy" userLabel="Spinner">
+                                                        <rect key="frame" x="191" y="10" width="16" height="16"/>
+                                                        <contentFilters>
+                                                            <ciFilter name="CIFalseColor">
+                                                                <configuration>
+                                                                    <ciColor key="inputColor0" red="0.71891206502914429" green="0.71891206502914429" blue="0.71891206502914429" alpha="1"/>
+                                                                    <ciColor key="inputColor1" red="0.91730046272277832" green="0.91730046272277832" blue="0.91730046272277832" alpha="1"/>
+                                                                    <null key="inputImage"/>
+                                                                </configuration>
+                                                            </ciFilter>
+                                                        </contentFilters>
+                                                    </progressIndicator>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Vzd-WI-p0u" firstAttribute="centerY" secondItem="Jex-e7-V9m" secondAttribute="centerY" id="0Pk-8e-kQS"/>
+                                                    <constraint firstItem="PGQ-ji-fXy" firstAttribute="centerX" secondItem="Jex-e7-V9m" secondAttribute="centerX" id="4Sm-ft-U8H"/>
+                                                    <constraint firstItem="JBu-XX-FuT" firstAttribute="centerY" secondItem="Jex-e7-V9m" secondAttribute="centerY" id="AKQ-Zw-CPY"/>
+                                                    <constraint firstItem="JBu-XX-FuT" firstAttribute="leading" secondItem="PGQ-ji-fXy" secondAttribute="trailing" constant="9" id="B8t-DM-s8x"/>
+                                                    <constraint firstAttribute="bottom" secondItem="PGQ-ji-fXy" secondAttribute="bottom" constant="10" id="RuH-AN-Zm7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JBu-XX-FuT" secondAttribute="trailing" constant="9" id="Sck-ZW-Vx2"/>
+                                                    <constraint firstItem="PGQ-ji-fXy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vzd-WI-p0u" secondAttribute="trailing" constant="9" id="hNs-wC-8Ya"/>
+                                                    <constraint firstItem="Vzd-WI-p0u" firstAttribute="leading" secondItem="Jex-e7-V9m" secondAttribute="leading" constant="9" id="noV-bq-7bz"/>
+                                                </constraints>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="26" id="i0x-GW-VSS"/>
+                                            </constraints>
+                                        </box>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="DmL-6g-mQl" secondAttribute="trailing" id="3fG-VB-VUg"/>
+                                        <constraint firstAttribute="trailing" secondItem="JJO-jV-n5u" secondAttribute="trailing" id="O2H-n4-PIE"/>
+                                        <constraint firstItem="fD1-JH-nLn" firstAttribute="leading" secondItem="Mqi-SJ-cKc" secondAttribute="leading" id="Zst-G5-28r"/>
+                                        <constraint firstAttribute="trailing" secondItem="fD1-JH-nLn" secondAttribute="trailing" id="aA1-EI-cOw"/>
+                                        <constraint firstItem="DmL-6g-mQl" firstAttribute="leading" secondItem="Mqi-SJ-cKc" secondAttribute="leading" id="kac-xO-YIb"/>
+                                        <constraint firstItem="JJO-jV-n5u" firstAttribute="leading" secondItem="Mqi-SJ-cKc" secondAttribute="leading" id="uGG-1r-e4S"/>
+                                    </constraints>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Mqi-SJ-cKc" secondAttribute="bottom" id="Gvl-AQ-OoK"/>
+                                <constraint firstAttribute="trailing" secondItem="Mqi-SJ-cKc" secondAttribute="trailing" id="Igf-rY-0bj"/>
+                                <constraint firstItem="Mqi-SJ-cKc" firstAttribute="top" secondItem="Xtu-fg-bJn" secondAttribute="top" id="Qot-vO-abd"/>
+                                <constraint firstItem="Mqi-SJ-cKc" firstAttribute="leading" secondItem="Xtu-fg-bJn" secondAttribute="leading" id="ohh-SC-Nmf"/>
+                            </constraints>
+                        </view>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="0Tt-ft-Vlf"/>
+                        </constraints>
+                        <color key="borderColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    </box>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kLY-ny-nKC" firstAttribute="top" secondItem="Wwv-eZ-e15" secondAttribute="top" id="Csk-EQ-Ibl"/>
+                    <constraint firstAttribute="trailing" secondItem="kLY-ny-nKC" secondAttribute="trailing" id="FUw-N9-QaV"/>
+                    <constraint firstItem="G5a-CB-j2Y" firstAttribute="top" secondItem="Wwv-eZ-e15" secondAttribute="top" constant="12" id="KPb-sb-YsE"/>
+                    <constraint firstAttribute="bottom" secondItem="rel-Fg-GwA" secondAttribute="bottom" constant="12" id="NbN-9m-vi7"/>
+                    <constraint firstItem="vOn-BM-oCJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G5a-CB-j2Y" secondAttribute="trailing" constant="12" id="Rhr-xI-kzO"/>
+                    <constraint firstAttribute="trailing" secondItem="rel-Fg-GwA" secondAttribute="trailing" constant="12" id="SYC-1z-Ih9"/>
+                    <constraint firstItem="rel-Fg-GwA" firstAttribute="leading" secondItem="Wwv-eZ-e15" secondAttribute="leading" constant="12" id="Y5k-Ph-Jpi"/>
+                    <constraint firstItem="kLY-ny-nKC" firstAttribute="leading" secondItem="Wwv-eZ-e15" secondAttribute="leading" id="aXd-9a-sdm"/>
+                    <constraint firstAttribute="bottom" secondItem="kLY-ny-nKC" secondAttribute="bottom" id="fys-ig-fmO"/>
+                    <constraint firstItem="rel-Fg-GwA" firstAttribute="top" secondItem="Wwv-eZ-e15" secondAttribute="top" constant="38" id="gEB-AR-geO"/>
+                    <constraint firstItem="G5a-CB-j2Y" firstAttribute="centerX" secondItem="Wwv-eZ-e15" secondAttribute="centerX" id="gzc-y8-KW5"/>
+                    <constraint firstAttribute="trailing" secondItem="vOn-BM-oCJ" secondAttribute="trailing" constant="12" id="jL1-uh-zjy"/>
+                    <constraint firstItem="vOn-BM-oCJ" firstAttribute="top" secondItem="Wwv-eZ-e15" secondAttribute="top" constant="12" id="ySG-lE-uFm"/>
+                </constraints>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="B96030E1-E91C-4BD6-8D35-12C50E79C1D7" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="m9U-at-i9h">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="C978C147-0376-4932-9EF8-F34D7A3FEA86" label="Custom View" paletteLabel="Custom View" tag="-1" id="5T4-Ce-jiu">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="25" height="10"/>
+                        <size key="maxSize" width="44" height="12"/>
+                        <stackView key="view" distribution="fillEqually" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" id="SMe-3B-Iqz" userLabel="Jump Controls">
+                            <rect key="frame" x="26" y="14" width="25" height="12"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <button toolTip="Scroll to top of playlist" translatesAutoresizingMaskIntoConstraints="NO" id="xfD-OF-pQj" userLabel="Scroll To Top Button">
+                                    <rect key="frame" x="1" y="0.0" width="12" height="12"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="12" id="2Qe-Se-c1X"/>
+                                        <constraint firstAttribute="height" constant="12" id="ch6-gM-ny4"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ScrollToTop" imagePosition="only" alignment="center" continuous="YES" imageScaling="proportionallyUpOrDown" inset="2" id="Gfb-E5-3Vm">
+                                        <behavior key="behavior" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="scrollToTopAction:" target="THv-Lf-9lR" id="1NN-ny-SS2"/>
+                                    </connections>
+                                </button>
+                                <button toolTip="Scroll to bottom of playlist" translatesAutoresizingMaskIntoConstraints="NO" id="oTe-eJ-P9Q" userLabel="Scroll To Bottom Button">
+                                    <rect key="frame" x="13" y="0.0" width="12" height="12"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="12" id="oDa-Gh-QJ8"/>
+                                        <constraint firstAttribute="height" constant="12" id="vJX-au-hTs"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ScrollToBottom" imagePosition="only" alignment="center" continuous="YES" imageScaling="proportionallyUpOrDown" inset="2" id="OE2-Y6-nwS">
+                                        <behavior key="behavior" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="scrollToBottomAction:" target="THv-Lf-9lR" id="oli-Ci-7Pc"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <edgeInsets key="edgeInsets" left="1" right="0.0" top="0.0" bottom="0.0"/>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="tTD-BL-WxJ"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="NvD-Cb-bJR"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems/>
+            </toolbar>
+            <point key="canvasLocation" x="21" y="100"/>
+        </window>
+        <window title="Search for tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Fmx-UC-cfh" userLabel="Search Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="0.0" y="0.0" width="383" height="248"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" wantsLayer="YES" id="YWk-vQ-DhF">
+                <rect key="frame" x="0.0" y="0.0" width="383" height="248"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box fixedFrame="YES" boxType="custom" cornerRadius="3" translatesAutoresizingMaskIntoConstraints="NO" id="mZ7-4E-alq" userLabel="Search Box">
+                        <rect key="frame" x="20" y="210" width="352" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" ambiguous="YES" id="AtX-nS-bVl">
+                            <rect key="frame" x="1" y="1" width="350" height="21"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6cq-ZY-FuB" userLabel="Search Field" customClass="ColoredCursorSearchField" customModule="Aural" customModuleProvider="target">
+                                    <rect key="frame" x="23" y="-2" width="322" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="" drawsBackground="YES" id="RFa-Zv-nwl">
+                                        <font key="font" size="13" name="GillSans"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGj-WA-gjj" userLabel="Search Image">
+                                    <rect key="frame" x="5" y="3" width="13" height="13"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Search" id="pPi-lS-hbO"/>
+                                </imageView>
+                            </subviews>
+                        </view>
+                    </box>
+                    <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Options:" translatesAutoresizingMaskIntoConstraints="NO" id="K3F-qx-uRz" userLabel="Search Options Box">
+                        <rect key="frame" x="20" y="100" width="352" height="103"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" ambiguous="YES" id="pQa-lZ-g9p">
+                            <rect key="frame" x="1" y="1" width="350" height="101"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DjV-iC-dQ5" userLabel="Case Sensitive">
+                                    <rect key="frame" x="251" y="59" width="99" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Case sensitive" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="RRh-r3-AE0" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchOptionsChangedAction:" target="Of8-ub-4yb" id="9ks-oV-ZuE"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gkd-Wa-y7Q" userLabel="Options:">
+                                    <rect key="frame" x="251" y="78" width="62" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Options:" id="dJY-nq-Awq">
+                                        <font key="font" metaFont="smallSystemBold"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPD-be-9nc" userLabel="Comparison type:">
+                                    <rect key="frame" x="139" y="76" width="104" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Comparison type:" id="o3I-Eq-udl">
+                                        <font key="font" metaFont="smallSystemBold"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="duY-LY-KwU" userLabel="Equals">
+                                    <rect key="frame" x="137" y="42" width="79" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="radio" title="Equals" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="Hzj-aW-qtY" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchTypeChangedAction:" target="Of8-ub-4yb" id="csh-2P-hCv"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dby-tY-SC6" userLabel="Contains">
+                                    <rect key="frame" x="137" y="59" width="79" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="radio" title="Contains" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" state="on" inset="2" id="A2V-pY-l9s" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchTypeChangedAction:" target="Of8-ub-4yb" id="BNB-qB-7QJ"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQi-x6-mHK" userLabel="Begins with">
+                                    <rect key="frame" x="137" y="25" width="91" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="radio" title="Begins with" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="6ZH-tv-2Qp" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchTypeChangedAction:" target="Of8-ub-4yb" id="AUv-VV-C6i"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-2S-Ux8" userLabel="Ends with">
+                                    <rect key="frame" x="137" y="8" width="91" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="radio" title="Ends with" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="yaj-la-flC" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchTypeChangedAction:" target="Of8-ub-4yb" id="RIG-Ih-TYO"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZq-tp-r0F" userLabel="Name field">
+                                    <rect key="frame" x="5" y="59" width="121" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Name / filename" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="NoP-rY-q8R" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchFieldsChangedAction:" target="Of8-ub-4yb" id="k7G-Gu-uwg"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qGI-k1-9g8" userLabel="Artist field">
+                                    <rect key="frame" x="5" y="42" width="121" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Artist (if available)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="6f5-1f-MWW" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchFieldsChangedAction:" target="Of8-ub-4yb" id="wcW-Sv-vOv"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O43-QK-XUl" userLabel="Title field">
+                                    <rect key="frame" x="5" y="25" width="121" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Title (if available)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="pb1-B5-AI4" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchFieldsChangedAction:" target="Of8-ub-4yb" id="iSK-0Z-2aJ"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FQY-7Z-wmC" userLabel="Album field">
+                                    <rect key="frame" x="5" y="8" width="130" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Album (if available)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="63f-db-QSf" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="searchFieldsChangedAction:" target="Of8-ub-4yb" id="cNX-G2-zLD"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBd-iA-XBZ">
+                                    <rect key="frame" x="7" y="81" width="86" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Search by:" id="Rs9-2n-I1o">
+                                        <font key="font" metaFont="smallSystemBold"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                    </box>
+                    <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Results:" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jbW-gX-37t" userLabel="Search Results Box">
+                        <rect key="frame" x="20" y="40" width="352" height="53"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" ambiguous="YES" id="n2f-6y-tCJ">
+                            <rect key="frame" x="1" y="1" width="350" height="51"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-KS-fH3" userLabel="Results summary label">
+                                    <rect key="frame" x="63" y="21" width="214" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No results" id="fsZ-uN-QbO">
+                                        <font key="font" metaFont="smallSystemBold"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wta-Mk-E6m" userLabel="Match info label">
+                                    <rect key="frame" x="5" y="-1" width="341" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" id="p4D-vq-n6s">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N1w-Kt-NmI">
+                                    <rect key="frame" x="38" y="26" width="28" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="roundRect" title="&lt;" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="uOt-kt-hMX" customClass="ColoredNavigationButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="systemBold" size="12"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="previousSearchAction:" target="Of8-ub-4yb" id="mis-St-cbN"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHy-Jz-UKh">
+                                    <rect key="frame" x="272" y="26" width="28" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="roundRect" title="&gt;" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="A4f-Ty-rFD" customClass="ColoredNavigationButtonCell" customModule="Aural" customModuleProvider="target">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="systemBold" size="12"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="nextSearchAction:" target="Of8-ub-4yb" id="GNQ-b3-Dpl"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                    </box>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ijw-rb-uOS" userLabel="Done button">
+                        <rect key="frame" x="151" y="8" width="80" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="Done" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5mU-Zp-bcc" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="searchDoneAction:" target="Of8-ub-4yb" id="Wob-wK-itM"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-470" y="104"/>
+        </window>
+        <window title="Sort tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="BYa-R4-heg" userLabel="Sort Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="0.0" y="0.0" width="269" height="120"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" wantsLayer="YES" id="GBa-iy-Ml7">
+                <rect key="frame" x="0.0" y="0.0" width="269" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Options:" translatesAutoresizingMaskIntoConstraints="NO" id="4uj-da-Lz7" userLabel="Sort Options Box">
+                        <rect key="frame" x="20" y="36" width="229" height="69"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" ambiguous="YES" id="tkm-7S-jqC">
+                            <rect key="frame" x="1" y="1" width="227" height="67"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <box fixedFrame="YES" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czj-jk-3Jv" userLabel="Sort fields box">
+                                    <rect key="frame" x="5" y="-4" width="89" height="65"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <view key="contentView" ambiguous="YES" id="lLQ-sc-tZ6">
+                                        <rect key="frame" x="2" y="2" width="85" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3n-bq-YBy">
+                                                <rect key="frame" x="5" y="46" width="74" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Sort by:" id="qJa-Ye-oJ7">
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpa-Mr-B6b" userLabel="Name field">
+                                                <rect key="frame" x="2" y="24" width="90" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="radio" title="Name" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="zTI-je-add" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="2sE-qg-m4O"/>
+                                                </connections>
+                                            </button>
+                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9LR-8u-pnm" userLabel="Duration field">
+                                                <rect key="frame" x="2" y="8" width="90" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="radio" title="Duration" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="nin-Jh-xLY" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="rGE-LA-D6F"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </view>
+                                </box>
+                                <box fixedFrame="YES" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cR9-f8-rTw" userLabel="Sort order box">
+                                    <rect key="frame" x="129" y="-4" width="89" height="65"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <view key="contentView" ambiguous="YES" id="Z9p-8W-0jp">
+                                        <rect key="frame" x="2" y="2" width="85" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Tc-cV-dxW" userLabel="Sort Order:">
+                                                <rect key="frame" x="5" y="46" width="94" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Order:" id="2wG-Ez-Lyy">
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ATq-Xc-Hm5">
+                                                <rect key="frame" x="5" y="25" width="77" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="radio" title="Ascending" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="8xa-Ar-ZXR" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="lXD-FD-aqh"/>
+                                                </connections>
+                                            </button>
+                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3P5-6i-rJd">
+                                                <rect key="frame" x="5" y="8" width="77" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="radio" title="Descending" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="MXd-B0-WEX" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="UPe-yr-m2X"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </view>
+                                </box>
+                            </subviews>
+                        </view>
+                    </box>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzu-KV-6id" userLabel="Sort button">
+                        <rect key="frame" x="68" y="6" width="63" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="Sort" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u2S-sK-hTa" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="sortBtnAction:" target="KSS-DC-AwC" id="TPn-6c-EyW"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vv2-bh-eR7" userLabel="Cancel button">
+                        <rect key="frame" x="138" y="6" width="63" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a02-rn-H7L" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="sortCancelBtnAction:" target="KSS-DC-AwC" id="X3r-gA-FM6"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-301.5" y="399"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="Add" width="134" height="134"/>
+        <image name="Clear" width="34.599998474121094" height="40"/>
+        <image name="DockBottom" width="154" height="127"/>
+        <image name="DockLeft" width="154" height="127"/>
+        <image name="DockRight" width="154" height="127"/>
+        <image name="Down" width="92" height="128"/>
+        <image name="Maximize" width="85" height="85"/>
+        <image name="MaximizeHorizontal" width="85" height="85"/>
+        <image name="MaximizeVertical" width="89" height="85"/>
+        <image name="Remove" width="134" height="134"/>
+        <image name="Save" width="128" height="128"/>
+        <image name="ScrollToBottom" width="269" height="266"/>
+        <image name="ScrollToTop" width="269" height="266"/>
+        <image name="Search" width="128" height="128"/>
+        <image name="Sort" width="464" height="386"/>
+        <image name="Up" width="92" height="128"/>
+    </resources>
+</document>

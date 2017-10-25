@@ -1,9 +1,8 @@
-/*
-    Encapsulates all application state, with values that are marshaled into a format directly usable by the UI, based on user preferences.
- */
-
 import Foundation
 
+/**
+ Encapsulates all application state, with values that are marshaled into a format directly usable by the UI, based on user preferences.
+ */
 class UIAppState {
     
     // MARK: - Variables

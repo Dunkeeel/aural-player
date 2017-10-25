@@ -1,7 +1,7 @@
 import Cocoa
 
-/* MARK: -
-	Encapsulates UI state
+/**
+ Encapsulates UI state
  */
 class UIState {
     var showPlaylist: Bool = AppDefaults.showPlaylist
@@ -9,7 +9,7 @@ class UIState {
     var playlistDockState: PlaylistDockState = AppDefaults.playlistDockState
 }
 
-/* MARK: -
+/**
     Encapsulates audio graph state
  */
 class AudioGraphState {
