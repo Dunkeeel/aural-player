@@ -4,7 +4,7 @@
 
 import Cocoa
 
-class PlaylistSearchViewController: NSViewController, MessageSubscriber {
+class SearchViewController: NSViewController, MessageSubscriber {
     
     // Playlist search modal dialog fields
     

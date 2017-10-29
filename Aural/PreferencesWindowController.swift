@@ -4,10 +4,10 @@
 
 import Cocoa
 
-class PreferenceWindowController: NSWindowController {
+class PreferencesWindowController: NSWindowController {
     
     override var windowNibName: NSNib.Name {
-        return NSNib.Name("PreferenceWindowController")
+        return NSNib.Name("PreferencesWindowController")
     }
     
     //@IBOutlet weak var prefsPanel: NSPanel!

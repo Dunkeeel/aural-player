@@ -1,41 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13528" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13528"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+        <customObject id="-2" userLabel="File's Owner" customClass="PlaylistWindowController" customModule="Aural" customModuleProvider="target">
             <connections>
-                <outlet property="delegate" destination="TTK-lM-ACK" id="g4h-Bo-2SU"/>
+                <outlet property="btnSort" destination="v25-Su-Y8j" id="HPf-on-Hc5"/>
+                <outlet property="controlsBox" destination="rel-Fg-GwA" id="EHY-rp-xrN"/>
+                <outlet property="lblPlaylistSummary" destination="JBu-XX-FuT" id="OQg-vh-GGF"/>
+                <outlet property="playlistTableViewController" destination="RV6-P2-fHh" id="Gjw-yB-m2z"/>
+                <outlet property="playlistView" destination="ljF-rO-8HJ" id="Vc3-E6-hzu"/>
+                <outlet property="playlistWorkSpinner" destination="PGQ-ji-fXy" id="v9N-PJ-2Id"/>
+                <outlet property="window" destination="mVc-K1-bmp" id="Pcj-Vb-R55"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <viewController id="RV6-P2-fHh" userLabel="Playlist TableView Controller" customClass="PlaylistTableViewController" customModule="Aural" customModuleProvider="target">
-            <connections>
-                <outlet property="view" destination="ljF-rO-8HJ" id="1Al-Gr-Bye"/>
-            </connections>
-        </viewController>
-        <customObject id="TTK-lM-ACK" customClass="MainWindowController" customModule="Aural" customModuleProvider="target"/>
-        <viewController id="4Un-PS-Qu8" customClass="MainWindowController" customModule="Aural" customModuleProvider="target">
-            <connections>
-                <outlet property="playlistWindow" destination="mVc-K1-bmp" id="Eyr-ji-tlH"/>
-            </connections>
-        </viewController>
-        <viewController id="THv-Lf-9lR" customClass="PlaylistWindowController" customModule="Aural" customModuleProvider="target">
-            <connections>
-                <outlet property="controlsBox" destination="JJO-jV-n5u" id="iGd-DQ-sbc"/>
-                <outlet property="lblPlaylistSummary" destination="JBu-XX-FuT" id="1a3-lX-Ct7"/>
-                <outlet property="playlistView" destination="ljF-rO-8HJ" id="W3W-Sf-wLG"/>
-                <outlet property="playlistWorkSpinner" destination="PGQ-ji-fXy" id="PN9-SC-KZV"/>
-                <outlet property="view" destination="rel-Fg-GwA" id="QLE-pO-KZt"/>
-            </connections>
-        </viewController>
-        <viewController id="Of8-ub-4yb" customClass="PlaylistSearchViewController" customModule="Aural" customModuleProvider="target">
+        <viewController id="RV6-P2-fHh" customClass="PlaylistTableViewController" customModule="Aural" customModuleProvider="target"/>
+        <viewController id="Of8-ub-4yb" customClass="SearchViewController" customModule="Aural" customModuleProvider="target">
             <connections>
                 <outlet property="btnNextSearch" destination="AHy-Jz-UKh" id="ZB9-k0-22x"/>
                 <outlet property="btnPreviousSearch" destination="N1w-Kt-NmI" id="d0X-tV-UR9"/>
@@ -56,18 +43,7 @@
                 <outlet property="view" destination="YWk-vQ-DhF" id="OgT-ay-vPn"/>
             </connections>
         </viewController>
-        <viewController id="KSS-DC-AwC" customClass="PlaylistSortViewController" customModule="Aural" customModuleProvider="target">
-            <connections>
-                <outlet property="playlistView" destination="ljF-rO-8HJ" id="r0I-Bj-hTC"/>
-                <outlet property="sortAscending" destination="ATq-Xc-Hm5" id="Jn2-sf-bQR"/>
-                <outlet property="sortByDuration" destination="9LR-8u-pnm" id="KSY-CY-wwD"/>
-                <outlet property="sortByName" destination="bpa-Mr-B6b" id="XKh-v7-2CO"/>
-                <outlet property="sortDescending" destination="3P5-6i-rJd" id="pJL-HG-2vW"/>
-                <outlet property="sortPanel" destination="BYa-R4-heg" id="we9-eT-WTy"/>
-                <outlet property="view" destination="GBa-iy-Ml7" id="SV5-QW-m30"/>
-            </connections>
-        </viewController>
-        <window title="Playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="playlistWindow" animationBehavior="default" titleVisibility="hidden" id="mVc-K1-bmp" userLabel="Playlist Window">
+        <window title="Playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="playlistWindow" animationBehavior="default" titleVisibility="hidden" id="mVc-K1-bmp" userLabel="Playlist Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -146,6 +122,9 @@
                                     <behavior key="behavior" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="maximizePlaylistAction:" target="-2" id="0C4-RY-E5m"/>
+                                </connections>
                             </button>
                             <button toolTip="Maximize playlist vertically" translatesAutoresizingMaskIntoConstraints="NO" id="YMu-6k-imZ" userLabel="Maximize Vertical Button">
                                 <rect key="frame" x="23" y="2" width="13" height="12"/>
@@ -157,6 +136,9 @@
                                     <behavior key="behavior" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="maximizePlaylistVerticalAction:" target="-2" id="XgV-zl-a0o"/>
+                                </connections>
                             </button>
                             <button toolTip="Maximize playlist horizontally" translatesAutoresizingMaskIntoConstraints="NO" id="JLt-5S-bmL" userLabel="Maximize Horizontal Button">
                                 <rect key="frame" x="47" y="0.0" width="12" height="14"/>
@@ -168,6 +150,9 @@
                                     <behavior key="behavior" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="maximizePlaylistHorizontalAction:" target="-2" id="0Wm-Xq-4jm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -377,7 +362,7 @@
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="addTracksAction:" target="THv-Lf-9lR" id="a1G-Pt-zXQ"/>
+                                                                    <action selector="addTracksAction:" target="-2" id="FYH-1w-VQh"/>
                                                                 </connections>
                                                             </button>
                                                             <button toolTip="Remove selected tracks from playlist" translatesAutoresizingMaskIntoConstraints="NO" id="qxs-MB-qeT" userLabel="Remove">
@@ -391,7 +376,7 @@
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="removeTracksAction:" target="THv-Lf-9lR" id="Lp9-ii-Qzh"/>
+                                                                    <action selector="removeTracksAction:" target="-2" id="Nvn-ut-4ic"/>
                                                                 </connections>
                                                             </button>
                                                             <button toolTip="Save current playlist" translatesAutoresizingMaskIntoConstraints="NO" id="RL6-zX-pWo" userLabel="Save">
@@ -405,7 +390,7 @@
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="savePlaylistAction:" target="THv-Lf-9lR" id="JB0-lZ-4Bc"/>
+                                                                    <action selector="savePlaylistAction:" target="-2" id="MiV-Ni-7Bx"/>
                                                                 </connections>
                                                             </button>
                                                             <button toolTip="Clear the playlist" translatesAutoresizingMaskIntoConstraints="NO" id="klz-vQ-aM1" userLabel="Clear">
@@ -419,7 +404,7 @@
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="clearPlaylistAction:" target="THv-Lf-9lR" id="fXH-kX-Jvj"/>
+                                                                    <action selector="clearPlaylistAction:" target="-2" id="haz-3m-rbG"/>
                                                                 </connections>
                                                             </button>
                                                             <button toolTip="Move selected track up" translatesAutoresizingMaskIntoConstraints="NO" id="qbg-20-2iX" userLabel="Up">
@@ -433,7 +418,7 @@
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="moveTrackUpAction:" target="THv-Lf-9lR" id="rzG-0U-GnL"/>
+                                                                    <action selector="moveTrackUpAction:" target="-2" id="fKH-Si-iIw"/>
                                                                 </connections>
                                                             </button>
                                                             <button toolTip="Move selected track down" translatesAutoresizingMaskIntoConstraints="NO" id="l4J-E9-Gdy" userLabel="Down">
@@ -447,7 +432,7 @@
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="moveTrackDownAction:" target="THv-Lf-9lR" id="dOJ-ro-d6l"/>
+                                                                    <action selector="moveTrackDownAction:" target="-2" id="udD-j5-b86"/>
                                                                 </connections>
                                                             </button>
                                                             <button toolTip="Search playlist" translatesAutoresizingMaskIntoConstraints="NO" id="YZa-yN-JyF" userLabel="Search">
@@ -475,7 +460,7 @@
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="sortPlaylistAction:" target="KSS-DC-AwC" id="sKR-70-7gW"/>
+                                                                    <action selector="sortBtnAction:" target="-2" id="mCB-Eh-ejL"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -608,7 +593,7 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="scrollToTopAction:" target="THv-Lf-9lR" id="1NN-ny-SS2"/>
+                                        <action selector="scrollToTopAction:" target="-2" id="gre-kY-b4s"/>
                                     </connections>
                                 </button>
                                 <button toolTip="Scroll to bottom of playlist" translatesAutoresizingMaskIntoConstraints="NO" id="oTe-eJ-P9Q" userLabel="Scroll To Bottom Button">
@@ -622,7 +607,7 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="scrollToBottomAction:" target="THv-Lf-9lR" id="oli-Ci-7Pc"/>
+                                        <action selector="scrollToBottomAction:" target="-2" id="fMX-J1-CEY"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -642,10 +627,13 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems/>
             </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="yfN-A9-vJU"/>
+            </connections>
             <point key="canvasLocation" x="21" y="100"/>
         </window>
-        <window title="Search for tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Fmx-UC-cfh" userLabel="Search Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
+        <window title="Search for tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="SearchPanel" animationBehavior="default" titlebarAppearsTransparent="YES" id="Fmx-UC-cfh" userLabel="Search Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="383" height="248"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -812,7 +800,6 @@
                                 </textField>
                             </subviews>
                         </view>
-                        <color key="borderColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                     </box>
                     <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Results:" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jbW-gX-37t" userLabel="Search Results Box">
                         <rect key="frame" x="20" y="40" width="352" height="53"/>
@@ -863,7 +850,6 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                     </box>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ijw-rb-uOS" userLabel="Done button">
                         <rect key="frame" x="151" y="8" width="80" height="25"/>
@@ -882,139 +868,6 @@ Gw
                 </subviews>
             </view>
             <point key="canvasLocation" x="-470" y="104"/>
-        </window>
-        <window title="Sort tracks in playlist" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="BYa-R4-heg" userLabel="Sort Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="0.0" width="269" height="120"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <view key="contentView" wantsLayer="YES" id="GBa-iy-Ml7">
-                <rect key="frame" x="0.0" y="0.0" width="269" height="120"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Options:" translatesAutoresizingMaskIntoConstraints="NO" id="4uj-da-Lz7" userLabel="Sort Options Box">
-                        <rect key="frame" x="20" y="36" width="229" height="69"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView" ambiguous="YES" id="tkm-7S-jqC">
-                            <rect key="frame" x="1" y="1" width="227" height="67"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <box fixedFrame="YES" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czj-jk-3Jv" userLabel="Sort fields box">
-                                    <rect key="frame" x="5" y="-4" width="89" height="65"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <view key="contentView" ambiguous="YES" id="lLQ-sc-tZ6">
-                                        <rect key="frame" x="2" y="2" width="85" height="61"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3n-bq-YBy">
-                                                <rect key="frame" x="5" y="46" width="74" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Sort by:" id="qJa-Ye-oJ7">
-                                                    <font key="font" metaFont="smallSystemBold"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpa-Mr-B6b" userLabel="Name field">
-                                                <rect key="frame" x="2" y="24" width="90" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="radio" title="Name" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="zTI-je-add" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="2sE-qg-m4O"/>
-                                                </connections>
-                                            </button>
-                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9LR-8u-pnm" userLabel="Duration field">
-                                                <rect key="frame" x="2" y="8" width="90" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="radio" title="Duration" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="nin-Jh-xLY" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="rGE-LA-D6F"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </view>
-                                </box>
-                                <box fixedFrame="YES" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cR9-f8-rTw" userLabel="Sort order box">
-                                    <rect key="frame" x="129" y="-4" width="89" height="65"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <view key="contentView" ambiguous="YES" id="Z9p-8W-0jp">
-                                        <rect key="frame" x="2" y="2" width="85" height="61"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Tc-cV-dxW" userLabel="Sort Order:">
-                                                <rect key="frame" x="5" y="46" width="94" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Order:" id="2wG-Ez-Lyy">
-                                                    <font key="font" metaFont="smallSystemBold"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ATq-Xc-Hm5">
-                                                <rect key="frame" x="5" y="25" width="77" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="radio" title="Ascending" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="8xa-Ar-ZXR" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="lXD-FD-aqh"/>
-                                                </connections>
-                                            </button>
-                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3P5-6i-rJd">
-                                                <rect key="frame" x="5" y="8" width="77" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="radio" title="Descending" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="MXd-B0-WEX" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="sortOptionsChangedAction:" target="KSS-DC-AwC" id="UPe-yr-m2X"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </view>
-                                </box>
-                            </subviews>
-                        </view>
-                    </box>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzu-KV-6id" userLabel="Sort button">
-                        <rect key="frame" x="68" y="6" width="63" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="Sort" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u2S-sK-hTa" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="sortBtnAction:" target="KSS-DC-AwC" id="TPn-6c-EyW"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vv2-bh-eR7" userLabel="Cancel button">
-                        <rect key="frame" x="138" y="6" width="63" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a02-rn-H7L" customClass="ModalDialogResponseButtonCell" customModule="Aural" customModuleProvider="target">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="sortCancelBtnAction:" target="KSS-DC-AwC" id="X3r-gA-FM6"/>
-                        </connections>
-                    </button>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-301.5" y="399"/>
         </window>
     </objects>
     <resources>

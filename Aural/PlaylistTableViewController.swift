@@ -141,37 +141,40 @@ class PlaylistTableViewController: NSViewController, NSTableViewDataSource, NSTa
     // TODO: animation implementation
     
     // Whenever the playing track is paused/resumed, the animation needs to be paused/resumed.
-//    private func playbackStateChanged(_ state: PlaybackState) {
-//
-//        switch (state) {
-//
-//        case .playing:
-//
-//            animationCell?.imageView?.animates = true
-//
-//        case .paused:
-//
-//            animationCell?.imageView?.animates = false
-//
-//        default:
-//
-//            // Release the animation cell because the track is no longer playing
-//            animationCell?.imageView?.animates = false
-//            animationCell = nil
-//        }
-//    }
+    private func playbackStateChanged(_ state: PlaybackState) {
+
+        switch (state) {
+
+        case .playing:
+            
+            return
+            //animationCell?.imageView?.animates = true
+
+        case .paused:
+
+            return
+            //animationCell?.imageView?.animates = false
+
+        default:
+            
+            return
+            // Release the animation cell because the track is no longer playing
+            //animationCell?.imageView?.animates = false
+            //animationCell = nil
+        }
+    }
     
     func consumeNotification(_ notification: NotificationMessage) {
     
         // TODO: animation implemenation
         
-//        if (notification is PlaybackStateChangedNotification) {
-//
-//            let msg = notification as! PlaybackStateChangedNotification
-//
-//            playbackStateChanged(msg.newPlaybackState)
-//            return
-//        }
+        if (notification is PlaybackStateChangedNotification) {
+
+            let msg = notification as! PlaybackStateChangedNotification
+
+            playbackStateChanged(msg.newPlaybackState)
+            return
+        }
     }
     
     func processRequest(_ request: RequestMessage) -> ResponseMessage {

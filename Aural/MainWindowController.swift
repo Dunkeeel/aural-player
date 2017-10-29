@@ -20,22 +20,21 @@ enum DockType: String {
  */
 class MainWindowController: NSWindowController, NSWindowDelegate {
     
+    override var windowNibName: NSNib.Name {
+        return NSNib.Name("MainWindowController")
+    }
+    
     // MARK: - IBOutlets
     
-    // Main application window. Contains the Now Playing info box, player controls, and effects panel. Acts as a parent for the playlist window. Not manually resizable. Changes size when toggling playlist/effects views.
-    @IBOutlet weak var mainWindow: NSWindow!
+    // Main application window. Contains the Now Playing info box, player controls, and effects panel. Acts as a parent for the playlist window.
+    @IBOutlet var mainWindow: NSWindow!
     
-    // Detachable/movable/resizable window that contains the playlist view. Child of the main window.
-    @IBOutlet weak var playlistWindow: NSWindow!
-    //var playlistWindow = AppDelegat
+    /** The playback view controller which inherits the player controls */
+    @IBOutlet var playbackViewController: PlaybackViewController!
     
     // Buttons to toggle the playlist/effects views
     @IBOutlet weak var btnToggleEffects: NSButton!
     @IBOutlet weak var btnTogglePlaylist: NSButton!
-    
-    // Menu items to toggle the playlist and effects views
-    @IBOutlet weak var viewPlaylistMenuItem: NSMenuItem!
-    @IBOutlet weak var viewEffectsMenuItem: NSMenuItem!
     
     // The box that encloses the effects panel
     @IBOutlet weak var fxBox: NSBox!
@@ -43,50 +42,11 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     // The stack view that inherits the main ui panels
     @IBOutlet weak var stackView: NSStackView!
     
-    
-    // MARK: - IBActions
-    
-    @IBAction func togglePlaylistAction(_ sender: AnyObject) {
-        togglePlaylist()
-    }
-    
-    @IBAction func dockPlaylistRightAction(_ sender: AnyObject) {
-        dockPlaylist(.right)
-    }
-    
-    @IBAction func dockPlaylistLeftAction(_ sender: AnyObject) {
-        dockPlaylist(.left)
-    }
-    
-    @IBAction func dockPlaylistBottomAction(_ sender: AnyObject) {
-        dockPlaylist(.bottom)
-    }
-    
-    @IBAction func maximizePlaylistAction(_ sender: AnyObject) {
-        maximizePlaylist()
-    }
-    
-    @IBAction func maximizePlaylistHorizontalAction(_ sender: AnyObject) {
-        maximizePlaylist(true, false)
-    }
-    
-    @IBAction func maximizePlaylistVerticalAction(_ sender: AnyObject) {
-        maximizePlaylist(false, true)
-    }
-    
-    @IBAction func toggleEffectsAction(_ sender: AnyObject) {
-        toggleEffects(true)
-    }
-
-    @IBAction func quitAuralAction(_ sender: AnyObject) {
-        NSApplication.shared.terminate(self)
-    }
-    
-    @IBAction func hideAuralAction(_ sender: AnyObject) {
-        NSApplication.shared.hide(Any?.self)
-    }
-    
     // MARK: - Variables
+    
+    // window controller and window for the playlist. Acts as a child of the main window.
+    var playlistWindowController: PlaylistWindowController!
+    var playlistWindow: NSWindow!
     
     // Remembers if/where the playlist window has been docked with the main window
     private var playlistDockState: PlaylistDockState = .none
@@ -110,13 +70,18 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         return NSScreen.main!.frame.height
     }()
     
+    
     // MARK: - Functions
+    
     override func windowDidLoad() {
         super.windowDidLoad()
+        
+        playlistWindowController = PlaylistWindowController()
+        playlistWindow = playlistWindowController.window!
+        
         WindowState.window = self.mainWindow
-        print(playlistWindow.debugDescription)
-        //mainWindow.addChildWindow(playlistWindow, ordered: NSWindow.OrderingMode.below)
-        //setUpWindows()
+        
+        setUpWindows()
     }
     
     func setUpWindows() {
@@ -125,7 +90,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         let appState = ObjectGraph.getUIAppState()
         playlistDockState = appState.playlistDockState
         
-        // set up main window
+        // Main Window
         
         //mainWindow.styleMask.insert(.fullSizeContentView)
         mainWindow.hasShadow = false
@@ -143,8 +108,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         mainWindow.isMovableByWindowBackground = false
         mainWindow.makeKeyAndOrderFront(self)
         
-        
-        // set up playlist window
+        // Playlist Window
         
         //playlistWindow.styleMask.insert(.fullSizeContentView)
         playlistWindow.hasShadow = false
@@ -153,7 +117,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         playlistWindow.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)?.isHidden = true
         playlistWindow.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isHidden = true
         
-        //playlistWindow.delegate = self
+        playlistWindow.delegate = self
         
         playlistWindow.windowController?.windowFrameAutosaveName = NSWindow.FrameAutosaveName(rawValue: "playlistWindow")
         playlistWindow.windowController?.shouldCascadeWindows = false
@@ -238,13 +202,17 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(_ notification: Notification) {
-        hidePlaylist()
+        togglePlaylist()
     }
     
     // MARK: - Private Functions
     
     // docks the playlist to the main window according to the type (.bottom, .right, .left)
     private func dockPlaylist(_ type: DockType, _ resize: Bool = true) {
+        
+        if !playlistWindow.isVisible {
+            togglePlaylist()
+        }
         
         var playlistFrame = playlistWindow.frame
         
@@ -305,7 +273,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     // maximizes the playlist related the position of the main window according to the specified flags
-    private func maximizePlaylist(_ horizontal: Bool = true, _ vertical: Bool = true) {
+    func maximizePlaylist(_ horizontal: Bool = true, _ vertical: Bool = true) {
     
         // Mark the flag to indicate that an automated move/resize operation is now taking place
         automatedPlaylistMoveOrResize = true
@@ -412,27 +380,33 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     
     private func togglePlaylist() {
         
-        if (!playlistWindow.isVisible) {
-            showPlaylist()
-        } else {
-            hidePlaylist()
+//        if (!playlistWindow.isVisible) {
+//            showPlaylist()
+//        } else {
+//            hidePlaylist()
+//        }
+        
+        playlistWindow.isVisible ? hidePlaylist() : showPlaylist()
+        
+        if let menuController = (NSApp.delegate as? AppDelegate)?.menuController {
+            menuController.changeMenuState(StateMenuItems.playlistMenuItem, playlistWindow.isVisible)
         }
     }
     
     private func showPlaylist() {
         
         // Show playlist window and update UI controls
-        mainWindow.addChildWindow(playlistWindow, ordered: NSWindow.OrderingMode.below)
+        mainWindow.addChildWindow(playlistWindow, ordered: NSWindow.OrderingMode.above)
         playlistWindow.setIsVisible(true)
         btnTogglePlaylist.state = NSControl.StateValue(rawValue: 1)
         btnTogglePlaylist.image = UIConstants.imgPlaylistOn
-        viewPlaylistMenuItem.state = NSControl.StateValue(rawValue: 1)
+        //viewPlaylistMenuItem.state = NSControl.StateValue(rawValue: 1)
         WindowState.showingPlaylist = true
         
         // Re-dock the playlist window, as per the dock state
-//        if (playlistDockState != .none) {
-//            dockPlaylist(DockType(rawValue: playlistDockState.rawValue)!)
-//        }
+        if (playlistDockState != .none) {
+            dockPlaylist(DockType(rawValue: playlistDockState.rawValue)!,false)
+        }
     }
     
     private func hidePlaylist(_ noteOffset: Bool = true) {
@@ -441,7 +415,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         playlistWindow.setIsVisible(false)
         btnTogglePlaylist.state = NSControl.StateValue(rawValue: 0)
         btnTogglePlaylist.image = UIConstants.imgPlaylistOff
-        viewPlaylistMenuItem.state = NSControl.StateValue(rawValue: 0)
+        //viewPlaylistMenuItem.state = NSControl.StateValue(rawValue: 0)
         WindowState.showingPlaylist = false
     }
     
@@ -453,7 +427,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
             fxBox.isHidden = false
             btnToggleEffects.state = NSControl.StateValue(rawValue: 1)
             btnToggleEffects.image = UIConstants.imgEffectsOn
-            viewEffectsMenuItem.state = NSControl.StateValue(rawValue: 1)
+            //viewEffectsMenuItem.state = NSControl.StateValue(rawValue: 1)
             WindowState.showingEffects = true
             
             realignPlaylist(fxPanelHidden: false)
@@ -464,11 +438,16 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
             fxBox.isHidden = true
             btnToggleEffects.state = NSControl.StateValue(rawValue: 0)
             btnToggleEffects.image = UIConstants.imgEffectsOff
-            viewEffectsMenuItem.state = NSControl.StateValue(rawValue: 0)
+            //viewEffectsMenuItem.state = NSControl.StateValue(rawValue: 0)
             WindowState.showingEffects = false
             
             realignPlaylist(fxPanelHidden: true)
         }
+        
+        if let appDel = NSApplication.shared.delegate as? AppDelegate {
+            appDel.menuController.changeMenuState(StateMenuItems.effectsMenuItem, !fxBox.isHidden)
+        }
+        
         print("called toggleEffects -> shown: \(String(WindowState.showingEffects)))")
     }
     
@@ -510,5 +489,32 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 
             }
         }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func togglePlaylistAction(_ sender: AnyObject) {
+        togglePlaylist()
+    }
+    
+    @IBAction func dockPlaylistRightAction(_ sender: AnyObject) {
+        dockPlaylist(.right)
+    }
+    
+    @IBAction func dockPlaylistLeftAction(_ sender: AnyObject) {
+        dockPlaylist(.left)
+    }
+    
+    @IBAction func dockPlaylistBottomAction(_ sender: AnyObject) {
+        dockPlaylist(.bottom)
+    }
+    
+    @IBAction func toggleEffectsAction(_ sender: AnyObject) {
+        toggleEffects()
+    }
+    
+    // Shows the currently playing track, within the playlist view
+    @IBAction func showInPlaylistAction(_ sender: Any) {
+        playlistWindowController.showInPlaylist()
     }
 }

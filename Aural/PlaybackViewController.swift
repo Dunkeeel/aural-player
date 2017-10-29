@@ -13,32 +13,16 @@ class PlaybackViewController: NSViewController, MessageSubscriber, AsyncMessageS
     // Toggle buttons (their images change)
     @IBOutlet weak var btnShuffle: NSButton!
     @IBOutlet weak var btnRepeat: NSButton!
-    
-    @IBOutlet weak var repeatOffMainMenuItem: NSMenuItem!
-    @IBOutlet weak var repeatOneMainMenuItem: NSMenuItem!
-    @IBOutlet weak var repeatAllMainMenuItem: NSMenuItem!
-    
-    @IBOutlet weak var shuffleOffMainMenuItem: NSMenuItem!
-    @IBOutlet weak var shuffleOnMainMenuItem: NSMenuItem!
-    
-    @IBOutlet weak var repeatOffDockMenuItem: NSMenuItem!
-    @IBOutlet weak var repeatOneDockMenuItem: NSMenuItem!
-    @IBOutlet weak var repeatAllDockMenuItem: NSMenuItem!
-    
-    @IBOutlet weak var shuffleOffDockMenuItem: NSMenuItem!
-    @IBOutlet weak var shuffleOnDockMenuItem: NSMenuItem!
+        
+    @IBOutlet weak var mainWindowController: MainWindowController!
     
     // The playlist view can initiate playback of a track (through double clicks)
-    @IBOutlet weak var playlistView: NSTableView!
+    lazy var playlistView: NSTableView! = mainWindowController.playlistWindowController.playlistView
     
     // Delegate that conveys all playback requests to the player / playback sequence
     private let player: PlaybackDelegateProtocol = ObjectGraph.getPlaybackDelegate()
     
     override func viewDidLoad() {
-        
-        // Set up a mouse listener (for double clicks -> play selected track)
-        //playlistView.doubleAction = #selector(self.playSelectedTrackAction(_:))
-        //playlistView.target = self
         
         let appState = ObjectGraph.getUIAppState()
         updateRepeatAndShuffleControls(appState.repeatMode, appState.shuffleMode)
@@ -127,27 +111,27 @@ class PlaybackViewController: NSViewController, MessageSubscriber, AsyncMessageS
         switch shuffleMode {
             
         case .off: btnShuffle.image = UIConstants.imgShuffleOff
-        [shuffleOffMainMenuItem, shuffleOffDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 1)})
-        [shuffleOnMainMenuItem, shuffleOnDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
+        //[shuffleOffMainMenuItem, shuffleOffDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 1)})
+        //[shuffleOnMainMenuItem, shuffleOnDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
             
         case .on: btnShuffle.image = UIConstants.imgShuffleOn
-        [shuffleOffMainMenuItem, shuffleOffDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
-        [shuffleOnMainMenuItem, shuffleOnDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 1)})
+        //[shuffleOffMainMenuItem, shuffleOffDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
+        //[shuffleOnMainMenuItem, shuffleOnDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 1)})
         }
         
         switch repeatMode {
             
         case .off: btnRepeat.image = UIConstants.imgRepeatOff
-        [repeatOffMainMenuItem, repeatOffDockMenuItem].forEach({$0!.state = NSControl.StateValue(rawValue: 1)})
-        [repeatOneMainMenuItem, repeatOneDockMenuItem, repeatAllMainMenuItem, repeatAllDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
+        //[repeatOffMainMenuItem, repeatOffDockMenuItem].forEach({$0!.state = NSControl.StateValue(rawValue: 1)})
+        //[repeatOneMainMenuItem, repeatOneDockMenuItem, repeatAllMainMenuItem, repeatAllDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
             
         case .one: btnRepeat.image = UIConstants.imgRepeatOne
-        [repeatOneMainMenuItem, repeatOneDockMenuItem].forEach({$0!.state = NSControl.StateValue(rawValue: 1)})
-        [repeatOffMainMenuItem, repeatOffDockMenuItem, repeatAllMainMenuItem, repeatAllDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
+        //[repeatOneMainMenuItem, repeatOneDockMenuItem].forEach({$0!.state = NSControl.StateValue(rawValue: 1)})
+        //[repeatOffMainMenuItem, repeatOffDockMenuItem, repeatAllMainMenuItem, repeatAllDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
             
         case .all: btnRepeat.image = UIConstants.imgRepeatAll
-        [repeatAllMainMenuItem, repeatAllDockMenuItem].forEach({$0!.state = NSControl.StateValue(rawValue: 1)})
-        [repeatOneMainMenuItem, repeatOneDockMenuItem, repeatOffMainMenuItem, repeatOffDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
+        //[repeatAllMainMenuItem, repeatAllDockMenuItem].forEach({$0!.state = NSControl.StateValue(rawValue: 1)})
+        //[repeatOneMainMenuItem, repeatOneDockMenuItem, repeatOffMainMenuItem, repeatOffDockMenuItem].forEach({$0?.state = NSControl.StateValue(rawValue: 0)})
         }
     }
     

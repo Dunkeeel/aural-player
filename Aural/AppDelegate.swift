@@ -8,15 +8,26 @@ import AVFoundation
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate{
     
+    // MARK: - IBOutlets
+
+    @IBOutlet weak var menuController: MenuController!
+    @IBOutlet weak var dockMenu: NSMenu!
+    
+    // MARK: - IBActions
+    
     @IBAction func showPreferencesAction(_ sender: AnyObject) {
         UIUtils.showModalDialog(preferenceWindowController.window!)
     }
     
-    // MARK: - Variables
+    // MARK: - Windows
+    let mainWindowController = MainWindowController()
+    lazy var preferenceWindowController : PreferencesWindowController = PreferencesWindowController()
     
-    lazy var mainWindowController: MainWindowController = MainWindowController()
-    lazy var playlistWindowController: PlaylistWindowController = PlaylistWindowController()
-    lazy var preferenceWindowController : PreferenceWindowController = PreferenceWindowController()
+    // statusItem for status bar icon
+    let statusItem = NSStatusBar.system.statusItem(withLength: 20)
+
+    
+    // MARK: - Variables
     
     // (Optional) launch parameters: files to open upon launch (can be audio or playlist files)
     private var filesToOpen: [URL] = [URL]()
@@ -30,6 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate{
     // A window of time within which multiple file open operations will be considered as chunks of one single operation
     private let fileOpenNotificationWindow_seconds: Double = 3
     
+    
+    
+    
     // MARK: - Parent Functions
     
     override init() {
@@ -42,8 +56,12 @@ class AppDelegate: NSObject, NSApplicationDelegate{
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        
-        
+        if let button = statusItem.button {
+            button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
+            statusItem.menu = dockMenu
+        }
+        mainWindowController.showWindow(nil)
+
         // Update the appLaunched flag
         appLaunched = true
         
@@ -52,19 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate{
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        print("\(#function) -> hasVisibleWindows: \(flag)")
-        let mainWindowVisible = mainWindowController.mainWindow.isVisible
-        print("\(#function) -> mainWindowVisible: \(mainWindowVisible)")
-        if flag, mainWindowVisible{
-            mainWindowController.mainWindow.orderFront(self)
-            mainWindowController.playlistWindow.orderFront(self)
-        } else {
-            for window in sender.windows{
-                    if window.title == "Aural" {
-                        window.makeKeyAndOrderFront(self)
-                    }
-            }
-        }
+        mainWindowController.mainWindow.makeKeyAndOrderFront(self)
         return true
     }
     

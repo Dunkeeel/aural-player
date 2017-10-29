@@ -46,6 +46,9 @@ enum MessageType {
     // See RemoveTrackRequest
     case removeTrackRequest
     
+    // See SortTracksNotification
+    case sortTracksNotification
+    
     // See PlaybackStateChangedNotification
     case playbackStateChangedNotification
     
@@ -133,6 +136,17 @@ struct RemoveTrackRequest: RequestMessage {
     init(_ index: Int) {
         self.index = index
     }
+}
+
+// Notification indicating that track sorting has been called
+struct SortTracksNotification: NotificationMessage {
+    
+    var messageType: MessageType = .sortTracksNotification
+    
+    private init() {}
+    
+    // Singleton
+    static let instance: SortTracksNotification = SortTracksNotification()
 }
 
 // Notification that the playback rate has changed, in response to the user manipulating the time stretch effects unit controls.

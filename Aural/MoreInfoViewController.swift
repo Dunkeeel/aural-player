@@ -3,7 +3,7 @@
 */
 import Cocoa
 
-class PopoverViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, PopoverViewDelegateProtocol {
+class MoreInfoViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, PopoverViewDelegateProtocol {
     
     // The actual popover that is shown
     private var popover: NSPopover?
@@ -34,7 +34,7 @@ class PopoverViewController: NSViewController, NSTableViewDataSource, NSTableVie
     // Factory method to create an instance of this class, exposed as an instance of PopoverViewDelegateProtocol
     static func create(_ relativeToView: NSView) -> PopoverViewDelegateProtocol {
         
-        let controller = PopoverViewController(nibName: NSNib.Name(rawValue: "PopoverViewController"), bundle: Bundle.main)
+        let controller = MoreInfoViewController(nibName: NSNib.Name(rawValue: "MoreInfoViewController"), bundle: Bundle.main)
         
         let popover = NSPopover()
         popover.behavior = .semitransient

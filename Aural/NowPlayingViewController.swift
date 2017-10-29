@@ -4,6 +4,8 @@
 
 import Cocoa
 
+
+
 class NowPlayingViewController: NSViewController, MessageSubscriber {
     
     // Fields that display playing track info
@@ -19,18 +21,18 @@ class NowPlayingViewController: NSViewController, MessageSubscriber {
     
     // Button and menu item to display more details about the playing track
     @IBOutlet weak var btnMoreInfo: NSButton!
-    @IBOutlet weak var moreInfoMenuItem: NSMenuItem!
+    //@IBOutlet weak var moreInfoMenuItem: NSMenuItem!
     
     // Button and menu item to show the currently playing track within the playlist
     @IBOutlet weak var btnShowPlayingTrackInPlaylist: NSButton!
-    @IBOutlet weak var showInPlaylistMenuItem: NSMenuItem!
+    //@IBOutlet weak var showInPlaylistMenuItem: NSMenuItem!
     
     // Delegate that retrieves information about the player and the currently playing track
     private let playbackInfo: PlaybackInfoDelegateProtocol = ObjectGraph.getPlaybackInfoDelegate()
     
     // The view that displays detailed track information, when requested by the user
     private lazy var popoverView: PopoverViewDelegateProtocol = {
-        return PopoverViewController.create(self.btnMoreInfo as NSView)
+        return MoreInfoViewController.create(self.btnMoreInfo as NSView)
     }()
     
     // Timer that periodically updates the seek position slider and label
@@ -139,10 +141,10 @@ class NowPlayingViewController: NSViewController, MessageSubscriber {
     private func togglePlayingTrackButtons(_ show: Bool) {
         
         btnMoreInfo.isHidden = !show
-        moreInfoMenuItem.isEnabled = show
+        //moreInfoMenuItem.isEnabled = show
         
         btnShowPlayingTrackInPlaylist.isHidden = !show
-        showInPlaylistMenuItem.isEnabled = show
+        //showInPlaylistMenuItem.isEnabled = show
     }
     
     private func setSeekTimerState(_ timerOn: Bool) {

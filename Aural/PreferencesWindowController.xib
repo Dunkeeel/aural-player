@@ -1,47 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13528" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13528"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PreferenceWindowController" customModule="Aural" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="Aural" customModuleProvider="target">
             <connections>
+                <outlet property="btnAutoplayAfterAddingTracks" destination="o2w-4c-k9U" id="4wC-ws-Cgi"/>
+                <outlet property="btnAutoplayAlways" destination="clW-ub-Pbk" id="Wsh-Ub-O4y"/>
+                <outlet property="btnAutoplayIfNotPlaying" destination="xAt-1y-SAR" id="cIi-o4-iAB"/>
+                <outlet property="btnAutoplayOnStartup" destination="Qio-tl-dwB" id="Wx0-TP-PbX"/>
+                <outlet property="btnEmptyPlaylist" destination="5pB-IW-ier" id="y6C-SN-gbP"/>
+                <outlet property="btnRememberPlaylist" destination="H3K-Lp-FPv" id="pp2-Oz-lSZ"/>
+                <outlet property="btnRememberView" destination="9Ae-Mb-aY9" id="V2W-bt-Klu"/>
+                <outlet property="btnRememberVolume" destination="9gH-gI-OS3" id="eff-f2-FQz"/>
+                <outlet property="btnRememberWindowLocation" destination="CbG-7b-ezB" id="X2L-bo-vM2"/>
+                <outlet property="btnSpecifyVolume" destination="sla-25-GUS" id="yIN-6H-91D"/>
+                <outlet property="btnStartAtWindowLocation" destination="mpB-yM-nIK" id="mUU-oM-FYe"/>
+                <outlet property="btnStartWithView" destination="7WH-0u-zdn" id="ly7-GW-5og"/>
+                <outlet property="lblStartupVolume" destination="nMC-3o-RG7" id="qMf-eu-Pbe"/>
+                <outlet property="panDeltaField" destination="cOH-tE-tHc" id="7ob-yJ-lCp"/>
+                <outlet property="panDeltaStepper" destination="fpz-WH-q3W" id="Fe1-1o-xmg"/>
+                <outlet property="prefsTabView" destination="iLk-4Y-sJR" id="Hoc-0b-IX8"/>
+                <outlet property="seekLengthField" destination="hxb-hy-mi2" id="72Q-3O-2s9"/>
+                <outlet property="seekLengthSlider" destination="dUM-xb-yfQ" id="iOD-iN-GHZ"/>
+                <outlet property="startWindowLocationMenu" destination="DKW-eL-P7o" id="81v-3N-ptt"/>
+                <outlet property="startWithViewMenu" destination="qpr-uJ-A21" id="a1i-1D-QaX"/>
+                <outlet property="startupVolumeSlider" destination="vnW-8G-E4n" id="tAm-tU-u1g"/>
+                <outlet property="volumeDeltaField" destination="YM7-IH-Rre" id="xgk-rO-ChA"/>
+                <outlet property="volumeDeltaStepper" destination="T5C-Ng-pBW" id="2qm-LD-hgN"/>
                 <outlet property="window" destination="HzF-ZQ-Uwo" id="gl9-rg-RZi"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <viewController id="lEW-S0-zrE" userLabel="Preferences Window Controller" customClass="PreferenceWindowController" customModule="Aural" customModuleProvider="target">
-            <connections>
-                <outlet property="btnAutoplayAfterAddingTracks" destination="o2w-4c-k9U" id="fQl-t6-d9h"/>
-                <outlet property="btnAutoplayAlways" destination="clW-ub-Pbk" id="4Pz-Zq-9LB"/>
-                <outlet property="btnAutoplayIfNotPlaying" destination="xAt-1y-SAR" id="boP-RE-lv0"/>
-                <outlet property="btnAutoplayOnStartup" destination="Qio-tl-dwB" id="dAX-No-ux5"/>
-                <outlet property="btnEmptyPlaylist" destination="5pB-IW-ier" id="fGu-Bo-fkx"/>
-                <outlet property="btnRememberPlaylist" destination="H3K-Lp-FPv" id="1zF-DB-8BQ"/>
-                <outlet property="btnRememberView" destination="9Ae-Mb-aY9" id="xhJ-cw-MbT"/>
-                <outlet property="btnRememberVolume" destination="9gH-gI-OS3" id="trR-6P-Vsq"/>
-                <outlet property="btnRememberWindowLocation" destination="CbG-7b-ezB" id="SWC-X1-Moq"/>
-                <outlet property="btnSpecifyVolume" destination="sla-25-GUS" id="2kz-ye-7ZU"/>
-                <outlet property="btnStartAtWindowLocation" destination="mpB-yM-nIK" id="YdP-Ug-6XE"/>
-                <outlet property="btnStartWithView" destination="7WH-0u-zdn" id="QGe-bL-98D"/>
-                <outlet property="lblStartupVolume" destination="nMC-3o-RG7" id="xpW-e8-o5X"/>
-                <outlet property="panDeltaField" destination="cOH-tE-tHc" id="1Em-WC-Isa"/>
-                <outlet property="panDeltaStepper" destination="fpz-WH-q3W" id="ixT-ci-TU1"/>
-                <outlet property="prefsTabView" destination="iLk-4Y-sJR" id="O1a-uZ-nTg"/>
-                <outlet property="seekLengthField" destination="hxb-hy-mi2" id="kzU-Mz-J4j"/>
-                <outlet property="seekLengthSlider" destination="dUM-xb-yfQ" id="qAX-59-ybg"/>
-                <outlet property="startWindowLocationMenu" destination="DKW-eL-P7o" id="VUD-ri-tqg"/>
-                <outlet property="startWithViewMenu" destination="qpr-uJ-A21" id="IXw-iS-IBs"/>
-                <outlet property="startupVolumeSlider" destination="vnW-8G-E4n" id="Udj-pY-RGc"/>
-                <outlet property="view" destination="2Zl-vf-6JL" id="ZB9-R0-Tda"/>
-                <outlet property="volumeDeltaField" destination="YM7-IH-Rre" id="Qdo-x7-mXn"/>
-                <outlet property="volumeDeltaStepper" destination="T5C-Ng-pBW" id="ENp-VY-Keu"/>
-            </connections>
-        </viewController>
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="HzF-ZQ-Uwo" userLabel="Preferences Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -62,7 +57,7 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="savePreferencesAction:" target="lEW-S0-zrE" id="Mex-Do-iVk"/>
+                            <action selector="savePreferencesAction:" target="-2" id="HRE-Nn-auh"/>
                         </connections>
                     </button>
                     <tabView fixedFrame="YES" drawsBackground="NO" initialItem="UCv-3L-c3q" translatesAutoresizingMaskIntoConstraints="NO" id="iLk-4Y-sJR" userLabel="Preferences TabView">
@@ -71,7 +66,7 @@ DQ
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Player" identifier="1" id="UCv-3L-c3q" userLabel="Player Prefs">
-                                <view key="view" ambiguous="YES" id="bdm-3t-yf1">
+                                <view key="view" id="bdm-3t-yf1">
                                     <rect key="frame" x="10" y="33" width="372" height="230"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -105,7 +100,7 @@ DQ
                                                 <font key="font" metaFont="systemBold" size="10"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="seekLengthIncrementAction:" target="lEW-S0-zrE" id="Ocq-Jv-YOS"/>
+                                                <action selector="seekLengthIncrementAction:" target="-2" id="bjL-wO-Ht5"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EVC-yC-zod">
@@ -116,7 +111,7 @@ DQ
                                                 <font key="font" metaFont="systemBold" size="10"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="seekLengthDecrementAction:" target="lEW-S0-zrE" id="4Rf-0c-g0W"/>
+                                                <action selector="seekLengthDecrementAction:" target="-2" id="aBn-lc-38T"/>
                                             </connections>
                                         </button>
                                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-xb-yfQ" userLabel="Seek Length Slider">
@@ -124,7 +119,7 @@ DQ
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="3" maxValue="300" doubleValue="50" tickMarkPosition="below" sliderType="linear" id="wPO-Jc-gxX"/>
                                             <connections>
-                                                <action selector="seekLengthAction:" target="lEW-S0-zrE" id="jCZ-PG-sBw"/>
+                                                <action selector="seekLengthAction:" target="-2" id="IdQ-zn-jWe"/>
                                             </connections>
                                         </slider>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D38-T0-wD0" userLabel="Volume Increment Label">
@@ -154,7 +149,7 @@ DQ
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" minValue="1" maxValue="25" doubleValue="5" id="Cwy-03-DWh"/>
                                             <connections>
-                                                <action selector="volumeDeltaAction:" target="lEW-S0-zrE" id="8zv-Yp-cbb"/>
+                                                <action selector="volumeDeltaAction:" target="-2" id="PZB-kn-f9I"/>
                                             </connections>
                                         </stepper>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CkD-r3-fl6" userLabel="Volume on startup Label">
@@ -174,7 +169,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="startupVolumeButtonAction:" target="lEW-S0-zrE" id="Hmk-wy-Cov"/>
+                                                <action selector="startupVolumeButtonAction:" target="-2" id="zLr-bz-EvX"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sla-25-GUS">
@@ -185,7 +180,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="startupVolumeButtonAction:" target="lEW-S0-zrE" id="bnP-nF-15q"/>
+                                                <action selector="startupVolumeButtonAction:" target="-2" id="MrD-JT-ZK8"/>
                                             </connections>
                                         </button>
                                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnW-8G-E4n" userLabel="Startup Volume Slider">
@@ -193,22 +188,9 @@ DQ
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <sliderCell key="cell" controlSize="small" continuous="YES" enabled="NO" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="below" sliderType="linear" id="nze-wv-OVP"/>
                                             <connections>
-                                                <action selector="startupVolumeSliderAction:" target="lEW-S0-zrE" id="Bb0-S3-dVn"/>
+                                                <action selector="startupVolumeSliderAction:" target="-2" id="BlQ-kn-bff"/>
                                             </connections>
                                         </slider>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMC-3o-RG7" userLabel="Startup Volume Field">
-                                            <rect key="frame" x="310" y="87" width="40" height="13"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" state="on" alignment="right" title="50%" id="jP8-HK-26B">
-                                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="GFY-ld-BBZ">
-                                                    <real key="minimum" value="3"/>
-                                                    <real key="maximum" value="30"/>
-                                                </numberFormatter>
-                                                <font key="font" metaFont="systemMedium" size="10"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJk-aF-pSY" userLabel="Pan Delta label">
                                             <rect key="frame" x="17" y="27" width="102" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -219,11 +201,11 @@ DQ
                                             </textFieldCell>
                                         </textField>
                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpz-WH-q3W" userLabel="Pan Delta Stepper">
-                                            <rect key="frame" x="354" y="82" width="15" height="22"/>
+                                            <rect key="frame" x="354" y="25" width="15" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" minValue="1" maxValue="25" doubleValue="10" id="z3j-fZ-TvT"/>
                                             <connections>
-                                                <action selector="panDeltaAction:" target="lEW-S0-zrE" id="L8a-eU-Ppa"/>
+                                                <action selector="panDeltaAction:" target="-2" id="dSm-Xi-36M"/>
                                             </connections>
                                         </stepper>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOH-tE-tHc" userLabel="Pan Delta Field">
@@ -231,6 +213,19 @@ DQ
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" state="on" alignment="right" title="10%" id="jdB-pb-jWK">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="v7o-5O-kpI">
+                                                    <real key="minimum" value="3"/>
+                                                    <real key="maximum" value="30"/>
+                                                </numberFormatter>
+                                                <font key="font" metaFont="systemMedium" size="10"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMC-3o-RG7" userLabel="Startup Volume Field">
+                                            <rect key="frame" x="310" y="66" width="40" height="13"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" state="on" alignment="right" title="50%" id="jP8-HK-26B">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="GFY-ld-BBZ">
                                                     <real key="minimum" value="3"/>
                                                     <real key="maximum" value="30"/>
                                                 </numberFormatter>
@@ -264,7 +259,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="startupPlaylistPrefAction:" target="lEW-S0-zrE" id="6HI-CY-3df"/>
+                                                <action selector="startupPlaylistPrefAction:" target="-2" id="FMv-J2-Qlc"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pB-IW-ier">
@@ -275,7 +270,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="startupPlaylistPrefAction:" target="lEW-S0-zrE" id="yrf-WR-ddn"/>
+                                                <action selector="startupPlaylistPrefAction:" target="-2" id="XOL-8m-hdl"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hve-d0-nCF" userLabel="Autoplay on startup">
@@ -288,7 +283,7 @@ DQ
                                             </textFieldCell>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qio-tl-dwB">
-                                            <rect key="frame" x="29" y="83" width="207" height="20"/>
+                                            <rect key="frame" x="29" y="83" width="226" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="On startup (if at least 1 track available)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="Klu-rl-hY5" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -296,14 +291,14 @@ DQ
                                             </buttonCell>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2w-4c-k9U">
-                                            <rect key="frame" x="29" y="64" width="241" height="20"/>
+                                            <rect key="frame" x="29" y="64" width="241" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="After adding tracks, play first added track" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="bO3-Bd-r09" customClass="CheckRadioButtonCell" customModule="Aural" customModuleProvider="target">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="autoplayAfterAddingAction:" target="lEW-S0-zrE" id="i7q-M8-h6y"/>
+                                                <action selector="autoplayAfterAddingAction:" target="-2" id="pcq-id-3aK"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAt-1y-SAR">
@@ -314,7 +309,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="autoplayAfterAddingRadioButtonAction:" target="lEW-S0-zrE" id="Zw7-gi-V4r"/>
+                                                <action selector="autoplayAfterAddingRadioButtonAction:" target="-2" id="3YR-wd-RHt"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="clW-ub-Pbk">
@@ -325,14 +320,14 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="autoplayAfterAddingRadioButtonAction:" target="lEW-S0-zrE" id="r9Z-Uv-hnY"/>
+                                                <action selector="autoplayAfterAddingRadioButtonAction:" target="-2" id="SQE-T0-qHn"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="View" identifier="2" id="Hjb-3a-fjI" userLabel="View Prefs">
-                                <view key="view" id="92I-Zk-xFI">
+                                <view key="view" ambiguous="YES" id="92I-Zk-xFI">
                                     <rect key="frame" x="10" y="33" width="372" height="230"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -344,7 +339,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="startupViewPrefAction:" target="lEW-S0-zrE" id="vd2-j1-YQS"/>
+                                                <action selector="startupViewPrefAction:" target="-2" id="4fN-az-bJQ"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ae-Mb-aY9" userLabel="Remember view from last app launch">
@@ -355,7 +350,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="startupViewPrefAction:" target="lEW-S0-zrE" id="Q4k-qW-cOQ"/>
+                                                <action selector="startupViewPrefAction:" target="-2" id="ahG-g0-ZAL"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3R-dC-Idl" userLabel="View on startup">
@@ -400,7 +395,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="windowLocationOnStartupAction:" target="lEW-S0-zrE" id="Qbn-sA-bXu"/>
+                                                <action selector="windowLocationOnStartupAction:" target="-2" id="Ha0-wB-nRA"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CbG-7b-ezB" userLabel="Remember location from last app launch">
@@ -411,7 +406,7 @@ DQ
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="windowLocationOnStartupAction:" target="lEW-S0-zrE" id="cox-dt-vhh"/>
+                                                <action selector="windowLocationOnStartupAction:" target="-2" id="FHB-bQ-Hpj"/>
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DKW-eL-P7o" userLabel="Start window location menu">
@@ -451,7 +446,7 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="cancelPreferencesAction:" target="lEW-S0-zrE" id="vNz-Dq-niP"/>
+                            <action selector="cancelPreferencesAction:" target="-2" id="8Oq-8V-vPt"/>
                         </connections>
                     </button>
                 </subviews>

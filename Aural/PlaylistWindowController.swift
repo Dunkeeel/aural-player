@@ -10,19 +10,24 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
         return NSNib.Name("PlaylistWindowController")
     }
     
+    let mainWindowController = (NSApp.delegate as! AppDelegate).mainWindowController
+    
     // Displays the playlist and summary
     @IBOutlet weak var playlistView: NSTableView!
     @IBOutlet weak var lblPlaylistSummary: NSTextField!
     @IBOutlet weak var playlistWorkSpinner: NSProgressIndicator!
+    @IBOutlet weak var btnSort: NSButton!    
     
     // Box that encloses the playlist controls. Used to position the spinner.
-    @IBOutlet weak var controlsBox: NSBox!
+    //@IBOutlet weak var controlsBox: NSBox!
+    
+    // The view that displays detailed track information, when requested by the user
+    private lazy var sortPopoverView: PopoverViewDelegateProtocol = {
+        return SortViewController.create(self.btnSort as NSView)
+    }()
     
     // Delegate that performs CRUD actions on the playlist
     private let playlist: PlaylistDelegateProtocol = ObjectGraph.getPlaylistDelegate()
-    
-    // Delegate that retrieves current playback info
-    private let playbackInfo: PlaybackInfoDelegateProtocol = ObjectGraph.getPlaybackInfoDelegate()
     
     // A serial operation queue to help perform playlist update tasks serially, without overwhelming the main thread
     private let playlistUpdateQueue = OperationQueue()
@@ -30,8 +35,15 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
     // Needed for playlist scrolling with arrow keys
     private var playlistKeyPressHandler: PlaylistKeyPressHandler?
     
+    // Delegate that retrieves current playback info
+    private let playbackInfo: PlaybackInfoDelegateProtocol = ObjectGraph.getPlaybackInfoDelegate()
+    
     override func windowDidLoad() {
         super.windowDidLoad()
+        
+        // Set up a mouse listener (for double clicks -> play selected track)
+        playlistView.doubleAction = #selector(mainWindowController.playbackViewController.playSelectedTrackAction(_:))
+        playlistView.target = (NSApp.delegate as! AppDelegate).mainWindowController.playbackViewController
         
         // Enable drag n drop into the playlist view
         playlistView.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: String(kUTTypeFileURL))])
@@ -46,6 +58,7 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
         // Register self as a subscriber to various synchronous message notifications
         SyncMessenger.subscribe(.trackChangedNotification, subscriber: self)
         SyncMessenger.subscribe(.removeTrackRequest, subscriber: self)
+        SyncMessenger.subscribe(.sortTracksNotification, subscriber: self)
         
         // Set up the serial operation queue for playlist view updates
         playlistUpdateQueue.maxConcurrentOperationCount = 1
@@ -70,7 +83,7 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
         
         // Update spinner
         if (trackAddProgress != nil) {
-            repositionSpinner()
+            //repositionSpinner()
             playlistWorkSpinner.doubleValue = trackAddProgress!.percentage
         }
     }
@@ -78,9 +91,7 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
     @IBAction func addTracksAction(_ sender: AnyObject) {
         
         let dialog = UIElements.openDialog
-        
         let modalResponse = dialog.runModal()
-        
         if (modalResponse == NSApplication.ModalResponse.OK) {
             addFiles(dialog.urls)
         }
@@ -90,7 +101,7 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
     private func startedAddingTracks() {
         
         playlistWorkSpinner.doubleValue = 0
-        repositionSpinner()
+        //repositionSpinner()
         playlistWorkSpinner.isHidden = false
         playlistWorkSpinner.startAnimation(self)
     }
@@ -102,16 +113,16 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
     }
     
     // Move the spinner so it is adjacent to the summary text, on the left
-    private func repositionSpinner() {
-        
-        let summaryString: NSString = lblPlaylistSummary.stringValue as NSString
-        let size: CGSize = summaryString.size(withAttributes: [NSAttributedStringKey.font: lblPlaylistSummary.font as AnyObject])
-        let lblWidth = size.width
-        
-        let controlsBoxWidth = controlsBox.frame.width
-        let newX = controlsBoxWidth - lblWidth - 10 - playlistWorkSpinner.frame.width
-        playlistWorkSpinner.frame.origin.x = newX
-    }
+//    private func repositionSpinner() {
+//
+//        let summaryString: NSString = lblPlaylistSummary.stringValue as NSString
+//        let size: CGSize = summaryString.size(withAttributes: [NSAttributedStringKey.font: lblPlaylistSummary.font as AnyObject])
+//        let lblWidth = size.width
+//
+//        let controlsBoxWidth = controlsBox.frame.width
+//        let newX = controlsBoxWidth - lblWidth - 10 - playlistWorkSpinner.frame.width
+//        playlistWorkSpinner.frame.origin.x = newX
+//    }
     
     @IBAction func removeTracksAction(_ sender: AnyObject) {
         
@@ -300,16 +311,30 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
         playlist.addFiles(files)
     }
     
-    // Shows the currently playing track, within the playlist view
-    @IBAction func showInPlaylistAction(_ sender: Any) {
+
+    
+    @IBAction func maximizePlaylistAction(_ sender: AnyObject) {
+        (NSApp.delegate as! AppDelegate).mainWindowController.maximizePlaylist()
+    }
+    
+    @IBAction func maximizePlaylistHorizontalAction(_ sender: AnyObject) {
+        (NSApp.delegate as! AppDelegate).mainWindowController.maximizePlaylist(true, false)
+    }
+    
+    @IBAction func maximizePlaylistVerticalAction(_ sender: AnyObject) {
+        (NSApp.delegate as! AppDelegate).mainWindowController.maximizePlaylist(false, true)
+    }
+    
+    @IBAction func sortBtnAction(_ sender: Any) {
+        print("\(#function) -> toggle sort popover")
         
-        if let playingTrackIndex = playbackInfo.getPlayingTrack()?.index {
-            selectTrack(playingTrackIndex)
-        }
+        // Don't do anything if either no tracks or only 1 track in playlist
+        guard playlistView.numberOfRows > 1 else { return }
+        sortPopoverView.toggle()
     }
     
     func consumeAsyncMessage(_ message: AsyncMessage) {
-        
+                
         if message is TrackAddedAsyncMessage {
             
             // Perform task serially wrt other such tasks
@@ -373,6 +398,11 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
             trackChange(msg.oldTrack, msg.newTrack, msg.errorState)
             return
         }
+        
+        if (notification is SortTracksNotification) {
+            playlistView.reloadData()
+            return
+        }
     }
     
     func processRequest(_ request: RequestMessage) -> ResponseMessage {
@@ -384,4 +414,12 @@ class PlaylistWindowController: NSWindowController, AsyncMessageSubscriber, Mess
         
         return EmptyResponse.instance
     }
+    
+    func showInPlaylist() {
+
+        if let playingTrackIndex = playbackInfo.getPlayingTrack()?.index {
+            selectTrack(playingTrackIndex)
+        }
+    }
+    
 }
